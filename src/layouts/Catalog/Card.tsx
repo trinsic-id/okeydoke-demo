@@ -42,12 +42,6 @@ export const Card = ({
     [isBronzeMember, isSilverMember, isGoldMember]
   );
 
-  const memberProduceType = useRecoilValue(memberProduceState);
-  const hideProduct = useMemo(
-    () => memberProduceType && product.produceType !== memberProduceType,
-    [product, memberProduceType]
-  );
-
   const memberAdjustment = useMemo(() => {
     if (!isMember) return undefined;
 
@@ -68,13 +62,7 @@ export const Card = ({
       };
   }, [product, isMember, isGoldMember, isSilverMember, isBronzeMember]);
 
-  const filterProducts = useRecoilValue(filterProductsState);
-  const isHidden = useMemo(
-    () => isMember && filterProducts && hideProduct,
-    [isMember, filterProducts, product, hideProduct]
-  );
-
-  return isHidden ? null : (
+  return (
     <AnimatePresence>
       <motion.div
         variants={Animations}
