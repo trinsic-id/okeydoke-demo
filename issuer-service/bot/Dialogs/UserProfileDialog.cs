@@ -10,9 +10,8 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Bot.Schema;
-using Microsoft.BotBuilderSamples;
 
-namespace MultiTurnPromptBot.Dialogs;
+namespace OkeyDokey.LicenseIssuerBot.Dialogs;
 
 public class UserProfileDialog : ComponentDialog
 {

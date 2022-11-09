@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.BotBuilderSamples;
 
-namespace MultiTurnPromptBot.Dialogs;
+namespace OkeyDokey.LicenseIssuerBot.Dialogs;
 
 public class AddressDialog : WaterfallDialog
 {

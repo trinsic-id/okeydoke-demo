@@ -1,4 +1,4 @@
-﻿namespace Microsoft.BotBuilderSamples.Models;
+﻿namespace OkeyDokey.LicenseIssuerBot.Models;
 
 public class WelcomeUserState
 {
