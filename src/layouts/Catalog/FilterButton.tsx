@@ -1,6 +1,6 @@
 import { Switch } from "@headlessui/react";
 import { useRecoilState } from "recoil";
-import { filterProductsState } from "../../atoms/member";
+import { filterProductsState } from "../../atoms/products";
 
 export const FilterButton = () => {
   const [isFiltered, toggleFilter] = useRecoilState(filterProductsState);
@@ -14,14 +14,12 @@ export const FilterButton = () => {
           onChange={() => {
             toggleFilter((val) => !val);
           }}
-          className={`focus:outline-none bg-transparent border-2 border-black relative inline-flex items-center h-4 rounded-full w-8 transition ease-in-out duration-500 ${
-            !isFiltered && "opacity-30"
-          }`}
+          className={`focus:outline-none bg-transparent border-2 border-black relative inline-flex items-center h-4 rounded-full w-8 transition ease-in-out duration-500`}
         >
           <span
-            className={`w-2 h-2 transform transition ease-in-out duration-500 bg-black rounded-full ${
+            className={`w-2 h-2 transform transition ease-in-out duration-300 bg-black rounded-full ${
               isFiltered ? "translate-x-1" : "translate-x-4"
-            }`}
+            } ${!isFiltered && "opacity-30"}`}
           />
         </Switch>
       </div>

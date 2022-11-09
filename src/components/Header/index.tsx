@@ -2,14 +2,12 @@ import React, { useMemo, useState } from "react";
 import { Search, ShoppingCart, User } from "react-feather";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { cartTotalState } from "../../atoms/cart";
 import { Combobox, Listbox, Menu } from "@headlessui/react";
 import { CartButton } from "./CartButton";
 import { AccountButton } from "./AccountButton";
 import { useLocation } from "react-use";
 
 const Header = () => {
-  const { totalQty } = useRecoilValue(cartTotalState);
   const location = useLocation();
   const isVisible = useMemo(() => {
     if (!location) return false;
@@ -19,7 +17,7 @@ const Header = () => {
   }, [location.pathname]);
 
   return isVisible ? (
-    <div className="flex flex-row items-center justify-between w-full border-b border-gray-300 pb-2 mb-2 py-4 px-6">
+    <div className="flex flex-row items-center justify-between w-full border-b border-gray-300 pb-2 p-4">
       <Link to="/">
         <div className="text-2xl font-medium">OkeyDokey</div>
       </Link>

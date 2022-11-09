@@ -20,7 +20,7 @@ export type Product = {
   produceType: ProduceType;
 };
 
-export const products: Product[] = [
+export const defataultProducts: Product[] = [
   {
     id: "baby-anzio-artichoke",
     name: "Baby Anzio",

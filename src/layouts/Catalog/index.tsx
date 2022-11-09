@@ -6,18 +6,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
-  filterProductsState,
   MemberLevel,
   memberLevelState,
   memberProduceState,
 } from "../../atoms/member";
+import {
+  filteredProductsState,
+  filterProductsState,
+} from "../../atoms/products";
 import {
   AuthState,
   authStateState,
   userCredentialState,
 } from "../../atoms/user";
 import { VerifyCredentialModal } from "../../components/VerifyCredential";
-import { products } from "../../data/products";
+import { defataultProducts } from "../../data/products";
 import { useAddItem } from "../../hooks/custom/useAddItem";
 import { AuthService } from "../../services/AuthService";
 import { Card } from "./Card";
@@ -61,12 +64,12 @@ const Catalog = () => {
     [memberLevel]
   );
 
-  const [isFiltered, toggleFilter] = useRecoilState(filterProductsState);
   const memberProduceType = useRecoilValue(memberProduceState);
+  const filteredProducts = useRecoilValue(filteredProductsState);
 
   return (
-    <div className="w-full h-screen overflow-y-scroll p-4 bg-catalog-bg flex flex-col items-start space-y-4">
-      <div className="flex flex-row w-full justify-between">
+    <div className="w-full h-full bg-catalog-bg flex flex-col items-start gap-4">
+      <div className="flex flex-row w-full justify-between p-4">
         <div className="flex flex-row items-start space-x-2">
           <Trello size={28} className="stroke-green-600" />
           <div className="text-2xl text-black">Products</div>
@@ -74,13 +77,13 @@ const Catalog = () => {
         {memberProduceType && <FilterButton />}
       </div>
       <motion.div
-        className="flex flex-col h-full overflow-y-scroll space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:gap-4 items-start"
+        className="flex flex-col h-full overflow-y-scroll space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:gap-4 items-start p-4"
         key="container"
         variants={Animations.container}
         initial="hidden"
         animate="visible"
       >
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <Card product={product} {...memberLevelObj} key={product.id} />
         ))}
       </motion.div>
