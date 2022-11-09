@@ -50,7 +50,7 @@ export const Redirect = () => {
       toggleVerifyingLoading(true);
 
       setAuthState(AuthState.VERIFIED);
-      navigate("/");
+      // navigate("/");
     });
   }, [location, authState, authSettings]);
 
