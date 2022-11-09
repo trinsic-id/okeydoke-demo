@@ -14,21 +14,19 @@ public class DirectLineController : ControllerBase
 
     private readonly string _directLineSecret;
 
-    public DirectLineController(DirectLineService directLineService, IConfiguration configuration) {
+    public DirectLineController(DirectLineService directLineService, IConfiguration configuration)
+    {
         _directLineService = directLineService;
         _directLineSecret = configuration["DirectLineSecret"];
-    }
-
-    [HttpGet("/")]
-    public IActionResult Index() {
-        return Redirect("/index.html");
     }
 
     // Endpoint for generating a Direct Line token bound to a random user ID
     [HttpGet, HttpPost]
     [Route("/api/directline/token")]
-    public async Task<IActionResult> Get() {
-        if (!Request.Cookies.TryGetValue("userId", out var randomUserId)) {
+    public async Task<IActionResult> Get()
+    {
+        if (!Request.Cookies.TryGetValue("userId", out var randomUserId))
+        {
             // Generate a random user ID to use for DirectLine token
             randomUserId = GenerateRandomUserId();
 
@@ -37,10 +35,12 @@ public class DirectLineController : ControllerBase
         }
 
         DirectLineTokenDetails directLineTokenDetails;
-        try {
+        try
+        {
             directLineTokenDetails = await _directLineService.GetTokenAsync(_directLineSecret, randomUserId);
         }
-        catch (InvalidOperationException invalidOpException) {
+        catch (InvalidOperationException invalidOpException)
+        {
             return BadRequest(new { message = invalidOpException.Message });
         }
 
@@ -49,7 +49,8 @@ public class DirectLineController : ControllerBase
 
     // Generates a random user ID
     // Prefixed with "dl_", as required by the Direct Line API
-    private static string GenerateRandomUserId() {
+    private static string GenerateRandomUserId()
+    {
         var tokenData = RandomNumberGenerator.GetBytes(16);
 
         return $"dl_{BitConverter.ToString(tokenData).Replace("-", "").ToLower()}";

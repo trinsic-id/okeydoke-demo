@@ -34,7 +34,7 @@ public class DialogBot<T> : ActivityHandler where T : Dialog
 
     protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
     {
-        foreach (var member in membersAdded)
+        foreach (ChannelAccount member in membersAdded)
         {
             if (member.Id != turnContext.Activity.Recipient.Id)
             {
@@ -58,7 +58,7 @@ public class DialogBot<T> : ActivityHandler where T : Dialog
     protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
     {
         var welcomeUserStateAccessor = UserState.CreateProperty<WelcomeUserState>(nameof(WelcomeUserState));
-        var didBotWelcomeUser = await welcomeUserStateAccessor.GetAsync(turnContext, () => new WelcomeUserState(), cancellationToken);
+        WelcomeUserState didBotWelcomeUser = await welcomeUserStateAccessor.GetAsync(turnContext, () => new WelcomeUserState(), cancellationToken);
 
         if (didBotWelcomeUser.DidBotWelcomeUser == false)
         {

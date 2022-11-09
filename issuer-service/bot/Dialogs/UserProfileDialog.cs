@@ -105,7 +105,7 @@ public class UserProfileDialog : ComponentDialog
     {
         stepContext.Values["produceType"] = ((FoundChoice)stepContext.Result).Value;
 
-        var foodLicense = await _foodLicenseAccessor.GetAsync(stepContext.Context, () => new FoodSalvagerLicense(), cancellationToken);
+        FoodSalvagerLicense foodLicense = await _foodLicenseAccessor.GetAsync(stepContext.Context, () => new FoodSalvagerLicense(), cancellationToken);
 
         // issue credential
         foodLicense.Name = (string)stepContext.Values["name"];
@@ -116,7 +116,7 @@ public class UserProfileDialog : ComponentDialog
         await stepContext.Context.SendActivityAsync("Here are the details of your application. Please review if the information is correct", cancellationToken: cancellationToken);
 
         var attachments = new List<Attachment>();
-        var reply = MessageFactory.Attachment(attachments);
+        IMessageActivity reply = MessageFactory.Attachment(attachments);
         reply.Attachments.Add(CardUtils.GetLicenseCard(foodLicense).ToAttachment());
         await stepContext.Context.SendActivityAsync(reply, cancellationToken);
 
@@ -161,7 +161,7 @@ public class CardUtils
 {
     public static ReceiptCard GetLicenseCard(FoodSalvagerLicense license)
     {
-        var receiptCard = new ReceiptCard
+        ReceiptCard receiptCard = new ReceiptCard
         {
             Title = "Food Salvager License",
             Facts = new List<Fact>

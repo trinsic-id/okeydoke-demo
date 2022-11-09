@@ -42,7 +42,7 @@ public class AddressDialog : WaterfallDialog
     {
         stepContext.Values["state"] = (string)stepContext.Result;
 
-        var foodLicense = await _foodLicenseAccessor.GetAsync(stepContext.Context, () => new FoodSalvagerLicense(), cancellationToken);
+        FoodSalvagerLicense foodLicense = await _foodLicenseAccessor.GetAsync(stepContext.Context, () => new FoodSalvagerLicense(), cancellationToken);
         foodLicense.Address = (string)stepContext.Values["address"];
         foodLicense.City = (string)stepContext.Values["city"];
         foodLicense.State = (string)stepContext.Values["state"];

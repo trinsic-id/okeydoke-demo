@@ -60,10 +60,7 @@ public class Startup
             .UseStaticFiles()
             .UseRouting()
             .UseAuthorization()
-            .UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            .UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
         // app.UseHttpsRedirection();
     }
