@@ -1,6 +1,6 @@
 import { Log, User, UserManager } from "oidc-client-ts";
 
-const clientRoot: string = "http://localhost:3000/";
+const clientRoot: string = `${window.location.origin}/`;
 
 export const defaultEcosystem = "okiedoke";
 export const defaultSchema =
