@@ -1,0 +1,4 @@
+az account set --subscription 7a5e3409-cef5-42ff-b39a-92d9cc4e5489
+dotnet publish --no-dependencies --runtime linux-x64 --output publish
+Compress-Archive -Path ./publish/* -DestinationPath publish.zip -Force
+az webapp deploy --resource-group "trinsic-okeydokey-demo" --name "webapp-221109133537" --src-path ./publish.zip
