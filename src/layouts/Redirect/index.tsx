@@ -43,9 +43,6 @@ export const Redirect = () => {
     useEffect(() => {
         const error = searchParams.get("error");
         if (error !== null) return setModalVisible(true);
-        const state = searchParams.get("state");
-        const code = searchParams.get("code");
-        if (!state && !code) return setModalVisible(true);
 
         let settings: typeof defaultAuthSettings;
         if (authSettings)
@@ -59,7 +56,9 @@ export const Redirect = () => {
         authService
             .signinRedirect()
             .catch(() => {
-                setModalVisible(true);
+                const state = searchParams.get("state");
+                const code = searchParams.get("code");
+                if (!state && !code) return setModalVisible(true);
             })
             .then(async () => {
                 const user = await authService.getUser();
