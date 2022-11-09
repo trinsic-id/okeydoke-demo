@@ -1,0 +1,14 @@
+{
+  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "configurations": {
+    "okeydokey-demo": {
+      "appLocation": ".",
+      "outputLocation": "build",
+      "appBuildCommand": "npm run build",
+      "run": "npm start",
+      "appDevserverUrl": "http://localhost:3000",
+      "appName": "okeydokey-demo",
+      "resourceGroupName": "trinsic-okeydokey-demo"
+    }
+  }
+}
