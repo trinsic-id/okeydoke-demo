@@ -1,7 +1,6 @@
 import { User } from "react-feather";
 import { Link } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { filterProductsState } from "../../atoms/member";
 
 export const AccountButton = () => {
   return (

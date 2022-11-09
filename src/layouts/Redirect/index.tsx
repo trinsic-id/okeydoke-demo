@@ -30,9 +30,9 @@ export const Redirect = () => {
   const [userCredential, setUserCredential] =
     useRecoilState(userCredentialState);
   const authSettings = useRecoilValue(authSettingsState);
-  useEffect(() => {
-    toggleVerifyingLoading(true);
-  }, []);
+  // useEffect(() => {
+  //   toggleVerifyingLoading(true);
+  // }, []);
   useEffect(() => {
     let settings: typeof defaultAuthSettings;
     if (authSettings)
@@ -101,7 +101,7 @@ export const Redirect = () => {
         text={"Redirecting to store"}
         onNext={() => {
           toggleRedirectLoading(false);
-          //navigate("/");
+          navigate("/");
         }}
       />
     </div>

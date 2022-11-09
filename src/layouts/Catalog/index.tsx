@@ -10,7 +10,10 @@ import {
   memberLevelState,
   memberProduceState,
 } from "../../atoms/member";
-import { filterProductsState } from "../../atoms/products";
+import {
+  filteredProductsState,
+  filterProductsState,
+} from "../../atoms/products";
 import {
   AuthState,
   authStateState,
@@ -61,12 +64,12 @@ const Catalog = () => {
     [memberLevel]
   );
 
-  const [isFiltered, toggleFilter] = useRecoilState(filterProductsState);
   const memberProduceType = useRecoilValue(memberProduceState);
+  const filteredProducts = useRecoilValue(filteredProductsState);
 
   return (
-    <div className="w-full h-screen overflow-y-scroll p-4 bg-catalog-bg flex flex-col items-start space-y-4">
-      <div className="flex flex-row w-full justify-between">
+    <div className="w-full h-full bg-catalog-bg flex flex-col items-start gap-4">
+      <div className="flex flex-row w-full justify-between p-4">
         <div className="flex flex-row items-start space-x-2">
           <Trello size={28} className="stroke-green-600" />
           <div className="text-2xl text-black">Products</div>
@@ -74,13 +77,13 @@ const Catalog = () => {
         {memberProduceType && <FilterButton />}
       </div>
       <motion.div
-        className="flex flex-col h-full overflow-y-scroll space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:gap-4 items-start"
+        className="flex flex-col h-full overflow-y-scroll space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:gap-4 items-start p-4"
         key="container"
         variants={Animations.container}
         initial="hidden"
         animate="visible"
       >
-        {defataultProducts.map((product) => (
+        {filteredProducts.map((product) => (
           <Card product={product} {...memberLevelObj} key={product.id} />
         ))}
       </motion.div>
