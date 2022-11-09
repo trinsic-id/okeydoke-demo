@@ -1,6 +1,6 @@
 import { Switch } from "@headlessui/react";
 import { useRecoilState } from "recoil";
-import { filterProductsState } from "../../atoms/member";
+import { filterProductsState } from "../../atoms/products";
 
 export const FilterButton = () => {
   const [isFiltered, toggleFilter] = useRecoilState(filterProductsState);

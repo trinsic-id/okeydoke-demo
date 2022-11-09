@@ -6,18 +6,18 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
-  filterProductsState,
   MemberLevel,
   memberLevelState,
   memberProduceState,
 } from "../../atoms/member";
+import { filterProductsState } from "../../atoms/products";
 import {
   AuthState,
   authStateState,
   userCredentialState,
 } from "../../atoms/user";
 import { VerifyCredentialModal } from "../../components/VerifyCredential";
-import { products } from "../../data/products";
+import { defataultProducts } from "../../data/products";
 import { useAddItem } from "../../hooks/custom/useAddItem";
 import { AuthService } from "../../services/AuthService";
 import { Card } from "./Card";
@@ -80,7 +80,7 @@ const Catalog = () => {
         initial="hidden"
         animate="visible"
       >
-        {products.map((product) => (
+        {defataultProducts.map((product) => (
           <Card product={product} {...memberLevelObj} key={product.id} />
         ))}
       </motion.div>

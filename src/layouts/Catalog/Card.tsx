@@ -2,11 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useMemo } from "react";
 import { Bookmark, ShoppingCart, Star } from "react-feather";
 import { useRecoilState, useRecoilValue } from "recoil";
-import {
-  filterProductsState,
-  memberLevelState,
-  memberProduceState,
-} from "../../atoms/member";
+import { memberLevelState, memberProduceState } from "../../atoms/member";
+import { filterProductsState } from "../../atoms/products";
 import { userCredentialState } from "../../atoms/user";
 import { Product, ProductHeader } from "../../data/products";
 

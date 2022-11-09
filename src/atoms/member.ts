@@ -29,8 +29,3 @@ export const memberProduceState = selector<ProduceType | undefined>({
       : undefined;
   },
 });
-
-export const filterProductsState = atom<boolean>({
-  key: "filter-products",
-  default: true,
-});
