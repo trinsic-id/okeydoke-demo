@@ -3,6 +3,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -10,16 +12,20 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 using Microsoft.Bot.Schema;
+using Trinsic;
+using Trinsic.Services.VerifiableCredentials.V1;
 
 namespace OkeyDokey.LicenseIssuerBot.Dialogs;
 
-public class UserProfileDialog : ComponentDialog
+public class LicenseDialog : ComponentDialog
 {
+    private readonly TrinsicService _trinsicService;
     private readonly IStatePropertyAccessor<FoodSalvagerLicense> _foodLicenseAccessor;
 
-    public UserProfileDialog(UserState userState, AddressDialog addressDialog)
-        : base(nameof(UserProfileDialog))
+    public LicenseDialog(TrinsicService trinsicService, UserState userState, AddressDialog addressDialog)
+        : base(nameof(LicenseDialog))
     {
+        _trinsicService = trinsicService;
         _foodLicenseAccessor = userState.CreateProperty<FoodSalvagerLicense>("FoodSalvagerLicense");
 
         // This array defines how the Waterfall will execute.
@@ -54,7 +60,12 @@ public class UserProfileDialog : ComponentDialog
             new PromptOptions
             {
                 Prompt = MessageFactory.Text("Please select the certification grade you're applying for."),
-                Choices = ChoiceFactory.ToChoices(new List<string> { "Grade A", "Grade B", "Grade C" }),
+                Choices = new List<Choice>
+                {
+                    new Choice{Value = "A", Action = new CardAction(ActionTypes.ImBack, "Grade A", value: "A")},
+                    new Choice{Value = "B", Action = new CardAction(ActionTypes.ImBack, "Grade B", value: "B")},
+                    new Choice{Value = "C", Action = new CardAction(ActionTypes.ImBack, "Grade C", value: "C")},
+                }
             }, cancellationToken);
     }
 
@@ -97,7 +108,7 @@ public class UserProfileDialog : ComponentDialog
             new PromptOptions
             {
                 Prompt = MessageFactory.Text("Please select the type of produce."),
-                Choices = ChoiceFactory.ToChoices(new List<string> { "Artichoke", "Apple", "Walnut" }),
+                Choices = ChoiceFactory.ToChoices(new List<string> { "Artichoke", "Corn" }),
             }, cancellationToken);
     }
 
@@ -142,7 +153,7 @@ public class UserProfileDialog : ComponentDialog
             await stepContext.Context.SendActivityAsync("No problem. Let's start over.", cancellationToken: cancellationToken);
             await stepContext.CancelAllDialogsAsync(cancellationToken: cancellationToken);
 
-            return await stepContext.Parent.ReplaceDialogAsync(nameof(UserProfileDialog), cancellationToken: cancellationToken);
+            return await stepContext.Parent.ReplaceDialogAsync(nameof(LicenseDialog), cancellationToken: cancellationToken);
         }
     }
 
@@ -150,51 +161,38 @@ public class UserProfileDialog : ComponentDialog
     {
         var email = (string)stepContext.Result;
 
-        await stepContext.Context.SendActivityAsync("Congratulations! I've sent you a verification credential to your email!", cancellationToken: cancellationToken);
-        await stepContext.Context.SendActivityAsync("Read more on how you can use the license at https://example.com!", cancellationToken: cancellationToken);
+        FoodSalvagerLicense foodLicense = await _foodLicenseAccessor.GetAsync(stepContext.Context, () => new FoodSalvagerLicense(), cancellationToken);
 
-        return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
-    }
-}
-
-public class CardUtils
-{
-    public static ReceiptCard GetLicenseCard(FoodSalvagerLicense license)
-    {
-        ReceiptCard receiptCard = new ReceiptCard
+        try
         {
-            Title = "Food Salvager License",
-            Facts = new List<Fact>
+            var values = JsonSerializer.Serialize(foodLicense, new JsonSerializerOptions
             {
-                new Fact("Name", license.Name),
-                new Fact("Federal ID Number", license.IdNumber),
-                new Fact("Certification Grade", license.CertificationGrade)
-            },
-            Buttons = new List<CardAction>
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            });
+            var response = await _trinsicService.Credential.IssueFromTemplateAsync(new IssueFromTemplateRequest()
             {
-                new CardAction(
-                    ActionTypes.OpenUrl,
-                    "More information",
-                    value: "https://trinsic.id/"),
-            }
-        };
+                TemplateId = "urn:template:okiedoke:food-salvager-license",
+                ValuesJson = values
+            });
 
-        if (!string.IsNullOrWhiteSpace(license.Address))
-        {
-            receiptCard.Items = new List<ReceiptItem>
+            await _trinsicService.Credential.SendAsync(new SendRequest
             {
-                new ReceiptItem(
-                    "Street Address",
-                    price: license.Address),
-                new ReceiptItem(
-                    "City",
-                    price: license.City),
-                new ReceiptItem(
-                    "State",
-                    price: license.State),
-            };
+                Email = email,
+                DocumentJson = response.DocumentJson
+            });
+
+            await stepContext.Context.SendActivityAsync("Congratulations! I've sent you a verification credential to your email!",
+                cancellationToken: cancellationToken);
+            await stepContext.Context.SendActivityAsync("Read more on how you can use the license at https://example.com!",
+                cancellationToken: cancellationToken);
+        }
+        catch (Exception e)
+        {
+            await stepContext.Context.SendActivityAsync("Sorry, I'm having trouble issuing your license. Please try again later.", cancellationToken: cancellationToken);
+            await stepContext.Context.SendActivityAsync($"Error: {e.Message}", cancellationToken: cancellationToken);
         }
 
-        return receiptCard;
+        return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
     }
 }

@@ -8,6 +8,9 @@ nupkg/
 # Visual Studio Code
 .vscode
 
+publish/
+publish.zip
+
 # Rider
 .idea
 

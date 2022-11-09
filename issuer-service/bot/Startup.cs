@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OkeyDokey.LicenseIssuerBot.Bots;
@@ -15,6 +16,14 @@ namespace OkeyDokey.LicenseIssuerBot;
 
 public class Startup
 {
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; set; }
+
+
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
@@ -39,13 +48,15 @@ public class Startup
         services.AddSingleton<ConversationState>();
 
         // The Dialog that will be run by the bot.
-        services.AddSingleton<UserProfileDialog>();
+        services.AddSingleton<LicenseDialog>();
         services.AddSingleton<AddressDialog>();
 
         // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-        services.AddTransient<IBot, DialogBot<UserProfileDialog>>();
+        services.AddTransient<IBot, DialogBot<LicenseDialog>>();
 
         services.AddHttpClient<DirectLineService>();
+
+        services.AddTrinsic(options => options.ServiceOptions.AuthToken = Configuration["TrinsicAuthToken"]);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
