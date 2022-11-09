@@ -42,9 +42,10 @@ export const Redirect = () => {
     // }, []);
     useEffect(() => {
         const error = searchParams.get("error");
-        if (error !== null) {
-            return setModalVisible(true);
-        }
+        if (error !== null) return setModalVisible(true);
+        const state = searchParams.get("state");
+        const code = searchParams.get("code");
+        if (!state && !code) return setModalVisible(true);
 
         let settings: typeof defaultAuthSettings;
         if (authSettings)
@@ -55,24 +56,27 @@ export const Redirect = () => {
         else settings = generateSettings();
 
         const authService = new AuthService(settings);
-        authService.signinRedirect().then(async () => {
-            const user = await authService.getUser();
-
-            //("http://localhost:3000/redirect?state=d9b562509742421fb85c20e7d09a91da&error=no_credentials&error_description=User%20had%20no%20credentials%20to%20share");
-
-            if (user && user.profile._vp_token) {
-                const credential = user.profile
-                    ._vp_token as CredentialDerivedProof;
-                // credential.credentialSubject.certificationGrade = MemberLevel.BRONZE;
-                // credential.credentialSubject.produceType = ProduceType.ARTICHOKE;
-                setUserCredential(credential);
-                toggleVerifyingLoading(true);
-                setAuthState(AuthState.VERIFIED);
-                //navigate("/");
-            } else {
+        authService
+            .signinRedirect()
+            .catch(() => {
                 setModalVisible(true);
-            }
-        });
+            })
+            .then(async () => {
+                const user = await authService.getUser();
+
+                //("http://localhost:3000/redirect?state=d9b562509742421fb85c20e7d09a91da&error=no_credentials&error_description=User%20had%20no%20credentials%20to%20share");
+
+                if (user && user.profile._vp_token) {
+                    const credential = user.profile
+                        ._vp_token as CredentialDerivedProof;
+                    // credential.credentialSubject.certificationGrade = MemberLevel.BRONZE;
+                    // credential.credentialSubject.produceType = ProduceType.ARTICHOKE;
+                    setUserCredential(credential);
+                    toggleVerifyingLoading(true);
+                    setAuthState(AuthState.VERIFIED);
+                    //navigate("/");
+                }
+            });
     }, [authState, authSettings, searchParams]);
 
     return (
