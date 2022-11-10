@@ -20,6 +20,7 @@ import { GoldMember } from "./GoldMember";
 import { NewSeason } from "./NewSeason";
 import { Sale } from "./Sale";
 import { SilverMember } from "./SilverMember";
+import { Stars } from "./Stars";
 
 const Animations = {
     visible: { opacity: 1, x: 0 },
@@ -206,30 +207,9 @@ export const Card = ({
                 </div>
                 <div className="flex flex-row items-center justify-between w-full rounded-b-lg border-gold-star bg-indigo-400 px-4 py-2">
                     <div className="text-lg font-medium text-white">
-                        Verified reviews
+                        Certified reviews
                     </div>
-                    <div className="flex flex-row items-center space-x-3">
-                        <Star
-                            size={12}
-                            className="stroke-gold-star fill-gold-star"
-                        />
-                        <Star
-                            size={12}
-                            className="stroke-gold-star fill-gold-star"
-                        />
-                        <Star
-                            size={12}
-                            className="stroke-gold-star fill-gold-star"
-                        />
-                        <Star
-                            size={12}
-                            className="stroke-gold-star fill-gold-star"
-                        />
-                        <Star
-                            size={12}
-                            className="stroke-gold-star fill-gold-star"
-                        />
-                    </div>
+                    <Stars score={product.score} />
                 </div>
             </motion.div>
         </AnimatePresence>

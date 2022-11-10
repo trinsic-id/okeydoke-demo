@@ -19,6 +19,7 @@ export type Product = {
     header: ProductHeader;
     subTitle: string;
     produceType: ProduceType;
+    score: number;
 };
 
 const getSalesPrice = (price: number, discount: number) =>
@@ -34,6 +35,7 @@ export const defataultProducts: Product[] = [
         header: ProductHeader.NewSeason,
         subTitle: "Premium Artichoke Strain",
         produceType: ProduceType.ARTICHOKE,
+        score: 4,
     },
     {
         id: "big-heart-artichoke",
@@ -47,6 +49,7 @@ export const defataultProducts: Product[] = [
         header: ProductHeader.Sale,
         subTitle: "Premium Artichoke Strain",
         produceType: ProduceType.ARTICHOKE,
+        score: 3,
     },
     {
         id: "ambrosia",
@@ -59,6 +62,7 @@ export const defataultProducts: Product[] = [
         header: ProductHeader.Sale,
         subTitle: "Premium Corn Strain",
         produceType: ProduceType.CORN,
+        score: 5,
     },
     {
         id: "blue-hopi",
@@ -69,6 +73,7 @@ export const defataultProducts: Product[] = [
         header: ProductHeader.NewSeason,
         subTitle: "Premium Corn Strain",
         produceType: ProduceType.CORN,
+        score: 4,
     },
     {
         id: "blue-hopi2",
@@ -81,6 +86,7 @@ export const defataultProducts: Product[] = [
         header: ProductHeader.Sale,
         subTitle: "Premium Corn Strain",
         produceType: ProduceType.CORN,
+        score: 4,
     },
     {
         id: "blue-hopi3",
@@ -93,6 +99,7 @@ export const defataultProducts: Product[] = [
         header: ProductHeader.Sale,
         subTitle: "Premium Corn Strain",
         produceType: ProduceType.CORN,
+        score: 4,
     },
     {
         id: "big-heart-artichoke2",
@@ -105,5 +112,6 @@ export const defataultProducts: Product[] = [
         header: ProductHeader.Sale,
         subTitle: "Premium Artichoke Strain",
         produceType: ProduceType.ARTICHOKE,
+        score: 4,
     },
 ];
