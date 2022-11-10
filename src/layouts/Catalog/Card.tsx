@@ -71,7 +71,7 @@ export const Card = ({
                 animate={Animations.visible}
                 exit={Animations.hidden}
                 key={product.id + "child"}
-                className="flex flex-col items-center gap-3 border p-4 rounded-lg w-full md:max-w-md bg-white"
+                className="flex flex-col items-center gap-3 border p-4 rounded-lg w-full md:max-w-md bg-white hover:shadow-xl"
             >
                 <div className="flex flex-row w-full items-center justify-between h-12">
                     {product.header === ProductHeader.Sale &&
