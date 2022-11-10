@@ -10,7 +10,7 @@ export const Stars = ({ score }: StarsProps) => {
         <div className="flex flex-row items-center space-x-3">
             {range(1, 6, 1).map((val, idx) => (
                 <Star
-                    size={12}
+                    size={18}
                     className={
                         score < val
                             ? "stroke-gray-200"
