@@ -74,7 +74,7 @@ export const Card = ({
                 key={product.id + "child"}
                 className="flex flex-col items-center rounded-lg w-full md:max-w-md  hover:shadow-xl"
             >
-                <div className="flex flex-col items-start w-full gap-3 p-4 rounded-t-lg bg-white">
+                <div className="flex flex-col items-start w-full gap-3 p-4 rounded-lg bg-white">
                     <div className="flex flex-row w-full items-center justify-between h-12">
                         {product.header === ProductHeader.Sale &&
                             product.discount &&
@@ -95,10 +95,14 @@ export const Card = ({
                     </div>
 
                     <div className="flex flex-col items-center w-full pt-3 space-y-3 pb-3">
-                        <img
-                            className="w-2/3 max-h-36 rounded-lg"
-                            src={product.image}
-                        />
+                        <div className="flex relative w-2/3 max-h-36">
+                            <img className="rounded-lg" src={product.image} />
+                            <div className="absolute bottom-0 right-0">
+                                <div className="bg-gray-600 bg-opacity-80 text-xs rounded-lg p-2">
+                                    <Stars score={product.score} />
+                                </div>
+                            </div>
+                        </div>
                         <div className="text-xl font-medium text-black ">
                             {product.name}
                         </div>
@@ -205,12 +209,12 @@ export const Card = ({
 
                     <CardButtons product={product} />
                 </div>
-                <div className="flex flex-row items-center justify-between w-full rounded-b-lg border-gold-star bg-indigo-400 px-4 py-2">
+                {/* <div className="flex flex-row items-center justify-between w-full rounded-b-lg border-gold-star bg-indigo-400 px-4 py-2">
                     <div className="text-lg font-medium text-white">
                         Certified Rating
                     </div>
                     <Stars score={product.score} />
-                </div>
+                </div> */}
             </motion.div>
         </AnimatePresence>
     );
