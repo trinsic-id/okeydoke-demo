@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { memberLevelState, memberProduceState } from "../../atoms/member";
 import { filterProductsState } from "../../atoms/products";
 import { userCredentialState } from "../../atoms/user";
-import { VerifyCredential } from "../../components/Header/VerifyCredential";
+import { VerifyCredential } from "../../components/BetterDeal";
 import { Product, ProductHeader } from "../../data/products";
 
 import { useAddItem } from "../../hooks/custom/useAddItem";

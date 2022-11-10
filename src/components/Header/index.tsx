@@ -6,7 +6,7 @@ import { Combobox, Listbox, Menu } from "@headlessui/react";
 import { CartButton } from "./CartButton";
 import { AccountButton } from "./AccountButton";
 import { useLocation } from "react-use";
-import { VerifyCredential } from "./VerifyCredential";
+
 import { memberLevelState } from "../../atoms/member";
 
 const Header = () => {
