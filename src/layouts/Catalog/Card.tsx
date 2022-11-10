@@ -207,7 +207,7 @@ export const Card = ({
                 </div>
                 <div className="flex flex-row items-center justify-between w-full rounded-b-lg border-gold-star bg-indigo-400 px-4 py-2">
                     <div className="text-lg font-medium text-white">
-                        Certified reviews
+                        Certified Rating
                     </div>
                     <Stars score={product.score} />
                 </div>
