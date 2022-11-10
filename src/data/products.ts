@@ -6,6 +6,7 @@ export enum ProduceType {
 export enum ProductHeader {
     NewSeason,
     Sale,
+    None,
 }
 
 export type Product = {
@@ -31,7 +32,7 @@ export const defataultProducts: Product[] = [
         price: 40,
         qty: 0,
         image: "/images/artichokes/baby-anzio.jpg",
-        header: ProductHeader.NewSeason,
+        header: ProductHeader.None,
         subTitle: "Premium Artichoke Strain",
         produceType: ProduceType.ARTICHOKE,
     },

@@ -8,10 +8,12 @@ import { AccountButton } from "./AccountButton";
 import { useLocation } from "react-use";
 
 import { memberLevelState } from "../../atoms/member";
+import { cartTotalState } from "../../atoms/cart";
 
 const Header = () => {
     const location = useLocation();
     const memberLevel = useRecoilValue(memberLevelState);
+    const { totalQty } = useRecoilValue(cartTotalState);
     const isVisible = useMemo(() => {
         if (!location) return false;
         if (location.pathname === "/redirect") return false;
@@ -25,7 +27,7 @@ const Header = () => {
                 <div className="text-2xl font-medium">OkieDoke</div>
             </Link>
 
-            <CartButton />
+            {totalQty || memberLevel ? <CartButton /> : <CartButton />}
         </div>
     ) : null;
 };

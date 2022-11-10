@@ -16,6 +16,9 @@ import { isVerifyCredentialModalVisibleState } from "../../atoms/modals";
 import { useLockBg } from "../../hooks/custom/useLockBackground";
 import { AuthService, defaultAuthSettings } from "../../services/AuthService";
 import { generateSettings } from "../../utils/generateSettings";
+import { BronzeMember } from "./BronzeMember";
+import { GoldMember } from "./GoldMember";
+import { SilverMember } from "./SilverMember";
 
 const defaultValues = {
     vehicle: null,
@@ -74,7 +77,7 @@ export const VerifyCredentialModal = () => {
                                     <div className="flex items-start justify-between">
                                         <div className="flex flex-row items-center">
                                             <h6 className="text-black font-semibold text-xl">
-                                                Verification required
+                                                Verification recommended
                                             </h6>
                                         </div>
                                         <button
@@ -84,13 +87,16 @@ export const VerifyCredentialModal = () => {
                                             }}
                                         >
                                             <X
-                                                className="stroke-black"
+                                                className="stroke-black hover:stroke-red-500"
                                                 size={20}
                                             />
                                         </button>
                                     </div>
                                     <div className="w-full flex flex-col items-start space-y-4 pt-2">
-                                        <div className="flex flex-row bg-gray-200 rounded-lg w-full p-4">
+                                        <GoldMember />
+                                        <SilverMember />
+                                        <BronzeMember />
+                                        <div className="flex flex-row bg-red-100 rounded-lg w-full p-4">
                                             <div className="flex-1 flex flex-col space-y-2 items-start">
                                                 <div className="text-black text-lg">
                                                     Recommended disclosures:
@@ -117,7 +123,7 @@ export const VerifyCredentialModal = () => {
                                         </div>
 
                                         <button
-                                            className="w-full h-full bg-blue-500 rounded-lg text-white px-4 py-3 flex flex-row items-center space-x-6"
+                                            className="w-full h-full group bg-blue-500 hover:bg-white rounded-lg text-white hover:text-blue-500 hover:border-2 hover:border-blue-500 px-4 py-3 flex flex-row items-center space-x-6"
                                             onClick={() => {
                                                 let settings: typeof defaultAuthSettings;
                                                 if (authSettings) {
@@ -135,11 +141,17 @@ export const VerifyCredentialModal = () => {
                                                 authService.login();
                                             }}
                                         >
-                                            <img
-                                                src="images/trinsic-logo-white.png"
-                                                className="w-6"
-                                            />
-                                            <div className="text-white font-medium text-lg flex-1 pr-12">
+                                            <div className="relative">
+                                                <img
+                                                    src="images/trinsic-logo-white.png"
+                                                    className="w-6 block group-hover:hidden"
+                                                />
+                                                <img
+                                                    src="images/trinsic-logo-blue.png"
+                                                    className="w-6 hidden group-hover:block"
+                                                />
+                                            </div>
+                                            <div className="font-medium text-lg flex-1 pr-12">
                                                 Verify your credential
                                             </div>
                                         </button>

@@ -82,6 +82,11 @@ export const Card = ({
                     {memberAdjustment && isGoldMember && <GoldMember />}
                     {memberAdjustment && isSilverMember && <SilverMember />}
                     {memberAdjustment && isBronzeMember && <BronzeMember />}
+                    {product.header !== ProductHeader.Sale &&
+                        product.header !== ProductHeader.NewSeason &&
+                        !isGoldMember &&
+                        !isSilverMember &&
+                        !isBronzeMember && <div className="opacity-0">A</div>}
                     <VerifyCredential />
                 </div>
 
