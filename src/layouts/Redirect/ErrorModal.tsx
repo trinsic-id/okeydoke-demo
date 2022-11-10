@@ -10,7 +10,7 @@ import {
     Square,
     X,
 } from "react-feather";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
 import {
@@ -58,6 +58,11 @@ export const ErrorModal = () => {
     useLockBg(isVisible);
     const authSettings = useRecoilValue(authSettingsState);
     const navigate = useNavigate();
+    const [searchParams, _] = useSearchParams();
+    const errorMsg = useMemo(() => {
+        const errorDesc = searchParams.get("error_description");
+        return errorDesc ?? "Invalid state value";
+    }, [searchParams]);
     return (
         <div className="max-w-x2s md:max-w-xs overflow-hidden">
             <AnimatePresence>
@@ -76,14 +81,20 @@ export const ErrorModal = () => {
                                 variants={Animations.inputContainer}
                             >
                                 <div className="p-4 md:p-6">
-                                    <div className="flex items-start justify-between">
-                                        <div className="flex flex-row items-center">
-                                            <h6 className="text-red-600 font-semibold text-xl pb-4">
-                                                Error
-                                            </h6>
-                                        </div>
-                                    </div>
                                     <div className="w-full flex flex-col items-start space-y-4 pt-2">
+                                        <div className="flex flex-row bg-red-100 rounded-lg w-full p-4">
+                                            <div className="flex-1 flex flex-col space-y-2 items-start">
+                                                <div className="flex flex-row items-center space-x-4">
+                                                    <AlertTriangle
+                                                        size={18}
+                                                        className="stroke-red-600"
+                                                    />
+                                                    <div className="text-red-600 text-base">
+                                                        {errorMsg}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <button
                                             className="w-full h-full border-blue-500 border-2 rounded-lg text-blue-500 px-4 py-3 flex flex-row items-center space-x-6"
                                             onClick={() => {

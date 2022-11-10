@@ -79,7 +79,9 @@ export const Redirect = () => {
     }, [authState, authSettings, searchParams]);
 
     return (
-        <div className="w-full h-full flex flex-col items-center place-content-center space-y-5 p-3">
+        <div
+            className={`w-full h-full flex flex-col items-center place-content-center space-y-5 p-3`}
+        >
             <LoadingItem
                 isLoading={isVerifyingLoading}
                 text={"Verifying Credential"}
@@ -94,7 +96,7 @@ export const Redirect = () => {
             />
             <LoadingItem
                 isLoading={isProfileLoading}
-                isError={isProfilError || isErrorVisible}
+                isError={isProfilError}
                 text={"Fetching profile"}
                 onNext={() => {
                     if (!isErrorVisible) {
@@ -111,7 +113,6 @@ export const Redirect = () => {
             <LoadingItem
                 isLoading={isDiscountsLoading}
                 text={"Fetching discounts and limits"}
-                isError={isErrorVisible}
                 onNext={() => {
                     if (!isErrorVisible) {
                         toggleDiscountsLoading(false);
@@ -122,7 +123,6 @@ export const Redirect = () => {
             <LoadingItem
                 isLoading={isRedirectLoading}
                 text={"Redirecting to store"}
-                isError={isErrorVisible}
                 onNext={() => {
                     if (!isErrorVisible) {
                         toggleRedirectLoading(false);
