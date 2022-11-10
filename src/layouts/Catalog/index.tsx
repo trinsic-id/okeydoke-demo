@@ -19,6 +19,7 @@ import {
     authStateState,
     userCredentialState,
 } from "../../atoms/user";
+import { RateProduct } from "../../components/RateProduct";
 import { VerifyCredentialModal } from "../../components/VerifyCredential";
 import { defataultProducts } from "../../data/products";
 import { useAddItem } from "../../hooks/custom/useAddItem";
@@ -92,6 +93,7 @@ const Catalog = () => {
                 ))}
             </motion.div>
             <VerifyCredentialModal />
+            <RateProduct />
         </div>
     );
 };
