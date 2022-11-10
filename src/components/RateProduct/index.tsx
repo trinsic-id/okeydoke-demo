@@ -120,7 +120,7 @@ export const RateProduct = () => {
                                                         className="stroke-black"
                                                     />
                                                     <div className="text-black text-base">
-                                                        Produce Type
+                                                        {`Have a farm that produces ${selectedProduct?.produceType.toLowerCase()}`}
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-row items-center space-x-4">
