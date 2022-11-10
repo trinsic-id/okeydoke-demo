@@ -59,7 +59,7 @@ public class LicenseDialog : ComponentDialog
         return await stepContext.PromptAsync(nameof(ChoicePrompt),
             new PromptOptions
             {
-                Prompt = MessageFactory.Text("Please select the certification grade you're applying for."),
+                Prompt = MessageFactory.Text("As we begin, please select the certification grade that you're applying for."),
                 Choices = new List<Choice>
                 {
                     new Choice{Value = "A", Action = new CardAction(ActionTypes.ImBack, "Grade A", value: "A")},

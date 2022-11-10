@@ -38,8 +38,8 @@ public class DialogBot<T> : ActivityHandler where T : Dialog
         {
             if (member.Id != turnContext.Activity.Recipient.Id)
             {
-                await turnContext.SendActivityAsync($"Hi there!", cancellationToken: cancellationToken);
-                await turnContext.SendActivityAsync("I'm the Auditor Bot. I can help you get the right farm verification", cancellationToken: cancellationToken);
+                await turnContext.SendActivityAsync($"Hi there! 👋🏻", cancellationToken: cancellationToken);
+                await turnContext.SendActivityAsync("I'm a virtual assistant and I will help you with your application for Food Salvager License.", cancellationToken: cancellationToken);
 
                 await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
             }
