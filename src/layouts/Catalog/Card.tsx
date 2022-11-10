@@ -5,6 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { memberLevelState, memberProduceState } from "../../atoms/member";
 import { filterProductsState } from "../../atoms/products";
 import { userCredentialState } from "../../atoms/user";
+import { VerifyCredential } from "../../components/Header/VerifyCredential";
 import { Product, ProductHeader } from "../../data/products";
 
 import { useAddItem } from "../../hooks/custom/useAddItem";
@@ -81,11 +82,7 @@ export const Card = ({
                     {memberAdjustment && isGoldMember && <GoldMember />}
                     {memberAdjustment && isSilverMember && <SilverMember />}
                     {memberAdjustment && isBronzeMember && <BronzeMember />}
-                    <Bookmark
-                        className="stroke-gray-500 hidden md:block"
-                        size={18}
-                    />
-                    <Bookmark className="stroke-gray-500 md:hidden" size={24} />
+                    <VerifyCredential />
                 </div>
 
                 <div className="flex flex-col items-center w-full pt-3 space-y-3 pb-3">

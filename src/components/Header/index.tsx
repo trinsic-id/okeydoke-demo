@@ -6,9 +6,12 @@ import { Combobox, Listbox, Menu } from "@headlessui/react";
 import { CartButton } from "./CartButton";
 import { AccountButton } from "./AccountButton";
 import { useLocation } from "react-use";
+import { VerifyCredential } from "./VerifyCredential";
+import { memberLevelState } from "../../atoms/member";
 
 const Header = () => {
     const location = useLocation();
+    const memberLevel = useRecoilValue(memberLevelState);
     const isVisible = useMemo(() => {
         if (!location) return false;
         if (location.pathname === "/redirect") return false;
@@ -22,9 +25,7 @@ const Header = () => {
                 <div className="text-2xl font-medium">OkieDoke</div>
             </Link>
 
-            <div className="flex flex-row space-x-6 items-center">
-                <CartButton />
-            </div>
+            <CartButton />
         </div>
     ) : null;
 };
