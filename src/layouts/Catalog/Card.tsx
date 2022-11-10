@@ -87,7 +87,7 @@ export const Card = ({
                         !isGoldMember &&
                         !isSilverMember &&
                         !isBronzeMember && <div className="opacity-0">A</div>}
-                    <VerifyCredential />
+                    {!isMember && <VerifyCredential />}
                 </div>
 
                 <div className="flex flex-col items-center w-full pt-3 space-y-3 pb-3">
