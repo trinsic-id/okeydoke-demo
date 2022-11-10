@@ -96,7 +96,7 @@ export const VerifyCredentialModal = () => {
                                                     Recommended disclosures:
                                                 </div>
                                                 <div className="flex flex-row items-center space-x-4">
-                                                    <Square
+                                                    <AlertOctagon
                                                         size={18}
                                                         className="stroke-black"
                                                     />
@@ -105,7 +105,7 @@ export const VerifyCredentialModal = () => {
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-row items-center space-x-4">
-                                                    <Square
+                                                    <AlertOctagon
                                                         size={18}
                                                         className="stroke-black"
                                                     />
