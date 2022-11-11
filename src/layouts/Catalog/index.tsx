@@ -63,7 +63,7 @@ const Catalog = () => {
     const filteredProducts = useRecoilValue(filteredProductsState);
 
     return (
-        <div className="w-full h-full bg-catalog-bg flex flex-col items-start">
+        <div className="w-full bg-catalog-bg flex flex-col items-start max-h-screen-95">
             <div className="flex flex-row w-full justify-between p-4 shadow-2xl">
                 <div className="flex flex-row items-start space-x-2">
                     <Trello size={28} className="stroke-green-600" />

@@ -23,6 +23,16 @@ module.exports = {
             transitionProperty: {
                 width: "width",
             },
+            maxHeight: {
+                "screen-70": "70vh",
+                "screen-75": "75vh",
+                "screen-80": "80vh",
+                "screen-85": "85vh",
+                "screen-90": "90vh",
+                "screen-95": "95vh",
+                "screen-110": "110vh",
+                "screen-115": "115vh",
+            },
         },
     },
     plugins: [],
