@@ -1,25 +1,9 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { useMemo } from "react";
-import {
-    AlertOctagon,
-    X,
-} from "react-feather";
+import { AlertOctagon, X } from "react-feather";
 import { useRecoilState } from "recoil";
-import {
-    selectedRateProductState,
-} from "../../atoms/modals";
+import { selectedRateProductState } from "../../atoms/modals";
 import { useLockBg } from "../../hooks/custom/useLockBackground";
-import { AuthService } from "../../services/AuthService";
-
-const defaultValues = {
-    vehicle: null,
-    year: null,
-};
-
-interface VerifyCredentialModalProps {
-    authService: AuthService;
-}
 
 const Animations = {
     container: {

@@ -1,27 +1,13 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { useMemo } from "react";
-import {
-    AlertTriangle,
-} from "react-feather";
+import { AlertTriangle } from "react-feather";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
-import {
-    isRedirectErrorModalVisibleState,
-} from "../../atoms/modals";
+import { isRedirectErrorModalVisibleState } from "../../atoms/modals";
 import { useLockBg } from "../../hooks/custom/useLockBackground";
 import { AuthService, defaultAuthSettings } from "../../services/AuthService";
 import { generateSettings } from "../../utils/generateSettings";
-
-const defaultValues = {
-    vehicle: null,
-    year: null,
-};
-
-interface VerifyCredentialModalProps {
-    authService: AuthService;
-}
 
 const Animations = {
     container: {
@@ -45,13 +31,11 @@ const Animations = {
 };
 
 export const ErrorModal = () => {
-    const [isVisible, setModalVisible] = useRecoilState(
-        isRedirectErrorModalVisibleState
-    );
+    const isVisible = useRecoilValue(isRedirectErrorModalVisibleState);
     useLockBg(isVisible);
     const authSettings = useRecoilValue(authSettingsState);
     const navigate = useNavigate();
-    const [searchParams, _] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const errorMsg = useMemo(() => {
         const errorDesc = searchParams.get("error_description");
         return errorDesc ?? "Invalid state value";

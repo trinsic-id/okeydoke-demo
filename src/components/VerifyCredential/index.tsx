@@ -1,9 +1,5 @@
-
 import { motion, AnimatePresence } from "framer-motion";
-import {
-    AlertOctagon,
-    X,
-} from "react-feather";
+import { AlertOctagon, X } from "react-feather";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
 import { isVerifyCredentialModalVisibleState } from "../../atoms/modals";
@@ -13,15 +9,6 @@ import { generateSettings } from "../../utils/generateSettings";
 import { BronzeMember } from "./BronzeMember";
 import { GoldMember } from "./GoldMember";
 import { SilverMember } from "./SilverMember";
-
-const defaultValues = {
-    vehicle: null,
-    year: null,
-};
-
-interface VerifyCredentialModalProps {
-    authService: AuthService;
-}
 
 const Animations = {
     container: {

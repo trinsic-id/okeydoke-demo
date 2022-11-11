@@ -1,11 +1,9 @@
-import React from "react";
 import { useRecoilValue } from "recoil";
-import { cartState, cartTotalState } from "../../atoms/cart";
+import { cartState } from "../../atoms/cart";
 import { CartItem } from "./CartItem";
 
 export const Cart = () => {
     const cartItems = useRecoilValue(cartState);
-    const { totalCost } = useRecoilValue(cartTotalState);
     return (
         <div className="w-full h-full bg-catalog-bg p-4">
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">

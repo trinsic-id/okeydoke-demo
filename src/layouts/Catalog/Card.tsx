@@ -1,9 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { useRecoilState } from "recoil";
-import {
-    selectedRateProductState,
-} from "../../atoms/modals";
+import { useSetRecoilState } from "recoil";
+import { selectedRateProductState } from "../../atoms/modals";
 import { VerifyCredential } from "../../components/BetterDeal";
 import { Product, ProductHeader } from "../../data/products";
 import { useMemberLevelAdjust } from "../../hooks/custom/useMemberLevelAdjust";
@@ -35,9 +33,7 @@ export const Card = ({
     const { isMember, memberAdjustment } = useMemberLevelAdjust(product);
 
     const [hoverPos, setHoverPos] = useState<number | undefined>(undefined);
-    const [selectedProduct, setSelectedProduct] = useRecoilState(
-        selectedRateProductState
-    );
+    const setSelectedProduct = useSetRecoilState(selectedRateProductState);
     return (
         <AnimatePresence>
             <motion.div

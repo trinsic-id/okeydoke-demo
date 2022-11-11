@@ -1,7 +1,6 @@
 import { Product } from "../../data/products";
 import { useAddItem } from "../../hooks/custom/useAddItem";
 import { useDecreaseItem } from "../../hooks/custom/useDecreaseItem";
-import { useRemoveItem } from "../../hooks/custom/useRemoveItem";
 
 interface QuantityProps {
     product: Product;
@@ -9,7 +8,6 @@ interface QuantityProps {
 
 export const CartQuantity = ({ product }: QuantityProps) => {
     const add = useAddItem();
-    const remove = useRemoveItem();
     const decrease = useDecreaseItem();
     return (
         <div className="flex flex-row w-1/2 rounded-lg relative bg-transparent">

@@ -20,13 +20,12 @@ import { MemberLevelSuccess } from "./MemberLevelSuccess";
 export const Redirect = () => {
     const [isVerifyingLoading, toggleVerifyingLoading] = useToggle(false);
     const [isProfileLoading, toggleProfileLoading] = useToggle(false);
-    const [isProfilError, toggleProfileError] = useToggle(false);
     const [isDiscountsLoading, toggleDiscountsLoading] = useToggle(false);
     const [isRedirectLoading, toggleRedirectLoading] = useToggle(false);
     const [isErrorVisible, setModalVisible] = useRecoilState(
         isRedirectErrorModalVisibleState
     );
-    const [searchParams, _] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const [authState, setAuthState] = useRecoilState(authStateState);
     const [userCredential, setUserCredential] =
@@ -91,7 +90,6 @@ export const Redirect = () => {
             />
             <LoadingItem
                 isLoading={isProfileLoading}
-                isError={isProfilError}
                 text={"Fetching profile"}
                 onNext={() => {
                     if (!isErrorVisible) {

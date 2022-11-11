@@ -1,9 +1,8 @@
-
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { isVerifyCredentialModalVisibleState } from "../../atoms/modals";
 
 export const VerifyCredential = () => {
-    const [isVerifyModalVisible, setVerifyModalVisible] = useRecoilState(
+    const setVerifyModalVisible = useSetRecoilState(
         isVerifyCredentialModalVisibleState
     );
     return (

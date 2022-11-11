@@ -1,11 +1,8 @@
-
 import { useState } from "react";
 import { ShoppingCart } from "react-feather";
 import { Quantity } from "../../components/Quantity";
 import { Product } from "../../data/products";
 import { useAddItem } from "../../hooks/custom/useAddItem";
-
-const Quantities = [1, 2, 3, 4, 5];
 
 interface CardButtonProps {
     product: Product;

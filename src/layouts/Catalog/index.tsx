@@ -1,16 +1,12 @@
-
 import { motion } from "framer-motion";
 import { Trello } from "react-feather";
 
 import { useRecoilValue } from "recoil";
 import {
     memberLevelObjState,
-    memberLevelState,
     memberProduceState,
 } from "../../atoms/member";
-import {
-    filteredProductsState,
-} from "../../atoms/products";
+import { filteredProductsState } from "../../atoms/products";
 import { RateProduct } from "../../components/RateProduct";
 import { VerifyCredentialModal } from "../../components/VerifyCredential";
 import { Card } from "./Card";
@@ -43,8 +39,6 @@ const Animations = {
 };
 
 const Catalog = () => {
-    const memberLevel = useRecoilValue(memberLevelState);
-
     const memberLevelObj = useRecoilValue(memberLevelObjState);
 
     const memberProduceType = useRecoilValue(memberProduceState);
