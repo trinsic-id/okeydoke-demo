@@ -1,3 +1,5 @@
+import { useSetRecoilState } from "recoil";
+import { cartAdjustedTotalState } from "../../atoms/cart";
 import { Product } from "../../data/products";
 import { useAddItem } from "../../hooks/custom/useAddItem";
 import { useDecreaseItem } from "../../hooks/custom/useDecreaseItem";
@@ -9,6 +11,7 @@ interface QuantityProps {
 export const CartQuantity = ({ product }: QuantityProps) => {
     const add = useAddItem();
     const decrease = useDecreaseItem();
+
     return (
         <div className="flex flex-row bg-red-400 rounded-lg relative bg-transparent">
             <button

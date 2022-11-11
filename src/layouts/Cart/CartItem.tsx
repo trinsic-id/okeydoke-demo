@@ -1,4 +1,6 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
+import { useSetRecoilState } from "recoil";
+import { cartAdjustedTotalState } from "../../atoms/cart";
 import { Product, ProductHeader } from "../../data/products";
 import { useMemberLevelAdjust } from "../../hooks/custom/useMemberLevelAdjust";
 import { CartQuantity } from "./CartQuantity";
@@ -16,10 +18,21 @@ export const CartItem = ({ product }: CartItemProps) => {
         isSilverMember,
     } = useMemberLevelAdjust(product);
 
+    const setCartTotals = useSetRecoilState(cartAdjustedTotalState);
+
     const price = useMemo(() => {
         if (memberAdjustment) return memberAdjustment.newPrice * product.qty;
         return product.price * product.qty;
     }, [memberAdjustment, product]);
+
+    useEffect(
+        () =>
+            setCartTotals((curVal) => ({
+                ...curVal,
+                [product.id]: price,
+            })),
+        [price, product, setCartTotals]
+    );
 
     return (
         <div className="flex flex-row w-full py-3 h-32 space-x-4">

@@ -11,11 +11,6 @@ export const isRedirectErrorModalVisibleState = atom<boolean>({
     default: false,
 });
 
-export const isRateProductModalVisibleState = atom<boolean>({
-    key: "rate-product-modal-visible",
-    default: false,
-});
-
 export const selectedRateProductState = atom<Product | undefined>({
     key: "rate-product",
     default: undefined,

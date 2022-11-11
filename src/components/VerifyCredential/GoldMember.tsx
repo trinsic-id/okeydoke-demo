@@ -1,8 +1,16 @@
 import { Star } from "react-feather";
 
-export const GoldMember = () => {
+interface GoldMemberProps {
+    mt?: boolean;
+}
+
+export const GoldMember = ({ mt = true }: GoldMemberProps) => {
     return (
-        <div className="flex flex-row w-full items-center space-x-4 rounded-lg mt-2 p-4 bg-yellow-200">
+        <div
+            className={`flex flex-row w-full items-center space-x-4 rounded-lg ${
+                mt ? "mt-2" : ""
+            } p-4 bg-yellow-200`}
+        >
             <Star
                 className="stroke-yellow-600 fill-yellow-600 hidden md:block"
                 size={16}

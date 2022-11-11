@@ -67,7 +67,7 @@ export const Redirect = () => {
                     setUserCredential(credential);
                     toggleVerifyingLoading(true);
                     setAuthState(AuthState.VERIFIED);
-                    //navigate("/");
+                    navigate("/");
                 }
             });
     }, [authState, authSettings, searchParams]);

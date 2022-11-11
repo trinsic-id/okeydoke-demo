@@ -47,3 +47,28 @@ export const memberLevelObjState = selector<MemberLevelObj>({
         };
     },
 });
+
+interface MemberAddress {
+    address?: string;
+    city?: string;
+    state?: string;
+    incomplete: boolean;
+}
+
+export const userAddressState = selector<MemberAddress | undefined>({
+    key: "user-Address-state",
+    get: ({ get }) => {
+        const subject = get(userCredentialState)?.credentialSubject;
+        if (!subject) return undefined;
+
+        return {
+            address: subject.address,
+            city: subject.city,
+            state: subject.state,
+            incomplete:
+                subject.address === undefined ||
+                subject.city === undefined ||
+                subject.state === undefined,
+        };
+    },
+});
