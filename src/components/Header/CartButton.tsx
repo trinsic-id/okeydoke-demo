@@ -1,4 +1,4 @@
-import { ShoppingBag, ShoppingCart } from "react-feather";
+import { ShoppingBag } from "react-feather";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { cartTotalState } from "../../atoms/cart";

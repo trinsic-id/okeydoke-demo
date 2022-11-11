@@ -1,11 +1,8 @@
 import { useEffect } from "react";
-import { Star } from "react-feather";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import Spinner from "react-spinkit";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToggle } from "react-use";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
-import { MemberLevel, memberLevelState } from "../../atoms/member";
 import { isRedirectErrorModalVisibleState } from "../../atoms/modals";
 import {
     AuthState,
@@ -13,8 +10,6 @@ import {
     userCredentialState,
 } from "../../atoms/user";
 import { LoadingItem } from "../../components/LoadingItem";
-import { VerifyCredentialModal } from "../../components/VerifyCredential";
-import { ProduceType } from "../../data/products";
 import { CredentialDerivedProof } from "../../models/credential";
 import { AuthService, defaultAuthSettings } from "../../services/AuthService";
 import { generateSettings } from "../../utils/generateSettings";

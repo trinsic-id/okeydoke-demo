@@ -1,30 +1,18 @@
-import { Switch } from "@headlessui/react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo } from "react";
-import { Filter, Trello } from "react-feather";
-import { useLocation, useNavigate } from "react-router-dom";
 
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { motion } from "framer-motion";
+import { Trello } from "react-feather";
+
+import { useRecoilValue } from "recoil";
 import {
-    MemberLevel,
     memberLevelObjState,
     memberLevelState,
     memberProduceState,
 } from "../../atoms/member";
 import {
     filteredProductsState,
-    filterProductsState,
 } from "../../atoms/products";
-import {
-    AuthState,
-    authStateState,
-    userCredentialState,
-} from "../../atoms/user";
 import { RateProduct } from "../../components/RateProduct";
 import { VerifyCredentialModal } from "../../components/VerifyCredential";
-import { defataultProducts } from "../../data/products";
-import { useAddItem } from "../../hooks/custom/useAddItem";
-import { AuthService } from "../../services/AuthService";
 import { Card } from "./Card";
 import { FilterButton } from "./FilterButton";
 

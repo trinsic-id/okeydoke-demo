@@ -1,27 +1,16 @@
-import { Combobox, RadioGroup } from "@headlessui/react";
+
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
-    AlertCircle,
     AlertOctagon,
-    AlertTriangle,
-    CheckSquare,
-    CreditCard,
-    Square,
     X,
 } from "react-feather";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { authSettingsState } from "../../atoms/authService";
+import { useRecoilState } from "recoil";
 import {
-    isRateProductModalVisibleState,
-    isRedirectErrorModalVisibleState,
-    isVerifyCredentialModalVisibleState,
     selectedRateProductState,
 } from "../../atoms/modals";
 import { useLockBg } from "../../hooks/custom/useLockBackground";
-import { AuthService, defaultAuthSettings } from "../../services/AuthService";
-import { generateSettings } from "../../utils/generateSettings";
+import { AuthService } from "../../services/AuthService";
 
 const defaultValues = {
     vehicle: null,

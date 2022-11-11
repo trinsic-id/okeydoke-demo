@@ -1,10 +1,7 @@
-import React, { useMemo, useState } from "react";
-import { Search, ShoppingCart, User } from "react-feather";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { Combobox, Listbox, Menu } from "@headlessui/react";
 import { CartButton } from "./CartButton";
-import { AccountButton } from "./AccountButton";
 import { useLocation } from "react-use";
 
 import { memberLevelState } from "../../atoms/member";

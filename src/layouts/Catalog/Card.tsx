@@ -1,24 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState } from "react";
-import { Bookmark, ShoppingCart, Star } from "react-feather";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { memberLevelState, memberProduceState } from "../../atoms/member";
+import { useState } from "react";
+import { useRecoilState } from "recoil";
 import {
-    isRateProductModalVisibleState,
     selectedRateProductState,
 } from "../../atoms/modals";
-import { filterProductsState } from "../../atoms/products";
-import { userCredentialState } from "../../atoms/user";
 import { VerifyCredential } from "../../components/BetterDeal";
 import { Product, ProductHeader } from "../../data/products";
-
-import { useAddItem } from "../../hooks/custom/useAddItem";
 import { useMemberLevelAdjust } from "../../hooks/custom/useMemberLevelAdjust";
-import {
-    applyBronzeDiscount,
-    applyGoldDiscount,
-    applySilverDiscount,
-} from "../../utils/goldDiscount";
 import { BronzeMember } from "./BronzeMember";
 import { CardButtons } from "./CardButtons";
 import { GoldMember } from "./GoldMember";

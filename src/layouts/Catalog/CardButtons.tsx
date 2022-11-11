@@ -1,6 +1,6 @@
-import { Listbox, Tab, Transition } from "@headlessui/react";
+
 import { useState } from "react";
-import { ChevronDown, ChevronUp, ShoppingCart } from "react-feather";
+import { ShoppingCart } from "react-feather";
 import { Quantity } from "../../components/Quantity";
 import { Product } from "../../data/products";
 import { useAddItem } from "../../hooks/custom/useAddItem";

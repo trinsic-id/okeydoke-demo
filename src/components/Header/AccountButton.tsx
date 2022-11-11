@@ -1,6 +1,4 @@
 import { User } from "react-feather";
-import { Link } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 
 export const AccountButton = () => {
   return (

@@ -1,8 +1,5 @@
-import { Calendar, ShoppingBag, ShoppingCart } from "react-feather";
-import { Link } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { cartTotalState } from "../../atoms/cart";
-import { memberLevelState } from "../../atoms/member";
+
+import { useRecoilState } from "recoil";
 import { isVerifyCredentialModalVisibleState } from "../../atoms/modals";
 
 export const VerifyCredential = () => {

@@ -1,13 +1,6 @@
-import { useMemo, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { memberLevelObjState } from "../../atoms/member";
+import { useMemo } from "react";
 import { Product, ProductHeader } from "../../data/products";
 import { useMemberLevelAdjust } from "../../hooks/custom/useMemberLevelAdjust";
-import {
-    applyBronzeDiscount,
-    applyGoldDiscount,
-    applySilverDiscount,
-} from "../../utils/goldDiscount";
 import { CartQuantity } from "./CartQuantity";
 
 interface CartItemProps {

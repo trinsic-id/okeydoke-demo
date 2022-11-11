@@ -1,21 +1,14 @@
-import { Combobox, RadioGroup } from "@headlessui/react";
+
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
-    AlertCircle,
-    AlertOctagon,
     AlertTriangle,
-    CheckSquare,
-    CreditCard,
-    Square,
-    X,
 } from "react-feather";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
 import {
     isRedirectErrorModalVisibleState,
-    isVerifyCredentialModalVisibleState,
 } from "../../atoms/modals";
 import { useLockBg } from "../../hooks/custom/useLockBackground";
 import { AuthService, defaultAuthSettings } from "../../services/AuthService";

@@ -1,11 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import {
-    CheckCircle,
     CheckSquare,
-    Circle,
     Square,
-    XCircle,
     XSquare,
 } from "react-feather";
 import Spinner from "react-spinkit";

@@ -1,7 +1,6 @@
 import { Star } from "react-feather";
 import { range } from "lodash";
 import "lodash";
-import { useState } from "react";
 interface StarsProps {
     score: number;
     className?: string;

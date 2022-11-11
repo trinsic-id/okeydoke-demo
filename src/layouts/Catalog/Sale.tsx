@@ -1,4 +1,4 @@
-import { Star, Tag } from "react-feather";
+import { Tag } from "react-feather";
 
 interface SalesProps {
     discount: number;

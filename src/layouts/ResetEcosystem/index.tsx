@@ -1,15 +1,8 @@
 import { useEffect } from "react";
-import { Star } from "react-feather";
 import { useLocation, useNavigate } from "react-router-dom";
-import Spinner from "react-spinkit";
 import { useToggle } from "react-use";
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useResetRecoilState } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
-import {
-  AuthState,
-  authStateState,
-  userCredentialState,
-} from "../../atoms/user";
 import { LoadingItem } from "../../components/LoadingItem";
 
 export const ResetEcosystem = () => {

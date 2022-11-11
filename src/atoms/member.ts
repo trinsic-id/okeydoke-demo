@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { selector } from "recoil";
 import { ProduceType } from "../data/products";
 import { userCredentialState } from "./user";
 

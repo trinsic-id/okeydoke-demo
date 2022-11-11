@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useAddItem } from "../../hooks/custom/useAddItem";
 import { useRemoveItem } from "../../hooks/custom/useRemoveItem";
 import { useDecreaseItem } from "../../hooks/custom/useDecreaseItem";

@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -7,7 +6,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Catalog from "./layouts/Catalog";
 import Cart from "./layouts/Cart";
-import { Home } from "./layouts/Home";
 import { Redirect } from "./layouts/Redirect";
 import { LoadEcosystem } from "./layouts/LoadEcosystem";
 import { ResetEcosystem } from "./layouts/ResetEcosystem";

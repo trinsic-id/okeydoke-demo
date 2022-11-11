@@ -1,6 +1,5 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { Product } from "../data/products";
 import { defaultEcosystem, defaultSchema } from "../services/AuthService";
 
 interface AuthSettings {

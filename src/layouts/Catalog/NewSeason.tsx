@@ -1,4 +1,4 @@
-import { Calendar, Star } from "react-feather";
+import { Calendar } from "react-feather";
 
 export const NewSeason = () => {
   return (
