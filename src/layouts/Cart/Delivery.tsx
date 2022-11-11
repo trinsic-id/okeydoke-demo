@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { cartState, cartTotalPriceState } from "../../atoms/cart";
 import dayjs from "dayjs";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
     memberLevelObjState,
     memberLevelState,
@@ -10,19 +10,18 @@ import {
 import { GoldMember } from "../../components/VerifyCredential/GoldMember";
 import { SilverMember } from "../../components/VerifyCredential/SilverMember";
 import { BronzeMember } from "../../components/VerifyCredential/BronzeMember";
-import { AlertCircle, CreditCard, Home, Truck } from "react-feather";
+import { AlertCircle, CreditCard } from "react-feather";
 
 export const Delivery = () => {
     const cartTotalPrice = useRecoilValue(cartTotalPriceState);
-    const [date, setDate] = useState(dayjs());
+
     const memberLevel = useRecoilValue(memberLevelState);
     const memberLevelObj = useRecoilValue(memberLevelObjState);
     const cartItems = useRecoilValue(cartState);
     const userAddress = useRecoilValue(userAddressState);
-    // window.alert(JSON.stringify(userAddress));
     const deliveryDate = useMemo(
         () => dayjs().add(3, "day").format("MMMM D"),
-        [date]
+        []
     );
     const subTotal = useMemo(() => {
         let subTotal = 0;

@@ -1,5 +1,4 @@
-import { useSetRecoilState } from "recoil";
-import { cartAdjustedTotalState } from "../../atoms/cart";
+
 import { Product } from "../../data/products";
 import { useAddItem } from "../../hooks/custom/useAddItem";
 import { useDecreaseItem } from "../../hooks/custom/useDecreaseItem";
