@@ -10,7 +10,7 @@ import {
 import { GoldMember } from "../../components/VerifyCredential/GoldMember";
 import { SilverMember } from "../../components/VerifyCredential/SilverMember";
 import { BronzeMember } from "../../components/VerifyCredential/BronzeMember";
-import { CreditCard, Home, Truck } from "react-feather";
+import { AlertCircle, CreditCard, Home, Truck } from "react-feather";
 
 export const Delivery = () => {
     const cartTotalPrice = useRecoilValue(cartTotalPriceState);
@@ -19,6 +19,7 @@ export const Delivery = () => {
     const memberLevelObj = useRecoilValue(memberLevelObjState);
     const cartItems = useRecoilValue(cartState);
     const userAddress = useRecoilValue(userAddressState);
+    // window.alert(JSON.stringify(userAddress));
     const deliveryDate = useMemo(
         () => dayjs().add(3, "day").format("MMMM D"),
         [date]
@@ -35,7 +36,19 @@ export const Delivery = () => {
         <div className="flex flex-col w-full items-start rounded-lg bg-white py-3 px-4 space-y-2 divide-y divide-dashed">
             <div className="flex flex-col items-start w-full">
                 <div className="w-full text-xl text-gray-500">Delivery</div>
-                <div className="w-full text-xs font-light text-gray-500">{`Delivery date: ${deliveryDate}`}</div>
+                <div className="w-full text-xs font-light text-gray-500">
+                    {userAddress?.incomplete || !userAddress ? (
+                        <div className="flex flex-row items-center space-x-2">
+                            <div className="text-xs font-light text-red-500">
+                                Verify address to get estimate
+                            </div>
+                            <AlertCircle size={10} className="stroke-red-500" />
+                        </div>
+                    ) : (
+                        `Delivery to ${userAddress.city}, ${userAddress.state}
+                        : ${deliveryDate}`
+                    )}
+                </div>
                 {/* <div className="w-full text-xl font-medium pb-1">
                 {cartTotalPrice}
             </div> */}
@@ -86,18 +99,18 @@ export const Delivery = () => {
                         })}
                     </div>
                 </div>
-                {userAddress?.incomplete && (
-                    <button className="w-full h-full group  bg-white border-2 border-orange-500 hover:bg-orange-500 rounded-lg text-orange-500 hover:text-white px-4 py-3 flex flex-row items-center space-x-6">
-                        <Truck
+                {(userAddress?.incomplete || !userAddress) && (
+                    <button className="w-full h-full group  bg-white border-2 border-red-500 hover:bg-red-500 rounded-lg text-red-500 hover:text-white px-4 py-3 flex flex-row items-center space-x-6">
+                        <AlertCircle
                             size={24}
-                            className="stroke-orange-500 group-hover:stroke-white"
+                            className="stroke-red-500 group-hover:stroke-white"
                         />
                         <div className="font-medium text-lg flex-1 pr-12">
                             Verify address
                         </div>
                     </button>
                 )}
-                {!userAddress?.incomplete && (
+                {!userAddress?.incomplete && userAddress && (
                     <button className="w-full h-full group disabled:pointer-events-none disabled:opacity-50 bg-blue-500 hover:bg-white rounded-lg text-white hover:text-blue-500 hover:border-2 hover:border-blue-500 px-4 py-3 flex flex-row items-center space-x-6">
                         <CreditCard
                             size={24}
