@@ -13,6 +13,7 @@ import { VerifyCredential } from "../../components/BetterDeal";
 import { Product, ProductHeader } from "../../data/products";
 
 import { useAddItem } from "../../hooks/custom/useAddItem";
+import { useMemberLevelAdjust } from "../../hooks/custom/useMemberLevelAdjust";
 import {
     applyBronzeDiscount,
     applyGoldDiscount,
@@ -43,30 +44,7 @@ export const Card = ({
     isSilverMember,
     isBronzeMember,
 }: CardProps) => {
-    const isMember = useMemo(
-        () => isBronzeMember || isSilverMember || isGoldMember,
-        [isBronzeMember, isSilverMember, isGoldMember]
-    );
-
-    const memberAdjustment = useMemo(() => {
-        if (!isMember) return undefined;
-
-        if (isGoldMember)
-            return {
-                goldPrice: applyGoldDiscount(product.price),
-                prevPrice: product.price,
-            };
-        if (isSilverMember)
-            return {
-                goldPrice: applySilverDiscount(product.price),
-                prevPrice: product.price,
-            };
-        if (isBronzeMember)
-            return {
-                goldPrice: applyBronzeDiscount(product.price),
-                prevPrice: product.price,
-            };
-    }, [product, isMember, isGoldMember, isSilverMember, isBronzeMember]);
+    const { isMember, memberAdjustment } = useMemberLevelAdjust(product);
 
     const [hoverPos, setHoverPos] = useState<number | undefined>(undefined);
     const [selectedProduct, setSelectedProduct] = useRecoilState(
@@ -159,7 +137,7 @@ export const Card = ({
                         {isGoldMember && memberAdjustment && (
                             <div className="flex flex-row items-center space-x-4">
                                 <div className="text-lg font-medium text-yellow-600 ">
-                                    {memberAdjustment.goldPrice.toLocaleString(
+                                    {memberAdjustment.newPrice.toLocaleString(
                                         "en-US",
                                         {
                                             style: "currency",
@@ -181,7 +159,7 @@ export const Card = ({
                         {isSilverMember && memberAdjustment && (
                             <div className="flex flex-row items-center space-x-4">
                                 <div className="text-lg font-medium text-gray-600 ">
-                                    {memberAdjustment.goldPrice.toLocaleString(
+                                    {memberAdjustment.newPrice.toLocaleString(
                                         "en-US",
                                         {
                                             style: "currency",
@@ -203,7 +181,7 @@ export const Card = ({
                         {isBronzeMember && memberAdjustment && (
                             <div className="flex flex-row items-center space-x-4">
                                 <div className="text-lg font-medium text-amber-600 ">
-                                    {memberAdjustment.goldPrice.toLocaleString(
+                                    {memberAdjustment.newPrice.toLocaleString(
                                         "en-US",
                                         {
                                             style: "currency",

@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
     MemberLevel,
+    memberLevelObjState,
     memberLevelState,
     memberProduceState,
 } from "../../atoms/member";
@@ -56,14 +57,7 @@ const Animations = {
 const Catalog = () => {
     const memberLevel = useRecoilValue(memberLevelState);
 
-    const memberLevelObj = useMemo(
-        () => ({
-            isGoldMember: memberLevel === MemberLevel.GOLD,
-            isSilverMember: memberLevel === MemberLevel.SILVER,
-            isBronzeMember: memberLevel === MemberLevel.BRONZE,
-        }),
-        [memberLevel]
-    );
+    const memberLevelObj = useRecoilValue(memberLevelObjState);
 
     const memberProduceType = useRecoilValue(memberProduceState);
     const filteredProducts = useRecoilValue(filteredProductsState);
