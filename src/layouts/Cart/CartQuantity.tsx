@@ -21,9 +21,8 @@ export const CartQuantity = ({ product }: QuantityProps) => {
             </button>
             <input
                 type="number"
-                className="focus:outline-none pointer-events-none select-none text-center w-10 lg:w-12 bg-catalog-bg font-semibold text-md text-black  md:text-basecursor-default flex items-center outline-none"
+                className="focus:outline-none pointer-events-none text-center w-10 lg:w-12 bg-catalog-bg font-semibold text-md text-black flex items-center outline-none"
                 name="custom-input-number"
-                disabled
                 min={1}
                 value={product.qty}
             ></input>
