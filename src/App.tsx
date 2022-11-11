@@ -13,7 +13,7 @@ import { ResetEcosystem } from "./layouts/ResetEcosystem";
 function App() {
     return (
         <Router>
-            <div className="w-full h-screen flex flex-col">
+            <div className="w-screen h-screen flex flex-col">
                 <Header />
                 <Routes>
                     <Route path="/" element={<Catalog />} />
