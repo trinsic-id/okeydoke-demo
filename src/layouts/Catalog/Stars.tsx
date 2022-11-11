@@ -17,7 +17,7 @@ export const Stars = ({
 }: StarsProps) => {
     return (
         <div
-            className={`flex flex-row items-center space-x-3 ${
+            className={`flex flex-row items-center space-x-3 cursor-pointer ${
                 className ? className : ""
             }`}
         >
