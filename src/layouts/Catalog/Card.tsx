@@ -82,7 +82,10 @@ export const Card = ({
 
                     <div className="flex flex-col items-center w-full pt-3 space-y-3 pb-3">
                         <div className="flex relative w-2/3 max-h-36">
-                            <img className="rounded-lg" src={product.image} />
+                            <img
+                                className="rounded-lg object-cover"
+                                src={product.image}
+                            />
                             <div
                                 className="absolute bottom-0 right-0"
                                 onMouseLeave={() => setHoverPos(undefined)}

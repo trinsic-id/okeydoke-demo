@@ -30,7 +30,10 @@ export const CartItem = ({ product }: CartItemProps) => {
 
     return (
         <div className="flex flex-row w-full py-3 h-32 space-x-4">
-            <img className="h-full rounded-lg" src={product.image} />
+            <img
+                className="h-full rounded-lg w-1/4 object-cover"
+                src={product.image}
+            />
             <div className="flex flex-row flex-1 justify-between">
                 <div className="flex flex-col items-start place-content-center w-64 justify-between">
                     <div className="text-xl text-black">{product.name}</div>
