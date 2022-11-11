@@ -15,9 +15,8 @@ export const Quantity = ({ quantity, setQuantity }: QuantityProps) => {
             </button>
             <input
                 type="number"
-                className="focus:outline-none select-none text-center w-full bg-catalog-bg font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                className="focus:outline-none select-none text-center w-full bg-catalog-bg font-semibold text-md text-black  md:text-basecursor-default flex items-center  outline-none"
                 name="custom-input-number"
-                disabled
                 min={1}
                 value={quantity}
             ></input>
