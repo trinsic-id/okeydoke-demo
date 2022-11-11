@@ -17,7 +17,7 @@ export const Cart = () => {
         <div className="w-full h-full bg-catalog-bg p-4">
             {cartItems.length ? (
                 <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                    <div className="flex flex-col w-full items-start rounded-lg bg-white py-3 px-4 divide-y-2">
+                    <div className="flex flex-col h-min w-full items-start rounded-lg bg-white py-3 px-4 divide-y-2">
                         <div className="w-full text-xl font-medium pb-1">
                             Cart
                         </div>

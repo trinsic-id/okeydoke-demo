@@ -142,7 +142,7 @@ export const CartItem = ({ product }: CartItemProps) => {
                         )}
                         <div className="text-green-500 pl-2">In stock</div>
                     </div>
-                    <div className="flex flex-row space-x-4">
+                    <div className="flex flex-row space-x-4 w-full justify-between">
                         <CartQuantity product={product} />
                         <div className="text-black text-lg">
                             {price.toLocaleString("en-US", {
