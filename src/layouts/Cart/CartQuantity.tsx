@@ -11,7 +11,7 @@ export const CartQuantity = ({ product }: QuantityProps) => {
     const decrease = useDecreaseItem();
 
     return (
-        <div className="flex flex-row bg-red-400 rounded-lg relative bg-transparent">
+        <div className="flex flex-row rounded-lg relative bg-transparent">
             <button
                 data-action="decrement"
                 className=" bg-catalog-bg text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-10 lg:w-12 rounded-l cursor-pointer outline-none"
@@ -21,7 +21,7 @@ export const CartQuantity = ({ product }: QuantityProps) => {
             </button>
             <input
                 type="number"
-                className="focus:outline-none select-none text-center w-10 lg:w-12 bg-catalog-bg font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                className="focus:outline-none pointer-events-none select-none text-center w-10 lg:w-12 bg-catalog-bg font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
                 name="custom-input-number"
                 disabled
                 min={1}
