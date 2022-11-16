@@ -43,7 +43,7 @@ const Catalog = () => {
 
     return (
         <div className="w-full bg-catalog-bg flex flex-col items-start max-h-screen-95">
-            <div className="flex flex-row w-full justify-between p-4 shadow-2xl">
+            <div className="flex flex-row w-full justify-between p-4 shadow-2xl mix-blend-darken">
                 <div className="flex flex-row items-start space-x-2">
                     <Trello size={28} className="stroke-green-600" />
                     <div className="text-2xl text-black">Products</div>
@@ -51,7 +51,7 @@ const Catalog = () => {
                 {memberProduceType && <FilterButton />}
             </div>
             <motion.div
-                className="flex flex-col h-full overflow-y-scroll space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:gap-4 items-start p-4"
+                className="flex flex-col h-full overflow-y-scroll space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:gap-4 items-start p-4 pb-12"
                 key="container"
                 variants={Animations.container}
                 initial="hidden"
