@@ -71,7 +71,7 @@ export const VerifiedCredentialModal = () => {
                         <div className="absolute top-0 bottom-0 left-0 right-0 bg-opacity-50 bg-black z-30 cursor-pointer"></div>
                         <div className="w-full z-40 p-4 flex items-center justify-center">
                             <motion.div
-                                className="bg-white w-full max-w-md rounded-lg shadow-lg"
+                                className="bg-white w-full max-w-lg rounded-lg shadow-lg"
                                 variants={Animations.inputContainer}
                             >
                                 <div className="p-4 md:p-6">
