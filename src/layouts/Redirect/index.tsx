@@ -59,7 +59,7 @@ export const Redirect = () => {
             .catch(() => {
                 const state = searchParams.get("state");
                 const code = searchParams.get("code");
-                // if (!state && !code) return setModalVisible(true);
+                if (!state && !code) return setModalVisible(true);
             })
             .then(async () => {
                 const user = await authService.getUser();
