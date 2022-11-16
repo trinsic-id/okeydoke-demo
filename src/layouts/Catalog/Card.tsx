@@ -57,7 +57,7 @@ export const Card = ({
             <div className="flex flex-col items-center w-full pt-3 space-y-3 pb-3">
                 <div className="flex relative h-48">
                     <img
-                        className="rounded-lg object-cover"
+                        className="rounded-lg object-cover w-full"
                         src={product.image}
                     />
                     <div
