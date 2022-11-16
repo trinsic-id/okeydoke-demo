@@ -57,13 +57,20 @@ const Catalog = () => {
                 variants={Animations.container}
                 initial="hidden"
                 animate="visible"
+                exit="hidden"
             >
                 {filteredProducts.map((product) => (
-                    <Card
-                        product={product}
-                        {...memberLevelObj}
-                        key={product.id}
-                    />
+                    <motion.div
+                        variants={Animations.item}
+                        key={product.id + "child"}
+                        className="flex flex-col items-center rounded-lg w-full md:max-w-md  hover:shadow-xl"
+                    >
+                        <Card
+                            product={product}
+                            {...memberLevelObj}
+                            key={product.id}
+                        />
+                    </motion.div>
                 ))}
             </motion.div>
             <VerifyCredentialModal />
