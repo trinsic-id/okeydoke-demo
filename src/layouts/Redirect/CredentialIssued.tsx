@@ -5,6 +5,7 @@ import { ProduceType } from "../../data/products";
 
 export const CredentialIssued = () => {
     const memberProduceType = useRecoilValue(memberProduceState);
+
     return (
         <div className="flex flex-col items-start space-y-4">
             <div className="w-full flex flex-row items-center">

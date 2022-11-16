@@ -119,7 +119,8 @@ export const VerifiedCredentialModal = () => {
                                             successElement={<DisclosedFields />}
                                         />
                                         <LoadingItem
-                                            isLoading={isDiscountsLoading}
+                                            isLoading={false}
+                                            isSuccess
                                             text={
                                                 "Fetching discounts and limits"
                                             }

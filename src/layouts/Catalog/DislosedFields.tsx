@@ -11,9 +11,36 @@ import { MemberLevelSuccess } from "../Redirect/MemberLevelSuccess";
 export const DisclosedFields = () => {
     const memberLevel = useRecoilValue(memberLevelState);
     const userAddress = useRecoilValue(userAddressState);
+    const memberProduce = useRecoilValue(memberProduceState);
     return (
         <div className="flex flex-col items-start space-y-4 w-full">
-            {memberLevel ? <MemberLevelSuccess /> : undefined}
+            {memberLevel ? (
+                <MemberLevelSuccess />
+            ) : (
+                <>
+                    {memberProduce ? (
+                        <div className="w-full flex flex-row items-center justify-between">
+                            <div className="font-light leading-tight text-base sm:text-lg w-full">
+                                Produce type:
+                            </div>
+
+                            <div className="leading-tight text-base sm:text-lg rounded-lg flex items-center whitespace-nowrap">
+                                {memberProduce}
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="w-full flex flex-row items-center justify-between">
+                            <div className="font-light leading-tight text-base sm:text-lg w-full">
+                                Produce type:
+                            </div>
+
+                            <div className="leading-tight text-base sm:text-lg rounded-lg flex items-center whitespace-nowrap">
+                                {`-`}
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
             {userAddress?.address && (
                 <div className="w-full flex flex-row items-center justify-between">
                     <div className="font-light leading-tight text-base sm:text-lg w-full">
