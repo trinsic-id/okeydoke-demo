@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Trello } from "react-feather";
 
 import { useRecoilValue } from "recoil";
@@ -51,6 +51,7 @@ const Catalog = () => {
                 </div>
                 {memberProduceType && <FilterButton />}
             </div>
+
             <motion.div
                 className="flex flex-col h-full overflow-y-scroll space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:gap-4 items-start p-4 pb-12"
                 key="container"
@@ -62,7 +63,7 @@ const Catalog = () => {
                 {filteredProducts.map((product) => (
                     <motion.div
                         variants={Animations.item}
-                        key={product.id + "child"}
+                        key={product.id}
                         className="flex flex-col items-center rounded-lg w-full md:max-w-md  hover:shadow-xl"
                     >
                         <Card
@@ -73,6 +74,7 @@ const Catalog = () => {
                     </motion.div>
                 ))}
             </motion.div>
+
             <VerifyCredentialModal />
             <RateProduct />
             <VerifiedCredentialModal />

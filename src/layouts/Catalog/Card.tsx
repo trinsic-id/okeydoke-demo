@@ -35,14 +35,6 @@ export const Card = ({
     const [hoverPos, setHoverPos] = useState<number | undefined>(undefined);
     const setSelectedProduct = useSetRecoilState(selectedRateProductState);
     return (
-        // <motion.div
-        //     variants={Animations}
-        //     initial={Animations.hidden}
-        //     animate={Animations.visible}
-        //     exit={Animations.hidden}
-        //     key={product.id + "child"}
-        //     className="flex flex-col items-center rounded-lg w-full md:max-w-md  hover:shadow-xl"
-        // >
         <div className="flex flex-col items-start w-full gap-3 p-4 rounded-lg bg-white">
             <div className="flex flex-row w-full items-center justify-between h-12">
                 {product.header === ProductHeader.Sale &&
@@ -177,12 +169,5 @@ export const Card = ({
 
             <CardButtons product={product} />
         </div>
-        //     {/* <div className="flex flex-row items-center justify-between w-full rounded-b-lg border-gold-star bg-indigo-400 px-4 py-2">
-        //         <div className="text-lg font-medium text-white">
-        //             Certified Rating
-        //         </div>
-        //         <Stars score={product.score} />
-        //     </div> */}
-        // </motion.div>
     );
 };
