@@ -1,9 +1,11 @@
 import { atom, selector } from "recoil";
 import { Product } from "../data/products";
-
+import { recoilPersist } from "recoil-persist";
+const { persistAtom } = recoilPersist();
 export const cartState = atom<Product[]>({
     key: "cart",
     default: [],
+    effects_UNSTABLE: [persistAtom],
 });
 
 export type Cart = {
