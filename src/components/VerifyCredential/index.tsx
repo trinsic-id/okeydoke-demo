@@ -102,7 +102,21 @@ export const VerifyCredentialModal = () => {
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <button
+                                            className="w-full h-full group border-blue-500 group-hover:bg-blue-500 border-2 rounded-lg text-blue-500 group-hover:text-white px-4 py-3 flex flex-row items-center space-x-6"
+                                            onClick={() => {
+                                                window.location.href =
+                                                    "https://webapp-221109133537.azurewebsites.net/";
+                                            }}
+                                        >
+                                            <img
+                                                src="images/trinsic-logo-blue.png"
+                                                className="w-6"
+                                            />
+                                            <div className="text-blue-500 font-medium text-lg flex-1 pr-12">
+                                                {"Get a credential"}
+                                            </div>
+                                        </button>
                                         <button
                                             className="w-full h-full group bg-blue-500 hover:bg-white rounded-lg text-white hover:text-blue-500 hover:border-2 hover:border-blue-500 px-4 py-3 flex flex-row items-center space-x-6"
                                             onClick={() => {

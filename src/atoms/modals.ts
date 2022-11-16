@@ -15,3 +15,8 @@ export const selectedRateProductState = atom<Product | undefined>({
     key: "rate-product",
     default: undefined,
 });
+
+export const isVerifiedCredentialModalVisibleState = atom<boolean>({
+    key: "verified-credential-modal-visible",
+    default: false,
+});

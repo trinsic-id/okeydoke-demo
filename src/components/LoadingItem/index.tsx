@@ -1,10 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
-import {
-    CheckSquare,
-    Square,
-    XSquare,
-} from "react-feather";
+import { CheckSquare, Square, XSquare } from "react-feather";
 import Spinner from "react-spinkit";
 import { useToggle } from "react-use";
 
@@ -36,6 +32,7 @@ const Animations = {
 interface LoadingItemProps {
     isLoading: boolean;
     isError?: boolean;
+    isSuccess?: boolean;
     onNext: () => void;
     text: string;
     successElement?: JSX.Element;
@@ -44,11 +41,12 @@ interface LoadingItemProps {
 export const LoadingItem = ({
     isLoading,
     isError,
+    isSuccess = false,
     onNext,
     text,
     successElement,
 }: LoadingItemProps) => {
-    const [isComplete, toggleComplete] = useToggle(false);
+    const [isComplete, toggleComplete] = useToggle(isSuccess);
 
     useEffect(() => {
         if (isLoading)
@@ -63,36 +61,18 @@ export const LoadingItem = ({
                 onNext();
             }, 2000);
     }, [isComplete]);
-
+    //md:w-2/3 lg:w-1/2 max-w-xl
     return (
         <motion.div
-            className={`flex flex-row items-center space-x-4 w-full md:w-2/3 lg:w-1/2 max-w-xl bg-loading-bg-light rounded-lg p-4 transition duration-700 ${
+            className={`flex flex-row items-start space-x-4 w-full h-full bg-loading-bg-light rounded-lg p-4 transition duration-700 ${
                 !isLoading && !isComplete && !isError && "opacity-40"
             }`}
         >
-            <div className="w-8 h-full">
+            <div className="w-8">
                 <AnimatePresence>
-                    {isLoading && !isError && !isComplete && (
+                    {isComplete && (
                         <motion.div
-                            variants={Animations.icons}
-                            initial={"fadeOut"}
-                            animate={"fadeIn"}
-                            exit={"fadeOut"}
-                            key={"spinner"}
-                        >
-                            <Spinner
-                                fadeIn="full"
-                                className={``}
-                                name="double-bounce"
-                                color="#828282"
-                                style={{ height: "30px", width: "30px" }}
-                            />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-                <AnimatePresence>
-                    {isComplete && !isError && (
-                        <motion.div
+                            className=""
                             variants={Animations.icons}
                             initial={"fadeOut"}
                             animate={"fadeIn"}
@@ -106,34 +86,8 @@ export const LoadingItem = ({
                         </motion.div>
                     )}
                 </AnimatePresence>
-                <AnimatePresence>
-                    {!isLoading && !isComplete && !isError && (
-                        <motion.div
-                            variants={Animations.icons}
-                            initial={"fadeOut"}
-                            animate={"fadeIn"}
-                            exit={"fadeOut"}
-                            key={"pending-start"}
-                        >
-                            <Square size={28} className="stroke-gray-400" />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-                <AnimatePresence>
-                    {isError && (
-                        <motion.div
-                            variants={Animations.icons}
-                            initial={"fadeOut"}
-                            animate={"fadeIn"}
-                            exit={"fadeOut"}
-                            key={"error"}
-                        >
-                            <XSquare size={28} className="stroke-red-600" />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </div>
-            <div className="flex flex-1 flex-col">
+            <div className="flex flex-1 flex-col h-full">
                 <div
                     className={`text-md font-bold ${
                         isError ? "text-red-600" : "text-loading-text"

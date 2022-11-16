@@ -8,6 +8,7 @@ import { RateProduct } from "../../components/RateProduct";
 import { VerifyCredentialModal } from "../../components/VerifyCredential";
 import { Card } from "./Card";
 import { FilterButton } from "./FilterButton";
+import { VerifiedCredentialModal } from "./VerifiedCredentialModal";
 
 const Animations = {
     container: {
@@ -67,6 +68,7 @@ const Catalog = () => {
             </motion.div>
             <VerifyCredentialModal />
             <RateProduct />
+            <VerifiedCredentialModal />
         </div>
     );
 };

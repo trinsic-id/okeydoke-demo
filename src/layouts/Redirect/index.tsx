@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useToggle } from "react-use";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
-import { isRedirectErrorModalVisibleState } from "../../atoms/modals";
+import {
+    isRedirectErrorModalVisibleState,
+    isVerifiedCredentialModalVisibleState,
+} from "../../atoms/modals";
 import {
     AuthState,
     authStateState,
@@ -16,6 +19,7 @@ import { generateSettings } from "../../utils/generateSettings";
 import { CredentialIssued } from "./CredentialIssued";
 import { ErrorModal } from "./ErrorModal";
 import { MemberLevelSuccess } from "./MemberLevelSuccess";
+import Spinner from "react-spinkit";
 
 export const Redirect = () => {
     const [isVerifyingLoading, toggleVerifyingLoading] = useToggle(false);
@@ -31,6 +35,9 @@ export const Redirect = () => {
     const [userCredential, setUserCredential] =
         useRecoilState(userCredentialState);
     const authSettings = useRecoilValue(authSettingsState);
+    const setVerifiedModalVisible = useSetRecoilState(
+        isVerifiedCredentialModalVisibleState
+    );
     // useEffect(() => {
     //   toggleVerifyingLoading(true);
     // }, []);
@@ -52,7 +59,7 @@ export const Redirect = () => {
             .catch(() => {
                 const state = searchParams.get("state");
                 const code = searchParams.get("code");
-                if (!state && !code) return setModalVisible(true);
+                // if (!state && !code) return setModalVisible(true);
             })
             .then(async () => {
                 const user = await authService.getUser();
@@ -67,7 +74,8 @@ export const Redirect = () => {
                     setUserCredential(credential);
                     toggleVerifyingLoading(true);
                     setAuthState(AuthState.VERIFIED);
-                    //navigate("/");
+                    setVerifiedModalVisible(true);
+                    navigate("/");
                 }
             });
     }, [authState, authSettings, searchParams]);
@@ -76,7 +84,17 @@ export const Redirect = () => {
         <div
             className={`w-full h-full flex flex-col items-center place-content-center space-y-5 p-3`}
         >
-            <LoadingItem
+            <div className="flex flex-row items-center space-x-4">
+                <Spinner
+                    fadeIn="full"
+                    className={``}
+                    name="double-bounce"
+                    color="#828282"
+                    style={{ height: "30px", width: "30px" }}
+                />
+                <div className="text-2xl text-gray-500">Loading store</div>
+            </div>
+            {/* <LoadingItem
                 isLoading={isVerifyingLoading}
                 text={"Verifying Credential"}
                 isError={isErrorVisible}
@@ -122,7 +140,7 @@ export const Redirect = () => {
                         navigate("/");
                     }
                 }}
-            />
+            /> */}
             <ErrorModal />
         </div>
     );

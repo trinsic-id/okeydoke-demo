@@ -21,7 +21,7 @@ const Header = () => {
     return isVisible ? (
         <div className="flex flex-row items-center justify-between w-full border-b border-gray-300 pb-2 p-4">
             <Link to="/">
-                <div className="text-2xl font-medium">OkieDoke</div>
+                <div className="text-2xl font-medium">OkeyDoke</div>
             </Link>
 
             {totalQty || memberLevel ? <CartButton /> : <CartButton />}

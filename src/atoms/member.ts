@@ -72,3 +72,10 @@ export const userAddressState = selector<MemberAddress | undefined>({
         };
     },
 });
+
+export const userFarmNameState = selector<string | undefined>({
+    key: "user-name-state",
+    get: ({ get }) => {
+        return get(userCredentialState)?.credentialSubject.name;
+    },
+});
