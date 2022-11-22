@@ -57,6 +57,10 @@ public class Startup
         services.AddHttpClient<DirectLineService>();
 
         services.AddTrinsic(options => options.ServiceOptions.AuthToken = Configuration["TrinsicAuthToken"]);
+
+        services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,9 +73,10 @@ public class Startup
 
         app.UseDefaultFiles()
             .UseStaticFiles()
+            .UseCors("AllowAll")
             .UseRouting()
             .UseAuthorization()
-            .UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            .UseEndpoints(endpoints => { endpoints.MapControllers().RequireCors("AllowAll"); });
 
         // app.UseHttpsRedirection();
     }
