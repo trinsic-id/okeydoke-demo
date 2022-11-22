@@ -22,7 +22,6 @@ public class TrinsicController : ControllerBase
     [Route("/api/trinsic/verify")]
     public async Task<IActionResult> VerifyCredential()
     {
-        Request.Body.Position = 0;
         using StreamReader reader = new(Request.Body);
         VerifyProofResponse response = await _trinsicService.Credential.VerifyProofAsync(new VerifyProofRequest
         {
