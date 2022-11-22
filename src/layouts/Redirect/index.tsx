@@ -5,6 +5,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
 import {
     isRedirectErrorModalVisibleState,
+    isRedirectVerifyCredentialErrorState,
     isVerifiedCredentialModalVisibleState,
 } from "../../atoms/modals";
 import {
@@ -20,14 +21,19 @@ import { CredentialIssued } from "./CredentialIssued";
 import { ErrorModal } from "./ErrorModal";
 import { MemberLevelSuccess } from "./MemberLevelSuccess";
 import Spinner from "react-spinkit";
+import { ServiceOptions, TrinsicService } from "@trinsic/trinsic/browser";
+
+const trinsic = new TrinsicService({
+    authToken: process.env.REACT_APP_TRINSIC_API_KEY,
+} as ServiceOptions);
 
 export const Redirect = () => {
     const [isVerifyingLoading, toggleVerifyingLoading] = useToggle(false);
-    const [isProfileLoading, toggleProfileLoading] = useToggle(false);
-    const [isDiscountsLoading, toggleDiscountsLoading] = useToggle(false);
-    const [isRedirectLoading, toggleRedirectLoading] = useToggle(false);
     const [isErrorVisible, setModalVisible] = useRecoilState(
         isRedirectErrorModalVisibleState
+    );
+    const setIsVerifyCredentialError = useSetRecoilState(
+        isRedirectVerifyCredentialErrorState
     );
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
@@ -38,9 +44,6 @@ export const Redirect = () => {
     const setVerifiedModalVisible = useSetRecoilState(
         isVerifiedCredentialModalVisibleState
     );
-    // useEffect(() => {
-    //   toggleVerifyingLoading(true);
-    // }, []);
     useEffect(() => {
         const error = searchParams.get("error");
         if (error !== null) return setModalVisible(true);
@@ -67,15 +70,26 @@ export const Redirect = () => {
                 //("http://localhost:3000/redirect?state=d9b562509742421fb85c20e7d09a91da&error=no_credentials&error_description=User%20had%20no%20credentials%20to%20share");
 
                 if (user && user.profile._vp_token) {
-                    const credential = user.profile
-                        ._vp_token as CredentialDerivedProof;
-                    // credential.credentialSubject.certificationGrade = MemberLevel.BRONZE;
-                    // credential.credentialSubject.produceType = ProduceType.ARTICHOKE;
-                    setUserCredential(credential);
-                    toggleVerifyingLoading(true);
-                    setAuthState(AuthState.VERIFIED);
-                    setVerifiedModalVisible(true);
-                    navigate("/");
+                    const verifyResp = await trinsic.credential().verifyProof({
+                        proofDocumentJson: JSON.stringify(
+                            user.profile._vp_token
+                        ),
+                    });
+                    if (
+                        verifyResp.isValid &&
+                        verifyResp.validationResults["CredentialStatus"].isValid
+                    ) {
+                        const credential = user.profile
+                            ._vp_token as CredentialDerivedProof;
+                        setUserCredential(credential);
+                        toggleVerifyingLoading(true);
+                        setAuthState(AuthState.VERIFIED);
+                        setVerifiedModalVisible(true);
+                        return navigate("/");
+                    } else {
+                        setIsVerifyCredentialError(true);
+                        return setModalVisible(true);
+                    }
                 }
             });
     }, [authState, authSettings, searchParams]);
@@ -94,53 +108,6 @@ export const Redirect = () => {
                 />
                 <div className="text-2xl text-gray-500">Loading store</div>
             </div>
-            {/* <LoadingItem
-                isLoading={isVerifyingLoading}
-                text={"Verifying Credential"}
-                isError={isErrorVisible}
-                onNext={() => {
-                    if (!isErrorVisible) {
-                        toggleVerifyingLoading(false);
-                        toggleProfileLoading(true);
-                    }
-                }}
-                successElement={<CredentialIssued />}
-            />
-            <LoadingItem
-                isLoading={isProfileLoading}
-                text={"Fetching profile"}
-                onNext={() => {
-                    if (!isErrorVisible) {
-                        toggleProfileLoading(false);
-                        toggleDiscountsLoading(true);
-                    }
-                }}
-                successElement={
-                    userCredential?.credentialSubject.certificationGrade ? (
-                        <MemberLevelSuccess />
-                    ) : undefined
-                }
-            />
-            <LoadingItem
-                isLoading={isDiscountsLoading}
-                text={"Fetching discounts and limits"}
-                onNext={() => {
-                    if (!isErrorVisible) {
-                        toggleDiscountsLoading(false);
-                        toggleRedirectLoading(true);
-                    }
-                }}
-            />
-            <LoadingItem
-                isLoading={isRedirectLoading}
-                text={"Redirecting to store"}
-                onNext={() => {
-                    if (!isErrorVisible) {
-                        toggleRedirectLoading(false);
-                        navigate("/");
-                    }
-                }}
-            /> */}
             <ErrorModal />
         </div>
     );

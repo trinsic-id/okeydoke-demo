@@ -2,9 +2,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMemo } from "react";
 import { AlertTriangle } from "react-feather";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
-import { isRedirectErrorModalVisibleState } from "../../atoms/modals";
+import {
+    isRedirectErrorModalVisibleState,
+    isRedirectVerifyCredentialErrorState,
+} from "../../atoms/modals";
 import { useLockBg } from "../../hooks/custom/useLockBackground";
 import { AuthService, defaultAuthSettings } from "../../services/AuthService";
 import { generateSettings } from "../../utils/generateSettings";
@@ -31,15 +34,21 @@ const Animations = {
 };
 
 export const ErrorModal = () => {
-    const isVisible = useRecoilValue(isRedirectErrorModalVisibleState);
+    const [isVisible, setIsVisible] = useRecoilState(
+        isRedirectErrorModalVisibleState
+    );
     useLockBg(isVisible);
+    const [isVerifyError, setVerifyError] = useRecoilState(
+        isRedirectVerifyCredentialErrorState
+    );
     const authSettings = useRecoilValue(authSettingsState);
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const errorMsg = useMemo(() => {
+        if (isVerifyError) return "Unable to verify credential";
         const errorDesc = searchParams.get("error_description");
         return errorDesc ?? "Invalid state value";
-    }, [searchParams]);
+    }, [searchParams, isVerifyError]);
     return (
         <div className="max-w-x2s md:max-w-xs overflow-hidden">
             <AnimatePresence>
@@ -90,6 +99,8 @@ export const ErrorModal = () => {
                                         <button
                                             className="w-full h-full bg-blue-500 rounded-lg text-white px-4 py-3 flex flex-row items-center space-x-6"
                                             onClick={() => {
+                                                setVerifyError(false);
+                                                setIsVisible(false);
                                                 let settings: typeof defaultAuthSettings;
                                                 if (authSettings) {
                                                     settings = generateSettings(
@@ -117,6 +128,8 @@ export const ErrorModal = () => {
                                         <button
                                             className="w-full h-full bg-gray-500 rounded-lg text-white px-4 py-3 flex flex-row items-center space-x-6"
                                             onClick={() => {
+                                                setVerifyError(false);
+                                                setIsVisible(false);
                                                 navigate("/");
                                             }}
                                         >

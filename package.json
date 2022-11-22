@@ -7,7 +7,7 @@
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.3.0",
         "@testing-library/user-event": "^13.5.0",
-        "@trinsic/trinsic": "^1.8.0",
+        "@trinsic/trinsic": "1.7.3",
         "@types/jest": "^27.5.2",
         "@types/node": "^16.11.56",
         "@types/react": "^18.0.17",
@@ -30,7 +30,7 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "craco start",
         "build": "react-scripts build",
         "serve": "PORT=8080 serve -s ./build",
         "test": "react-scripts test",
@@ -57,6 +57,7 @@
         ]
     },
     "devDependencies": {
+        "@craco/craco": "^7.0.0",
         "@types/lodash": "^4.14.188",
         "@types/react-spinkit": "^3.0.7",
         "autoprefixer": "^10.4.8",

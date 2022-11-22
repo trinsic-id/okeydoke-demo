@@ -11,6 +11,11 @@ export const isRedirectErrorModalVisibleState = atom<boolean>({
     default: false,
 });
 
+export const isRedirectVerifyCredentialErrorState = atom<boolean>({
+    key: "redirect-verify-error",
+    default: false,
+});
+
 export const selectedRateProductState = atom<Product | undefined>({
     key: "rate-product",
     default: undefined,
