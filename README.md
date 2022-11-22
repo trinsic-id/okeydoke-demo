@@ -1,7 +1,5 @@
 # Getting Started with OkeyDokey demo
 
-Put your Trinsic api key in the `env.example`. You can get an API key at [https://dashboard.trinsic.id/](dashboard.trinsic.id)
-
 ## Available Scripts
 
 In the project directory, you can run:
