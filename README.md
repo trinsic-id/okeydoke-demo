@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Getting Started with OkeyDokey demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Put your Trinsic api key in the `env.example`. You can get an API key at [https://dashboard.trinsic.id/](dashboard.trinsic.id)
 
 ## Available Scripts
 
