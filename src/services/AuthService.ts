@@ -1,4 +1,5 @@
-import { Log, User, UserManager } from "oidc-client-ts";
+import { IdTokenClaims, Log, User, UserManager } from "oidc-client-ts";
+import { CredentialDerivedProof } from "../models/credential";
 
 const clientRoot: string = `${window.location.origin}/`;
 
