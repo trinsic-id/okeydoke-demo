@@ -21,9 +21,7 @@ import { CredentialIssued } from "./CredentialIssued";
 import { ErrorModal } from "./ErrorModal";
 import { MemberLevelSuccess } from "./MemberLevelSuccess";
 import Spinner from "react-spinkit";
-import { ServiceOptions, TrinsicService } from "@trinsic/trinsic/browser";
 import { useVerifyCredential } from "../../hooks/custom/queries/useVerifyCredential";
-import { IdTokenClaims, User } from "oidc-client-ts";
 
 export const Redirect = () => {
     const [isVerifyingLoading, toggleVerifyingLoading] = useToggle(false);
@@ -68,8 +66,6 @@ export const Redirect = () => {
             })
             .then(async () => {
                 const user = await authService.getUser();
-
-                //("http://localhost:3000/redirect?state=d9b562509742421fb85c20e7d09a91da&error=no_credentials&error_description=User%20had%20no%20credentials%20to%20share");
 
                 if (user && user.profile._vp_token) {
                     const credential = user.profile
