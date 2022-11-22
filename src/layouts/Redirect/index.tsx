@@ -22,10 +22,7 @@ import { ErrorModal } from "./ErrorModal";
 import { MemberLevelSuccess } from "./MemberLevelSuccess";
 import Spinner from "react-spinkit";
 import { ServiceOptions, TrinsicService } from "@trinsic/trinsic/browser";
-
-const trinsic = new TrinsicService({
-    authToken: process.env.REACT_APP_TRINSIC_API_KEY,
-} as ServiceOptions);
+import { useVerifyCredential } from "../../hooks/custom/queries/useVerifyCredential";
 
 export const Redirect = () => {
     const [isVerifyingLoading, toggleVerifyingLoading] = useToggle(false);
@@ -44,6 +41,10 @@ export const Redirect = () => {
     const setVerifiedModalVisible = useSetRecoilState(
         isVerifiedCredentialModalVisibleState
     );
+    const { mutateAsync: verifyCredentialAsync } = useVerifyCredential(() => {
+        setModalVisible(true);
+        setIsVerifyCredentialError(true);
+    });
     useEffect(() => {
         const error = searchParams.get("error");
         if (error !== null) return setModalVisible(true);
@@ -70,11 +71,10 @@ export const Redirect = () => {
                 //("http://localhost:3000/redirect?state=d9b562509742421fb85c20e7d09a91da&error=no_credentials&error_description=User%20had%20no%20credentials%20to%20share");
 
                 if (user && user.profile._vp_token) {
-                    const verifyResp = await trinsic.credential().verifyProof({
-                        proofDocumentJson: JSON.stringify(
-                            user.profile._vp_token
-                        ),
+                    const verifyResp = await verifyCredentialAsync({
+                        derivedProof: user.profile._vp_token as any,
                     });
+                    window.alert(verifyResp);
                     if (
                         verifyResp.isValid &&
                         verifyResp.validationResults["CredentialStatus"].isValid
