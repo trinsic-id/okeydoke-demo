@@ -21,7 +21,8 @@ import { CredentialIssued } from "./CredentialIssued";
 import { ErrorModal } from "./ErrorModal";
 import { MemberLevelSuccess } from "./MemberLevelSuccess";
 import Spinner from "react-spinkit";
-import { useVerifyCredential } from "../../hooks/custom/queries/useVerifyCredential";
+import { useVerifyCredential } from "../../hooks/queries/useVerifyCredential";
+import HashLoader from "react-spinners/HashLoader";
 
 export const Redirect = () => {
     const [isVerifyingLoading, toggleVerifyingLoading] = useToggle(false);
@@ -73,6 +74,13 @@ export const Redirect = () => {
                     const verifyResp = await verifyCredentialAsync({
                         derivedProof: credential,
                     });
+                    //! Uncomment this, and comment the previous line to test the verification actually works.
+                    // const verifyResp = await verifyCredentialAsync({
+                    //     derivedProof: {
+                    //         ...credential,
+                    //         proof: { ...credential.proof, nonce: "" },
+                    //     },
+                    // });
 
                     if (
                         verifyResp.isValid &&
@@ -95,15 +103,22 @@ export const Redirect = () => {
         <div
             className={`w-full h-full flex flex-col items-center place-content-center space-y-5 p-3`}
         >
-            <div className="flex flex-row items-center space-x-4">
-                <Spinner
-                    fadeIn="full"
-                    className={``}
-                    name="double-bounce"
+            <div className="flex flex-row items-center">
+                <HashLoader
+                    className=""
+                    size={"24"}
                     color="#828282"
-                    style={{ height: "30px", width: "30px" }}
+                    cssOverride={{ width: 48, height: 48 }}
                 />
-                <div className="text-2xl text-gray-500">Loading store</div>
+                <div className="text-2xl text-gray-500">
+                    Verifying credential
+                </div>
+                <HashLoader
+                    className="transform -scale-x-50"
+                    size={"24"}
+                    color="#828282"
+                    cssOverride={{ width: 40, height: 48 }}
+                />
             </div>
             <ErrorModal />
         </div>

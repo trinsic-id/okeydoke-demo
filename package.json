@@ -23,6 +23,7 @@
         "react-router-dom": "^6.3.0",
         "react-scripts": "5.0.1",
         "react-spinkit": "^3.0.0",
+        "react-spinners": "^0.13.6",
         "react-use": "^17.4.0",
         "recoil": "^0.7.5",
         "recoil-persist": "^4.2.0",
