@@ -73,8 +73,8 @@ public class Startup
 
         app.UseDefaultFiles()
             .UseStaticFiles()
-            .UseCors("AllowAll")
             .UseRouting()
+            .UseCors("AllowAll")
             .UseAuthorization()
             .UseEndpoints(endpoints => { endpoints.MapControllers().RequireCors("AllowAll"); });
 
