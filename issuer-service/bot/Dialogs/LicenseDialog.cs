@@ -179,7 +179,8 @@ public class LicenseDialog : ComponentDialog
             await _trinsicService.Credential.SendAsync(new SendRequest
             {
                 Email = email,
-                DocumentJson = response.DocumentJson
+                DocumentJson = response.DocumentJson,
+                SendNotification = true
             });
 
             await stepContext.Context.SendActivityAsync("Congratulations! I've sent you a verification credential to your email!",

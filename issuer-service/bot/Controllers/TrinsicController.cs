@@ -1,8 +1,6 @@
 using System.IO;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Trinsic;
 using Trinsic.Services.VerifiableCredentials.V1;
 
