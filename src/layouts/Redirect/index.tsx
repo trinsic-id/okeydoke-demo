@@ -83,8 +83,13 @@ export const Redirect = () => {
                     // });
 
                     if (
-                        verifyResp.isValid &&
-                        verifyResp.validationResults["CredentialStatus"].isValid
+                        // verifyResp.isValid &&
+                        verifyResp.validationResults["CredentialStatus"]
+                            .isValid &&
+                        verifyResp.validationResults["IssuerIsSigner"]
+                            .isValid &&
+                        verifyResp.validationResults["SignatureVerification"]
+                            .isValid
                     ) {
                         setUserCredential(credential);
                         toggleVerifyingLoading(true);
