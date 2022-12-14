@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build
 
-FROM nginx:1.20.2
+FROM nginx:1.23.3
 
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/build/ /usr/share/nginx/html
