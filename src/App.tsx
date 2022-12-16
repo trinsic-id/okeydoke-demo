@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Home } from "./layouts/Home";
+import { Registries } from "./layouts/Registries";
 const queryClient = new QueryClient();
 function App() {
     return (
@@ -11,7 +11,7 @@ function App() {
             <Router>
                 <div className="w-screen h-screen flex flex-col">
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/" element={<Registries />} />
                     </Routes>
                 </div>
             </Router>
