@@ -9,12 +9,13 @@ import { RegistryTableRow } from "./RegistryTableRow";
 export const RegistryTable = () => {
     const registries = useRecoilValue(trustRegistryState);
     const [isSortNameUp, toggleSortNameUp] = useToggle(true);
-    const sortedRegistries = useMemo(() => {
-        if (isSortNameUp)
-            return sortBy(registries, (item) => item.name).reverse();
-
-        return sortBy(registries, (item) => item.name);
-    }, [registries, isSortNameUp]);
+    const sortedRegistries = useMemo(
+        () =>
+            isSortNameUp
+                ? sortBy(registries, (item) => item.name)
+                : sortBy(registries, (item) => item.name).reverse(),
+        [registries, isSortNameUp]
+    );
 
     return (
         <div className="w-full flex flex-col divide-y divide-black rounded-lg border-black border p-2">
