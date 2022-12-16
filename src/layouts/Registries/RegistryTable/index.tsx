@@ -11,7 +11,7 @@ export const RegistryTable = () => {
     const [isSortNameUp, toggleSortNameUp] = useToggle(true);
 
     return (
-        <div className="w-full flex-1 flex flex-col divide-y divide-black rounded-lg border-black border p-2">
+        <div className="w-full flex flex-col divide-y divide-black rounded-lg border-black border p-2">
             <div className="w-full flex flex-row p-2">
                 <div
                     className="flex flex-row gap-2 items-center cursor-pointer w-1/3"
@@ -35,6 +35,7 @@ export const RegistryTable = () => {
             {registries.map((registry, idx) => (
                 <RegistryTableRow key={idx} registry={registry} />
             ))}
+            <div></div>
         </div>
     );
 };
