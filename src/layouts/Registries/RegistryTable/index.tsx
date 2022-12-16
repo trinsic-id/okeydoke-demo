@@ -9,6 +9,12 @@ import { RegistryTableRow } from "./RegistryTableRow";
 export const RegistryTable = () => {
     const registries = useRecoilValue(trustRegistryState);
     const [isSortNameUp, toggleSortNameUp] = useToggle(true);
+    const sortedRegistries = useMemo(() => {
+        if (isSortNameUp)
+            return sortBy(registries, (item) => item.name).reverse();
+
+        return sortBy(registries, (item) => item.name);
+    }, [registries, isSortNameUp]);
 
     return (
         <div className="w-full flex flex-col divide-y divide-black rounded-lg border-black border p-2">
@@ -32,7 +38,7 @@ export const RegistryTable = () => {
                     Templates
                 </div>
             </div>
-            {registries.map((registry, idx) => (
+            {sortedRegistries.map((registry, idx) => (
                 <RegistryTableRow key={idx} registry={registry} />
             ))}
             <div></div>
