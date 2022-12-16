@@ -1,7 +1,7 @@
 import { useSetRecoilState } from "recoil";
-import { selectedTrustRegistryNameState } from "../../atoms/registries";
-import { useRegistryStats } from "../../hooks/custom/useRegistryStats";
-import { TrustRegistry } from "../../models/registries";
+import { selectedTrustRegistryNameState } from "../../../atoms/registries";
+import { useRegistryStats } from "../../../hooks/custom/useRegistryStats";
+import { TrustRegistry } from "../../../models/registries";
 
 interface RegistryTableRowProps {
     registry: TrustRegistry;

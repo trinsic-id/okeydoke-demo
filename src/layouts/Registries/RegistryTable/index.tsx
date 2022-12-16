@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { ChevronUp } from "react-feather";
 import { useToggle } from "react-use";
 import { useRecoilValue } from "recoil";
-import { trustRegistryState } from "../../atoms/registries";
+import { trustRegistryState } from "../../../atoms/registries";
 import { RegistryTableRow } from "./RegistryTableRow";
 
 export const RegistryTable = () => {
