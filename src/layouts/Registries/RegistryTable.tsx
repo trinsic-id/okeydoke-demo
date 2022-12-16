@@ -10,14 +10,6 @@ export const RegistryTable = () => {
     const registries = useRecoilValue(trustRegistryState);
     const [isSortNameUp, toggleSortNameUp] = useToggle(true);
 
-    // const sortedRegistries = useMemo(
-    //     () =>
-    //         isSortNameUp
-    //             ? sortBy(registries, [{ name: "asc" }])
-    //             : sortBy(registries, [{ name: "desc" }]),
-    //     [registries, isSortNameUp]
-    // );
-
     return (
         <div className="w-full flex-1 flex flex-col divide-y divide-black rounded-lg border-black border p-2">
             <div className="w-full flex flex-row p-2">
