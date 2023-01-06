@@ -14,7 +14,7 @@ function App() {
                     <div className="hidden md:block w-12 lg:w-[60px] h-full">
                         <Sidebar />
                     </div>
-                    <div className="flex-1 h-full">
+                    <div className="flex-1 h-full shadow-xl">
                         <Routes>
                             <Route path="/" element={<Home />} />
                         </Routes>
