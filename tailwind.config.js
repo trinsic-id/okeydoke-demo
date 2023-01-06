@@ -16,6 +16,7 @@ module.exports = {
                 "catalog-bg": "#e8e8e8",
                 "gold-star": "#FFD700",
                 "light-gold": "#FFED8A",
+                "pairs-bg": "#E5E5E5",
             },
             backgroundImage: {
                 "home-bg": "url('./img/background.png')",

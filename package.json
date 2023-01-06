@@ -14,6 +14,7 @@
         "@types/react-dom": "^18.0.6",
         "dayjs": "^1.11.6",
         "framer-motion": "^7.6.5",
+        "framer-motion-carousel": "^2.0.1",
         "lodash": "^4.17.21",
         "oidc-client-ts": "^2.1.0",
         "react": "^18.2.0",
