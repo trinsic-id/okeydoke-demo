@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { IllustrationOptions } from ".";
+
 import { useRecoilState, useRecoilValue } from "recoil";
-import { illustrationSelectorState } from "../../atoms/onboarding";
+import {
+    IllustrationOptions,
+    illustrationSelectorState,
+} from "../../atoms/onboarding";
 
 export const IllustrationSelector = () => {
     const [selectedIllustration, setSelectedIllustration] = useRecoilState(

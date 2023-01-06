@@ -9,17 +9,9 @@ import { Tabs } from "./Tabs";
 import { LaunchEcosystem } from "./Illustrations/LaunchEcosystem";
 import { EcosystemArchitecture } from "./Illustrations/EcosystemArchitecture";
 import { IllustrationSelector } from "./IllustrationSelector";
+import { IllustrationOptions } from "../../atoms/onboarding";
 
 const carouselItems = 6;
-
-export enum IllustrationOptions {
-    CreateTemplate,
-    InviteIssuer,
-    InviteVerifier,
-    GovernanceFramework,
-    IntegrateOIDC,
-    IntegrateSDK,
-}
 
 export const Home = () => {
     const [activeIndex, setActiveIndex] = useState<IllustrationOptions>(0);

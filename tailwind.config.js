@@ -3,8 +3,8 @@ module.exports = {
     content: ["./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
         fontFamily: {
-            sans: ['"ProximaNova"'],
-            serif: ['"ProximaNova"'],
+            sans: ['"Inter var"'],
+            serif: ['"Inter var"'],
         },
         extend: {
             colors: {

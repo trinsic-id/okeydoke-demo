@@ -1,5 +1,13 @@
 import { atom } from "recoil";
-import { IllustrationOptions } from "../layouts/Home";
+
+export enum IllustrationOptions {
+    CreateTemplate,
+    InviteIssuer,
+    InviteVerifier,
+    GovernanceFramework,
+    IntegrateOIDC,
+    IntegrateSDK,
+}
 
 export const illustrationSelectorState = atom<IllustrationOptions>({
     key: "illustration-state",
