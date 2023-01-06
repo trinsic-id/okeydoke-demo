@@ -14,7 +14,7 @@ export const IllustrationSelector = () => {
     return (
         <div className="w-full flex flex-col">
             <div
-                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer  ${
+                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer transition-colors duration-300   ${
                     selectedIllustration === IllustrationOptions.CreateTemplate
                         ? "border-blue-600"
                         : "border-gray-300"
@@ -31,7 +31,7 @@ export const IllustrationSelector = () => {
                 </div>
             </div>
             <div
-                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer ${
+                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer transition-colors duration-300 ${
                     selectedIllustration === IllustrationOptions.InviteIssuer
                         ? "border-blue-600"
                         : "border-gray-300"
@@ -43,7 +43,7 @@ export const IllustrationSelector = () => {
                 <div className="font-semibold text-base">Invite an Issuer</div>
             </div>
             <div
-                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer ${
+                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer transition-colors duration-300 ${
                     selectedIllustration === IllustrationOptions.InviteVerifier
                         ? "border-blue-600"
                         : "border-gray-300"
@@ -55,7 +55,7 @@ export const IllustrationSelector = () => {
                 <div className="font-semibold text-base">Invite a Verifier</div>
             </div>
             <div
-                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer ${
+                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer transition-colors duration-300 ${
                     selectedIllustration ===
                     IllustrationOptions.GovernanceFramework
                         ? "border-blue-600"
@@ -72,7 +72,7 @@ export const IllustrationSelector = () => {
                 </div>
             </div>
             <div
-                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer ${
+                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer transition-colors duration-300 ${
                     selectedIllustration === IllustrationOptions.IntegrateOIDC
                         ? "border-blue-600"
                         : "border-gray-300"
@@ -86,7 +86,7 @@ export const IllustrationSelector = () => {
                 </div>
             </div>
             <div
-                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer ${
+                className={`flex flex-col items-start gap-1 py-3 px-4 border-l-2 cursor-pointer transition-colors duration-300 ${
                     selectedIllustration === IllustrationOptions.IntegrateSDK
                         ? "border-blue-600"
                         : "border-gray-300"
