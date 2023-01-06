@@ -18,7 +18,7 @@ export const Home = () => {
 
     return (
         <div className="flex flex-row h-full">
-            <div className="w-full lg:max-w-lg h-full p-5 md:py-8 md:px-12 flex flex-col gap-6 bg-white">
+            <div className="w-full lg:max-w-lg xl:max-w-xl h-full p-5 md:py-8 md:px-12 flex flex-col gap-6 bg-white">
                 <div className="w-full flex flex-row items-start justify-between">
                     <div className="flex flex-col items-start gap-6">
                         <BackButton />
