@@ -185,7 +185,7 @@ public class LicenseDialog : ComponentDialog
 
             await stepContext.Context.SendActivityAsync("Congratulations! I've sent you a verification credential to your email!",
                 cancellationToken: cancellationToken);
-            await stepContext.Context.SendActivityAsync("Read more on how you can use the license at https://example.com!",
+            await stepContext.Context.SendActivityAsync("Read more on how you can use the license at https://demo.okeydoke.io/!",
                 cancellationToken: cancellationToken);
         }
         catch (Exception e)
