@@ -14,6 +14,7 @@ const handleVerifyCredential = async (
         {
             method: "POST",
             body: JSON.stringify(derivedProof),
+            mode: "no-cors",
         }
     );
 
