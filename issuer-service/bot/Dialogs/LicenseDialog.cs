@@ -172,7 +172,7 @@ public class LicenseDialog : ComponentDialog
             });
             var response = await _trinsicService.Credential.IssueFromTemplateAsync(new IssueFromTemplateRequest()
             {
-                TemplateId = "urn:template:okiedoke:food-salvager-license",
+                TemplateId = "urn:template:okeydoke:foodsalvagerlicense",
                 ValuesJson = values
             });
 
