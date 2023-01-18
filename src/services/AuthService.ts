@@ -3,13 +3,13 @@ import { CredentialDerivedProof } from "../models/credential";
 
 const clientRoot: string = `${window.location.origin}/`;
 
-export const defaultEcosystem = "okiedoke";
+export const defaultEcosystem = "okeydoke";
 export const defaultSchema =
-    "https://schema.trinsic.cloud/okiedoke/food-salvager-license";
+    "https://schema.trinsic.cloud/okeydoke/foodsalvagerlicense";
 
 export const defaultAuthSettings = {
     authority: "https://connect.trinsic.cloud",
-    client_id: "okie-dokie",
+    client_id: "okeydoke",
     redirect_uri: `${clientRoot}redirect`,
     silent_redirect_uri: `${clientRoot}silent-renew`,
     post_logout_redirect_uri: `${clientRoot}`,
