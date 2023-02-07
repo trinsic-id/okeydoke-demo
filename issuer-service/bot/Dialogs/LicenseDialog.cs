@@ -22,7 +22,7 @@ public class LicenseDialog : ComponentDialog
     private readonly TrinsicService _trinsicService;
     private readonly IStatePropertyAccessor<FoodSalvagerLicense> _foodLicenseAccessor;
 
-    public LicenseDialog(TrinsicService trinsicService, UserState userState, AddressDialog addressDialog)
+    public LicenseDialog(TrinsicService trinsicService, UserState userState, AddressDialog addressDialog, ImageDialog imageDialog)
         : base(nameof(LicenseDialog))
     {
         _trinsicService = trinsicService;
@@ -34,6 +34,9 @@ public class LicenseDialog : ComponentDialog
             GradeStepAsync,
             NameStepAsync,
             IdNumberStepAsync,
+            PromptImageStepAsync,
+            ImageStepAsync,
+            HandleImageStepAsync,
             PromptAddressStepAsync,
             AddressStepAsync,
             ProduceTypeAsync,
@@ -48,7 +51,9 @@ public class LicenseDialog : ComponentDialog
         AddDialog(new TextPrompt(nameof(TextPrompt)));
         AddDialog(new ChoicePrompt(nameof(ChoicePrompt)));
         AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
+        AddDialog(new AttachmentPrompt(nameof(AttachmentPrompt)));
         AddDialog(addressDialog);
+        AddDialog(imageDialog);
 
         // The initial child Dialog to run.
         InitialDialogId = nameof(WaterfallDialog);
@@ -82,11 +87,43 @@ public class LicenseDialog : ComponentDialog
 
         return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("What is your Federal ID Number?") }, cancellationToken);
     }
-
-    private static async Task<DialogTurnResult> PromptAddressStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+    
+    private static async Task<DialogTurnResult> PromptImageStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
     {
         stepContext.Values["idNumber"] = (string)stepContext.Result;
 
+        return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions { Prompt = MessageFactory.Text("Would you like to upload a business logo?") }, cancellationToken);
+    }
+
+    private static async Task<DialogTurnResult> ImageStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+    {
+        if ((bool)stepContext.Result)
+        {
+            return await stepContext.BeginDialogAsync(nameof(ImageDialog), new PromptOptions { Prompt = MessageFactory.Text("Please enter your street address.") }, cancellationToken);
+        }
+        else
+        {
+            return await stepContext.NextAsync(null, cancellationToken);
+        }
+    }
+    
+    private static async Task<DialogTurnResult> HandleImageStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+    {
+        if (stepContext.Result is Exception e)
+        {
+            await stepContext.Context.SendActivityAsync(e.Message, cancellationToken: cancellationToken);
+            return await stepContext.CancelAllDialogsAsync(cancellationToken);
+        } else if (stepContext.Result is string fileLocation)
+        {
+            stepContext.Values["businessLogo"] = fileLocation;
+        }
+
+        return await stepContext.NextAsync(null, cancellationToken);
+    }
+
+
+    private static async Task<DialogTurnResult> PromptAddressStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+    {
         return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions { Prompt = MessageFactory.Text("Would you like to provide an address?") }, cancellationToken);
     }
 
@@ -123,6 +160,9 @@ public class LicenseDialog : ComponentDialog
         foodLicense.CertificationGrade = (string)stepContext.Values["certificationGrade"];
         foodLicense.IdNumber = (string)stepContext.Values["idNumber"];
         foodLicense.ProduceType = (string)stepContext.Values["produceType"];
+
+        if (stepContext.Values.ContainsKey("businessLogo"))
+            foodLicense.BusinessLogo = (string)stepContext.Values["businessLogo"];
 
         await stepContext.Context.SendActivityAsync("Here are the details of your application. Please review if the information is correct", cancellationToken: cancellationToken);
 
@@ -185,7 +225,7 @@ public class LicenseDialog : ComponentDialog
 
             await stepContext.Context.SendActivityAsync("Congratulations! I've sent you a verification credential to your email!",
                 cancellationToken: cancellationToken);
-            await stepContext.Context.SendActivityAsync("Read more on how you can use the license at https://demo.okeydoke.io/!",
+            await stepContext.Context.SendActivityAsync("You can now share your credential with https://demo.okeydoke.io/!",
                 cancellationToken: cancellationToken);
         }
         catch (Exception e)
