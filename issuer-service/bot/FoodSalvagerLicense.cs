@@ -17,4 +17,5 @@ public class FoodSalvagerLicense
     public string CertificationGrade { get; set; }
     public string Name { get; set; }
     public string ProduceType { get; set; }
+    public string BusinessLogo { get; set; }
 }
