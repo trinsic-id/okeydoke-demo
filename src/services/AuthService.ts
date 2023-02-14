@@ -1,5 +1,6 @@
 import { IdTokenClaims, Log, User, UserManager } from "oidc-client-ts";
 import { CredentialDerivedProof } from "../models/credential";
+import { generateSettings } from "../utils/generateSettings";
 
 const clientRoot: string = `${window.location.origin}/`;
 
@@ -51,3 +52,5 @@ export class AuthService {
         console.log("Logged in user", user);
     }
 }
+
+export const authService = new AuthService(generateSettings());

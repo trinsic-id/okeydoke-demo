@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import HashLoader from "react-spinners/HashLoader";
 import { useToggle } from "react-use";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
@@ -13,16 +14,10 @@ import {
     authStateState,
     userCredentialState,
 } from "../../atoms/user";
-import { LoadingItem } from "../../components/LoadingItem";
-import { CredentialDerivedProof } from "../../models/credential";
-import { AuthService, defaultAuthSettings } from "../../services/AuthService";
-import { generateSettings } from "../../utils/generateSettings";
-import { CredentialIssued } from "./CredentialIssued";
-import { ErrorModal } from "./ErrorModal";
-import { MemberLevelSuccess } from "./MemberLevelSuccess";
-import Spinner from "react-spinkit";
 import { useVerifyCredential } from "../../hooks/queries/useVerifyCredential";
-import HashLoader from "react-spinners/HashLoader";
+import { CredentialDerivedProof } from "../../models/credential";
+import { authService } from "../../services/AuthService";
+import { ErrorModal } from "./ErrorModal";
 
 export const Redirect = () => {
     const [isVerifyingLoading, toggleVerifyingLoading] = useToggle(false);
@@ -49,15 +44,6 @@ export const Redirect = () => {
         const error = searchParams.get("error");
         if (error !== null) return setModalVisible(true);
 
-        let settings: typeof defaultAuthSettings;
-        if (authSettings)
-            settings = generateSettings(
-                authSettings.ecosystem,
-                authSettings.schema
-            );
-        else settings = generateSettings();
-
-        const authService = new AuthService(settings);
         authService
             .signinRedirect()
             .catch(() => {
@@ -106,7 +92,7 @@ export const Redirect = () => {
 
     return (
         <div
-            className={`w-full h-full flex flex-col items-center place-content-center space-y-5 p-3`}
+            className={`flex h-full w-full flex-col place-content-center items-center space-y-5 p-3`}
         >
             <div className="flex flex-row items-center">
                 <HashLoader
@@ -119,7 +105,7 @@ export const Redirect = () => {
                     Verifying credential
                 </div>
                 <HashLoader
-                    className="transform -scale-x-50"
+                    className="-scale-x-50 transform"
                     size={"24"}
                     color="#828282"
                     cssOverride={{ width: 40, height: 48 }}
