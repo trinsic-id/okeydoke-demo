@@ -1,40 +1,51 @@
-import { CheckSquare } from "react-feather";
 import { useRecoilValue } from "recoil";
 import {
+    businessLogoState,
     memberLevelState,
     memberProduceState,
     userAddressState,
 } from "../../atoms/member";
-import { ProduceType } from "../../data/products";
 import { MemberLevelSuccess } from "../Redirect/MemberLevelSuccess";
 
 export const DisclosedFields = () => {
     const memberLevel = useRecoilValue(memberLevelState);
     const userAddress = useRecoilValue(userAddressState);
     const memberProduce = useRecoilValue(memberProduceState);
+    const businessLogo = useRecoilValue(businessLogoState);
+
     return (
-        <div className="flex flex-col items-start space-y-4 w-full">
+        <div className="flex w-full flex-col items-start space-y-4">
+            {businessLogo && (
+                <div className="flex w-full flex-row items-center justify-between">
+                    <div className="w-full text-base font-light leading-tight sm:text-lg">
+                        Business profile:
+                    </div>
+
+                    <img src={businessLogo} className="h-6 w-auto rounded-lg" />
+                </div>
+            )}
+
             {memberLevel ? (
                 <MemberLevelSuccess />
             ) : (
                 <>
                     {memberProduce ? (
-                        <div className="w-full flex flex-row items-center justify-between">
-                            <div className="font-light leading-tight text-base sm:text-lg w-full">
+                        <div className="flex w-full flex-row items-center justify-between">
+                            <div className="w-full text-base font-light leading-tight sm:text-lg">
                                 Produce type:
                             </div>
 
-                            <div className="leading-tight text-base sm:text-lg rounded-lg flex items-center whitespace-nowrap">
+                            <div className="flex items-center whitespace-nowrap rounded-lg text-base leading-tight sm:text-lg">
                                 {memberProduce}
                             </div>
                         </div>
                     ) : (
-                        <div className="w-full flex flex-row items-center justify-between">
-                            <div className="font-light leading-tight text-base sm:text-lg w-full">
+                        <div className="flex w-full flex-row items-center justify-between">
+                            <div className="w-full text-base font-light leading-tight sm:text-lg">
                                 Produce type:
                             </div>
 
-                            <div className="leading-tight text-base sm:text-lg rounded-lg flex items-center whitespace-nowrap">
+                            <div className="flex items-center whitespace-nowrap rounded-lg text-base leading-tight sm:text-lg">
                                 {`-`}
                             </div>
                         </div>
@@ -42,34 +53,34 @@ export const DisclosedFields = () => {
                 </>
             )}
             {userAddress?.address && (
-                <div className="w-full flex flex-row items-center justify-between">
-                    <div className="font-light leading-tight text-base sm:text-lg w-full">
+                <div className="flex w-full flex-row items-center justify-between">
+                    <div className="w-full text-base font-light leading-tight sm:text-lg">
                         Address:
                     </div>
 
-                    <div className="leading-tight text-base sm:text-lg rounded-lg flex items-center whitespace-nowrap">
+                    <div className="flex items-center whitespace-nowrap rounded-lg text-base leading-tight sm:text-lg">
                         {userAddress.address}
                     </div>
                 </div>
             )}
             {userAddress?.city && (
-                <div className="w-full flex flex-row items-center justify-between">
-                    <div className="font-light leading-tight text-base sm:text-lg w-full">
+                <div className="flex w-full flex-row items-center justify-between">
+                    <div className="w-full text-base font-light leading-tight sm:text-lg">
                         City:
                     </div>
 
-                    <div className="leading-tight text-base sm:text-lg rounded-lg flex items-center whitespace-nowrap">
+                    <div className="flex items-center whitespace-nowrap rounded-lg text-base leading-tight sm:text-lg">
                         {userAddress.city}
                     </div>
                 </div>
             )}
             {userAddress?.state && (
-                <div className="w-full flex flex-row items-center justify-between">
-                    <div className="font-light leading-tight text-base sm:text-lg w-full">
+                <div className="flex w-full flex-row items-center justify-between">
+                    <div className="w-full text-base font-light leading-tight sm:text-lg">
                         State:
                     </div>
 
-                    <div className="leading-tight text-base sm:text-lg rounded-lg flex items-center whitespace-nowrap">
+                    <div className="flex items-center whitespace-nowrap rounded-lg text-base leading-tight sm:text-lg">
                         {userAddress.state}
                     </div>
                 </div>
