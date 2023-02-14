@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
 import { CredentialDerivedProof } from "../../models/credential";
 
 type VerifyCredentialProps = {
@@ -9,14 +9,10 @@ const handleVerifyCredential = async (
     derivedProof: VerifyCredentialProps["derivedProof"]
 ): Promise<any> => {
     console.log(JSON.stringify(derivedProof));
-    const response = await fetch(
-        `${process.env.REACT_APP_VERIFY_ENDPOINT}/api/trinsic/verify`,
-        {
-            method: "POST",
-            body: JSON.stringify(derivedProof),
-            mode: "no-cors",
-        }
-    );
+    const response = await fetch(`http://localhost:3978/api/trinsic/verify`, {
+        method: "POST",
+        body: JSON.stringify(derivedProof),
+    });
 
     if (!response.ok) {
         throw Error("Unable to verify credential.");
