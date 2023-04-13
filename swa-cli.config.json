@@ -8,7 +8,8 @@
       "run": "npm start",
       "appDevserverUrl": "http://localhost:3000",
       "appName": "okeydokey-demo",
-      "resourceGroupName": "trinsic-okeydokey-demo"
+      "resourceGroupName": "trinsic-okeydokey-demo",
+      "resourceGroup": "trinsic-okeydokey-demo"
     }
   }
 }

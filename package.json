@@ -58,6 +58,7 @@
         ]
     },
     "devDependencies": {
+        "@azure/static-web-apps-cli": "1.0.4",
         "@craco/craco": "^7.0.0",
         "@types/lodash": "^4.14.188",
         "@types/react-spinkit": "^3.0.7",
