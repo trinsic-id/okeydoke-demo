@@ -28,7 +28,14 @@ const Header = () => {
     return isVisible ? (
         <div className="flex w-full flex-row items-center justify-between border-b border-gray-300 p-4 pb-2">
             <Link to="/">
-                <div className="text-2xl font-medium">OkeyDoke</div>
+                <div className="flex flex-col items-start justify-between">
+                    <div className="text-2xl font-medium">
+                        Seeds R'Us
+                    </div>
+                    <div className="text-xs font-medium">
+                        Part of the <b>OkeyDoke</b> ecosystem
+                    </div>
+                </div>
             </Link>
             <div className="flex flex-row items-center space-x-4">
                 {businessLogo && (
