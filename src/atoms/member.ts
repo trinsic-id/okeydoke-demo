@@ -30,6 +30,28 @@ export const memberProduceState = selector<ProduceType | undefined>({
     },
 });
 
+const isValidHttpUrl = (str: string) => {
+    let url;
+    try {
+        url = new URL(str);
+    } catch (_) {
+        return false;
+    }
+    return url.protocol === "http:" || url.protocol === "https:";
+};
+
+export const businessLogoState = selector<string | undefined>({
+    key: "business-produce-state",
+    get: ({ get }) => {
+        const userCredential = get(userCredentialState);
+        if (!userCredential?.credentialSubject.businessLogo) return undefined;
+
+        if (!isValidHttpUrl(userCredential?.credentialSubject.businessLogo))
+            return undefined;
+        return userCredential.credentialSubject.businessLogo;
+    },
+});
+
 interface MemberLevelObj {
     isGoldMember: boolean;
     isSilverMember: boolean;

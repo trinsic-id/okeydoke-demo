@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useMemo } from "react";
 import { AlertTriangle } from "react-feather";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -9,8 +9,7 @@ import {
     isRedirectVerifyCredentialErrorState,
 } from "../../atoms/modals";
 import { useLockBg } from "../../hooks/custom/useLockBackground";
-import { AuthService, defaultAuthSettings } from "../../services/AuthService";
-import { generateSettings } from "../../utils/generateSettings";
+import { authService } from "../../services/AuthService";
 
 const Animations = {
     container: {
@@ -50,7 +49,7 @@ export const ErrorModal = () => {
         return errorDesc ?? "Invalid state value";
     }, [searchParams, isVerifyError]);
     return (
-        <div className="max-w-x2s md:max-w-xs overflow-hidden">
+        <div className="max-w-x2s overflow-hidden md:max-w-xs">
             <AnimatePresence>
                 {isVisible ? (
                     <motion.div
@@ -60,29 +59,29 @@ export const ErrorModal = () => {
                         animate="visible"
                         exit="hidden"
                     >
-                        <div className="absolute top-0 bottom-0 left-0 right-0 bg-opacity-50 bg-black z-30 cursor-pointer"></div>
-                        <div className="w-full z-40 p-4 flex items-center justify-center">
+                        <div className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"></div>
+                        <div className="z-40 flex w-full items-center justify-center p-4">
                             <motion.div
-                                className="bg-white w-full max-w-md rounded-lg shadow-lg"
+                                className="w-full max-w-md rounded-lg bg-white shadow-lg"
                                 variants={Animations.inputContainer}
                             >
                                 <div className="p-4 md:p-6">
-                                    <div className="w-full flex flex-col items-start space-y-4 pt-2">
-                                        <div className="flex flex-row bg-red-100 rounded-lg w-full p-4">
-                                            <div className="flex-1 flex flex-col space-y-2 items-start">
+                                    <div className="flex w-full flex-col items-start space-y-4 pt-2">
+                                        <div className="flex w-full flex-row rounded-lg bg-red-100 p-4">
+                                            <div className="flex flex-1 flex-col items-start space-y-2">
                                                 <div className="flex flex-row items-center space-x-4">
                                                     <AlertTriangle
                                                         size={18}
                                                         className="stroke-red-600"
                                                     />
-                                                    <div className="text-red-600 text-base">
+                                                    <div className="text-base text-red-600">
                                                         {errorMsg}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <button
-                                            className="w-full h-full border-blue-500 border-2 rounded-lg text-blue-500 px-4 py-3 flex flex-row items-center space-x-6"
+                                            className="flex h-full w-full flex-row items-center space-x-6 rounded-lg border-2 border-blue-500 px-4 py-3 text-blue-500"
                                             onClick={() => {
                                                 window.location.href =
                                                     "https://webapp-221109133537.azurewebsites.net/";
@@ -92,28 +91,16 @@ export const ErrorModal = () => {
                                                 src="images/trinsic-logo-blue.png"
                                                 className="w-6"
                                             />
-                                            <div className="text-blue-500 font-medium text-lg flex-1 pr-12">
+                                            <div className="flex-1 pr-12 text-lg font-medium text-blue-500">
                                                 {"Get a credential"}
                                             </div>
                                         </button>
                                         <button
-                                            className="w-full h-full bg-blue-500 rounded-lg text-white px-4 py-3 flex flex-row items-center space-x-6"
+                                            className="flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-blue-500 px-4 py-3 text-white"
                                             onClick={() => {
                                                 setVerifyError(false);
                                                 setIsVisible(false);
-                                                let settings: typeof defaultAuthSettings;
-                                                if (authSettings) {
-                                                    settings = generateSettings(
-                                                        authSettings.ecosystem,
-                                                        authSettings.schema
-                                                    );
-                                                } else {
-                                                    settings =
-                                                        generateSettings();
-                                                }
 
-                                                const authService =
-                                                    new AuthService(settings);
                                                 authService.login();
                                             }}
                                         >
@@ -121,12 +108,12 @@ export const ErrorModal = () => {
                                                 src="images/trinsic-logo-white.png"
                                                 className="w-6"
                                             />
-                                            <div className="text-white font-medium text-lg flex-1 pr-12">
+                                            <div className="flex-1 pr-12 text-lg font-medium text-white">
                                                 Try again
                                             </div>
                                         </button>
                                         <button
-                                            className="w-full h-full bg-gray-500 rounded-lg text-white px-4 py-3 flex flex-row items-center space-x-6"
+                                            className="flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-gray-500 px-4 py-3 text-white"
                                             onClick={() => {
                                                 setVerifyError(false);
                                                 setIsVisible(false);
@@ -137,7 +124,7 @@ export const ErrorModal = () => {
                                                 src="images/trinsic-logo-white.png"
                                                 className="w-6 opacity-0"
                                             />
-                                            <div className="text-white font-medium text-lg flex-1 pr-12">
+                                            <div className="flex-1 pr-12 text-lg font-medium text-white">
                                                 Back to store
                                             </div>
                                         </button>

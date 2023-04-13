@@ -1,13 +1,13 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-use";
 import { useRecoilValue } from "recoil";
 import { CartButton } from "./CartButton";
-import { useLocation } from "react-use";
 
-import { memberLevelState } from "../../atoms/member";
-import { cartTotalState } from "../../atoms/cart";
-import { AuthState, authStateState } from "../../atoms/user";
 import { LogOut } from "react-feather";
+import { cartTotalState } from "../../atoms/cart";
+import { businessLogoState, memberLevelState } from "../../atoms/member";
+import { AuthState, authStateState } from "../../atoms/user";
 import { useLogout } from "../../hooks/custom/useLogOut";
 
 const Header = () => {
@@ -22,21 +22,33 @@ const Header = () => {
     }, [location.pathname]);
 
     const isCredentialVerified = useRecoilValue(authStateState);
+    const businessLogo = useRecoilValue(businessLogoState);
+
     const resetEverything = useLogout();
     return isVisible ? (
-        <div className="flex flex-row items-center justify-between w-full border-b border-gray-300 pb-2 p-4">
+        <div className="flex w-full flex-row items-center justify-between border-b border-gray-300 p-4 pb-2">
             <Link to="/">
-                <div className="text-2xl font-medium">OkeyDoke</div>
+                <div className="flex flex-col items-start justify-between">
+                    <div className="text-2xl font-medium">
+                        Seeds R'Us
+                    </div>
+                    <div className="text-xs font-medium">
+                        Part of the <b>OkeyDoke</b> ecosystem
+                    </div>
+                </div>
             </Link>
-            <div className="flex flex-row space-x-4 items-center">
+            <div className="flex flex-row items-center space-x-4">
+                {businessLogo && (
+                    <img src={businessLogo} className="h-6 w-auto rounded-lg" />
+                )}
                 {totalQty || memberLevel ? <CartButton /> : <CartButton />}
                 {isCredentialVerified === AuthState.VERIFIED && (
                     <div
-                        className="flex flex-row items-center space-x-2 cursor-pointer"
+                        className="flex cursor-pointer flex-row items-center space-x-2"
                         onClick={resetEverything}
                     >
                         <LogOut size={22} className="stroke-black" />
-                        <div className="text-md text-black font-semibold">
+                        <div className="text-md font-semibold text-black">
                             Log out
                         </div>
                     </div>

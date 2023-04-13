@@ -32,6 +32,12 @@ public class CardUtils
             receiptCard.Facts.Add(new Fact("State", license.State));
         }
 
+        if (!string.IsNullOrWhiteSpace(license.BusinessLogo))
+        {
+            receiptCard.Items = new List<ReceiptItem>();
+            receiptCard.Items.Add(new ReceiptItem(image: new CardImage(license.BusinessLogo)));
+        }
+
         return receiptCard;
     }
 }

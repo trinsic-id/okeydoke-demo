@@ -1,11 +1,10 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { AlertOctagon, X } from "react-feather";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { authSettingsState } from "../../atoms/authService";
 import { isVerifyCredentialModalVisibleState } from "../../atoms/modals";
 import { useLockBg } from "../../hooks/custom/useLockBackground";
-import { AuthService, defaultAuthSettings } from "../../services/AuthService";
-import { generateSettings } from "../../utils/generateSettings";
+import { authService } from "../../services/AuthService";
 import { BronzeMember } from "./BronzeMember";
 import { GoldMember } from "./GoldMember";
 import { SilverMember } from "./SilverMember";
@@ -38,7 +37,7 @@ export const VerifyCredentialModal = () => {
     useLockBg(isVisible);
     const authSettings = useRecoilValue(authSettingsState);
     return (
-        <div className="max-w-x2s md:max-w-xs overflow-hidden">
+        <div className="max-w-x2s overflow-hidden md:max-w-xs">
             <AnimatePresence>
                 {isVisible ? (
                     <motion.div
@@ -48,21 +47,21 @@ export const VerifyCredentialModal = () => {
                         animate="visible"
                         exit="hidden"
                     >
-                        <div className="absolute top-0 bottom-0 left-0 right-0 bg-opacity-50 bg-black z-30 cursor-pointer"></div>
-                        <div className="w-full z-40 p-4 flex items-center justify-center">
+                        <div className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"></div>
+                        <div className="z-40 flex w-full items-center justify-center p-4">
                             <motion.div
-                                className="bg-white w-full max-w-md rounded-lg shadow-lg"
+                                className="w-full max-w-md rounded-lg bg-white shadow-lg"
                                 variants={Animations.inputContainer}
                             >
                                 <div className="p-4 md:p-6">
                                     <div className="flex items-start justify-between">
                                         <div className="flex flex-row items-center">
-                                            <h6 className="text-black font-semibold text-xl">
+                                            <h6 className="text-xl font-semibold text-black">
                                                 Verification recommended
                                             </h6>
                                         </div>
                                         <button
-                                            className="focus:outline-none text-gray-50 ml-6"
+                                            className="ml-6 text-gray-50 focus:outline-none"
                                             onClick={() => {
                                                 setModalVisible(false);
                                             }}
@@ -73,13 +72,13 @@ export const VerifyCredentialModal = () => {
                                             />
                                         </button>
                                     </div>
-                                    <div className="w-full flex flex-col items-start space-y-4 pt-2">
+                                    <div className="flex w-full flex-col items-start space-y-4 pt-2">
                                         <GoldMember />
                                         <SilverMember />
                                         <BronzeMember />
-                                        <div className="flex flex-row bg-red-100 rounded-lg w-full p-4">
-                                            <div className="flex-1 flex flex-col space-y-2 items-start">
-                                                <div className="text-black text-lg">
+                                        <div className="flex w-full flex-row rounded-lg bg-red-100 p-4">
+                                            <div className="flex flex-1 flex-col items-start space-y-2">
+                                                <div className="text-lg text-black">
                                                     Recommended disclosures:
                                                 </div>
                                                 <div className="flex flex-row items-center space-x-4">
@@ -87,7 +86,7 @@ export const VerifyCredentialModal = () => {
                                                         size={18}
                                                         className="stroke-black"
                                                     />
-                                                    <div className="text-black text-base">
+                                                    <div className="text-base text-black">
                                                         Certification Grade
                                                     </div>
                                                 </div>
@@ -96,14 +95,14 @@ export const VerifyCredentialModal = () => {
                                                         size={18}
                                                         className="stroke-black"
                                                     />
-                                                    <div className="text-black text-base">
+                                                    <div className="text-base text-black">
                                                         Produce Type
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <button
-                                            className="w-full h-full group border-blue-500 hover:bg-blue-500 border-2 rounded-lg text-blue-500 px-4 py-3 flex flex-row items-center space-x-6"
+                                            className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg border-2 border-blue-500 px-4 py-3 text-blue-500 hover:bg-blue-500"
                                             onClick={() => {
                                                 window.location.href =
                                                     "https://webapp-221109133537.azurewebsites.net/";
@@ -112,47 +111,34 @@ export const VerifyCredentialModal = () => {
                                             <div className="relative">
                                                 <img
                                                     src="images/trinsic-logo-blue.png"
-                                                    className="w-6 block group-hover:hidden"
+                                                    className="block w-6 group-hover:hidden"
                                                 />
                                                 <img
                                                     src="images/trinsic-logo-white.png"
-                                                    className="w-6 hidden group-hover:block"
+                                                    className="hidden w-6 group-hover:block"
                                                 />
                                             </div>
-                                            <div className="text-blue-500 group-hover:text-white font-medium text-lg flex-1 pr-12">
+                                            <div className="flex-1 pr-12 text-lg font-medium text-blue-500 group-hover:text-white">
                                                 {"Get a credential"}
                                             </div>
                                         </button>
                                         <button
-                                            className="w-full h-full group bg-blue-500 hover:bg-white rounded-lg text-white hover:text-blue-500 hover:border-2 hover:border-blue-500 px-4 py-3 flex flex-row items-center space-x-6"
+                                            className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-blue-500 px-4 py-3 text-white hover:border-2 hover:border-blue-500 hover:bg-white hover:text-blue-500"
                                             onClick={() => {
-                                                let settings: typeof defaultAuthSettings;
-                                                if (authSettings) {
-                                                    settings = generateSettings(
-                                                        authSettings.ecosystem,
-                                                        authSettings.schema
-                                                    );
-                                                } else {
-                                                    settings =
-                                                        generateSettings();
-                                                }
-
-                                                const authService =
-                                                    new AuthService(settings);
                                                 authService.login();
                                             }}
                                         >
                                             <div className="relative">
                                                 <img
                                                     src="images/trinsic-logo-white.png"
-                                                    className="w-6 block group-hover:hidden"
+                                                    className="block w-6 group-hover:hidden"
                                                 />
                                                 <img
                                                     src="images/trinsic-logo-blue.png"
-                                                    className="w-6 hidden group-hover:block"
+                                                    className="hidden w-6 group-hover:block"
                                                 />
                                             </div>
-                                            <div className="font-medium text-lg flex-1 pr-12">
+                                            <div className="flex-1 pr-12 text-lg font-medium">
                                                 Verify your credential
                                             </div>
                                         </button>
