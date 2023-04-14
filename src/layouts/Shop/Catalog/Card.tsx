@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { selectedRateProductState } from "../../atoms/modals";
-import { VerifyCredential } from "../../components/BetterDeal";
-import { Product, ProductHeader } from "../../data/products";
-import { useMemberLevelAdjust } from "../../hooks/custom/useMemberLevelAdjust";
+import { selectedRateProductState } from "../../../atoms/modals";
+import { VerifyCredential } from "../../../components/Shop/BetterDeal";
+import { Product, ProductHeader } from "../../../data/products";
+import { useMemberLevelAdjust } from "../../../hooks/custom/useMemberLevelAdjust";
 import { BronzeMember } from "./BronzeMember";
 import { CardButtons } from "./CardButtons";
 import { GoldMember } from "./GoldMember";

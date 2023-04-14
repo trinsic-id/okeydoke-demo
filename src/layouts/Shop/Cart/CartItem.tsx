@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from "react";
 import { useSetRecoilState } from "recoil";
-import { cartAdjustedTotalState } from "../../atoms/cart";
-import { Product, ProductHeader } from "../../data/products";
-import { useMemberLevelAdjust } from "../../hooks/custom/useMemberLevelAdjust";
+import { cartAdjustedTotalState } from "../../../atoms/cart";
+import { Product, ProductHeader } from "../../../data/products";
+import { useMemberLevelAdjust } from "../../../hooks/custom/useMemberLevelAdjust";
 import { CartQuantity } from "./CartQuantity";
 
 interface CartItemProps {

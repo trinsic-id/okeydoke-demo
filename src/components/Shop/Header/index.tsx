@@ -1,14 +1,14 @@
 import { useMemo } from "react";
-import { Link } from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import { useLocation } from "react-use";
 import { useRecoilValue } from "recoil";
 import { CartButton } from "./CartButton";
 
 import { LogOut } from "react-feather";
-import { cartTotalState } from "../../atoms/cart";
-import { businessLogoState, memberLevelState } from "../../atoms/member";
-import { AuthState, authStateState } from "../../atoms/user";
-import { useLogout } from "../../hooks/custom/useLogOut";
+import { cartTotalState } from "../../../atoms/cart";
+import { businessLogoState, memberLevelState } from "../../../atoms/member";
+import { AuthState, authStateState } from "../../../atoms/user";
+import { useLogout } from "../../../hooks/custom/useLogOut";
 
 const Header = () => {
     const location = useLocation();
@@ -16,8 +16,8 @@ const Header = () => {
     const { totalQty } = useRecoilValue(cartTotalState);
     const isVisible = useMemo(() => {
         if (!location) return false;
-        if (location.pathname === "/redirect") return false;
-        if (location.pathname === "/load-ecosystem") return false;
+        if (location.pathname === "/shop/redirect") return false;
+        if (location.pathname === "/shop/load-ecosystem") return false;
         return true;
     }, [location.pathname]);
 
@@ -26,6 +26,7 @@ const Header = () => {
 
     const resetEverything = useLogout();
     return isVisible ? (
+        <>
         <div className="flex w-full flex-row items-center justify-between border-b border-gray-300 p-4 pb-2">
             <Link to="/">
                 <div className="flex flex-col items-start justify-between">
@@ -55,7 +56,9 @@ const Header = () => {
                 )}
             </div>
         </div>
-    ) : null;
+        <Outlet/>
+    </>
+    ) : <Outlet/>;
 };
 
 export default Header;

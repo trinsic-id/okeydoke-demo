@@ -1,5 +1,5 @@
 import { useSetRecoilState } from "recoil";
-import { isVerifyCredentialModalVisibleState } from "../../atoms/modals";
+import { isVerifyCredentialModalVisibleState } from "../../../atoms/modals";
 
 export const VerifyCredential = () => {
     const setVerifyModalVisible = useSetRecoilState(

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ShoppingCart } from "react-feather";
-import { Quantity } from "../../components/Quantity";
-import { Product } from "../../data/products";
-import { useAddItem } from "../../hooks/custom/useAddItem";
+import { Quantity } from "../../../components/Shop/Quantity";
+import { Product } from "../../../data/products";
+import { useAddItem } from "../../../hooks/custom/useAddItem";
 
 interface CardButtonProps {
     product: Product;

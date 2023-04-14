@@ -1,6 +1,6 @@
-import { Product } from "../../data/products";
-import { useAddItem } from "../../hooks/custom/useAddItem";
-import { useDecreaseItem } from "../../hooks/custom/useDecreaseItem";
+import { Product } from "../../../data/products";
+import { useAddItem } from "../../../hooks/custom/useAddItem";
+import { useDecreaseItem } from "../../../hooks/custom/useDecreaseItem";
 
 interface QuantityProps {
     product: Product;

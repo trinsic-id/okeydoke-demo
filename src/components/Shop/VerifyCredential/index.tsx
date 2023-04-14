@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertOctagon, X } from "react-feather";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { authSettingsState } from "../../atoms/authService";
-import { isVerifyCredentialModalVisibleState } from "../../atoms/modals";
-import { useLockBg } from "../../hooks/custom/useLockBackground";
-import { authService } from "../../services/AuthService";
+import { authSettingsState } from "../../../atoms/authService";
+import { isVerifyCredentialModalVisibleState } from "../../../atoms/modals";
+import { useLockBg } from "../../../hooks/custom/useLockBackground";
+import { authService } from "../../../services/AuthService";
 import { BronzeMember } from "./BronzeMember";
 import { GoldMember } from "./GoldMember";
 import { SilverMember } from "./SilverMember";
@@ -105,7 +105,7 @@ export const VerifyCredentialModal = () => {
                                             className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg border-2 border-blue-500 px-4 py-3 text-blue-500 hover:bg-blue-500"
                                             onClick={() => {
                                                 window.location.href =
-                                                    "https://webapp-221109133537.azurewebsites.net/";
+                                                    "/";
                                             }}
                                         >
                                             <div className="relative">

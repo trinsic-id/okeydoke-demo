@@ -2,8 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMemo } from "react";
 import { AlertOctagon, X } from "react-feather";
 import { useRecoilState } from "recoil";
-import { selectedRateProductState } from "../../atoms/modals";
-import { useLockBg } from "../../hooks/custom/useLockBackground";
+import { selectedRateProductState } from "../../../atoms/modals";
+import { useLockBg } from "../../../hooks/custom/useLockBackground";
 
 const Animations = {
     container: {

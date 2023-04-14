@@ -1,7 +1,7 @@
 import { CheckSquare } from "react-feather";
 import { useRecoilValue } from "recoil";
-import { memberProduceState } from "../../atoms/member";
-import { ProduceType } from "../../data/products";
+import { memberProduceState } from "../../../atoms/member";
+import { ProduceType } from "../../../data/products";
 
 export const CredentialIssued = () => {
     const memberProduceType = useRecoilValue(memberProduceState);

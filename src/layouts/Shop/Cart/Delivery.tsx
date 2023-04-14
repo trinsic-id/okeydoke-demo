@@ -2,16 +2,16 @@ import dayjs from "dayjs";
 import { useMemo } from "react";
 import { AlertCircle, CreditCard } from "react-feather";
 import { useRecoilValue } from "recoil";
-import { cartState, cartTotalPriceState } from "../../atoms/cart";
+import { cartState, cartTotalPriceState } from "../../../atoms/cart";
 import {
     memberLevelObjState,
     memberLevelState,
     userAddressState,
-} from "../../atoms/member";
-import { BronzeMember } from "../../components/VerifyCredential/BronzeMember";
-import { GoldMember } from "../../components/VerifyCredential/GoldMember";
-import { SilverMember } from "../../components/VerifyCredential/SilverMember";
-import { authService } from "../../services/AuthService";
+} from "../../../atoms/member";
+import { BronzeMember } from "../../../components/Shop/VerifyCredential/BronzeMember";
+import { GoldMember } from "../../../components/Shop/VerifyCredential/GoldMember";
+import { SilverMember } from "../../../components/Shop/VerifyCredential/SilverMember";
+import { authService } from "../../../services/AuthService";
 
 export const Delivery = () => {
     const cartTotalPrice = useRecoilValue(cartTotalPriceState);

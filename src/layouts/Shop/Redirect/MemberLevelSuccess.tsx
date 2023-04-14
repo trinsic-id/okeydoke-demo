@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { Star } from "react-feather";
 import { useRecoilValue } from "recoil";
-import { MemberLevel, memberLevelState } from "../../atoms/member";
-import { userCredentialState } from "../../atoms/user";
+import { MemberLevel, memberLevelState } from "../../../atoms/member";
+import { userCredentialState } from "../../../atoms/user";
 
 export const MemberLevelSuccess = () => {
     const userCredential = useRecoilValue(userCredentialState);

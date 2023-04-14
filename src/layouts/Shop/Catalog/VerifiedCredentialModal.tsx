@@ -2,12 +2,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "react-feather";
 import { useToggle } from "react-use";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { authSettingsState } from "../../atoms/authService";
-import { userFarmNameState } from "../../atoms/member";
-import { isVerifiedCredentialModalVisibleState } from "../../atoms/modals";
-import { userCredentialState } from "../../atoms/user";
-import { LoadingItem } from "../../components/LoadingItem";
-import { useLockBg } from "../../hooks/custom/useLockBackground";
+import { authSettingsState } from "../../../atoms/authService";
+import { userFarmNameState } from "../../../atoms/member";
+import { isVerifiedCredentialModalVisibleState } from "../../../atoms/modals";
+import { userCredentialState } from "../../../atoms/user";
+import { LoadingItem } from "../../../components/Shop/LoadingItem";
+import { useLockBg } from "../../../hooks/custom/useLockBackground";
 import { CredentialIssued } from "../Redirect/CredentialIssued";
 import { DisclosedFields } from "./DislosedFields";
 

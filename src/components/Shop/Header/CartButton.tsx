@@ -1,7 +1,7 @@
 import { ShoppingBag } from "react-feather";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { cartTotalState } from "../../atoms/cart";
+import { cartTotalState } from "../../../atoms/cart";
 
 export const CartButton = () => {
     const { totalQty } = useRecoilValue(cartTotalState);

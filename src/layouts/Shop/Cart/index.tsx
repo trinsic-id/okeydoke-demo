@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { cartState } from "../../atoms/cart";
+import { cartState } from "../../../atoms/cart";
 import { CartItem } from "./CartItem";
 import { Delivery } from "./Delivery";
 

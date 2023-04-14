@@ -3,13 +3,13 @@ import { useMemo } from "react";
 import { AlertTriangle } from "react-feather";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { authSettingsState } from "../../atoms/authService";
+import { authSettingsState } from "../../../atoms/authService";
 import {
     isRedirectErrorModalVisibleState,
     isRedirectVerifyCredentialErrorState,
-} from "../../atoms/modals";
-import { useLockBg } from "../../hooks/custom/useLockBackground";
-import { authService } from "../../services/AuthService";
+} from "../../../atoms/modals";
+import { useLockBg } from "../../../hooks/custom/useLockBackground";
+import { authService } from "../../../services/AuthService";
 
 const Animations = {
     container: {

@@ -2,10 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Trello } from "react-feather";
 
 import { useRecoilValue } from "recoil";
-import { memberLevelObjState, memberProduceState } from "../../atoms/member";
-import { filteredProductsState } from "../../atoms/products";
-import { RateProduct } from "../../components/RateProduct";
-import { VerifyCredentialModal } from "../../components/VerifyCredential";
+import { memberLevelObjState, memberProduceState } from "../../../atoms/member";
+import { filteredProductsState } from "../../../atoms/products";
+import { RateProduct } from "../../../components/Shop/RateProduct";
+import { VerifyCredentialModal } from "../../../components/Shop/VerifyCredential";
 import { Card } from "./Card";
 import { FilterButton } from "./FilterButton";
 import { VerifiedCredentialModal } from "./VerifiedCredentialModal";

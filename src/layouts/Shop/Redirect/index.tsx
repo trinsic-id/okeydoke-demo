@@ -3,20 +3,20 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 import { useToggle } from "react-use";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { authSettingsState } from "../../atoms/authService";
+import { authSettingsState } from "../../../atoms/authService";
 import {
     isRedirectErrorModalVisibleState,
     isRedirectVerifyCredentialErrorState,
     isVerifiedCredentialModalVisibleState,
-} from "../../atoms/modals";
+} from "../../../atoms/modals";
 import {
     AuthState,
     authStateState,
     userCredentialState,
-} from "../../atoms/user";
-import { useVerifyCredential } from "../../hooks/queries/useVerifyCredential";
-import { CredentialDerivedProof } from "../../models/credential";
-import { authService } from "../../services/AuthService";
+} from "../../../atoms/user";
+import { useVerifyCredential } from "../../../hooks/queries/useVerifyCredential";
+import { CredentialDerivedProof } from "../../../models/credential";
+import { authService } from "../../../services/AuthService";
 import { ErrorModal } from "./ErrorModal";
 
 export const Redirect = () => {
@@ -81,7 +81,7 @@ export const Redirect = () => {
                         toggleVerifyingLoading(true);
                         setAuthState(AuthState.VERIFIED);
                         setVerifiedModalVisible(true);
-                        return navigate("/");
+                        return navigate("/shop");
                     } else {
                         setIsVerifyCredentialError(true);
                         return setModalVisible(true);

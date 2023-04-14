@@ -4,7 +4,7 @@ import {
     memberLevelState,
     memberProduceState,
     userAddressState,
-} from "../../atoms/member";
+} from "../../../atoms/member";
 import { MemberLevelSuccess } from "../Redirect/MemberLevelSuccess";
 
 export const DisclosedFields = () => {

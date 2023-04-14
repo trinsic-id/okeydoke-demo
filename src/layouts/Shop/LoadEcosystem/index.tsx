@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToggle } from "react-use";
 import { useRecoilState } from "recoil";
-import { authSettingsState } from "../../atoms/authService";
-import { LoadingItem } from "../../components/LoadingItem";
+import { authSettingsState } from "../../../atoms/authService";
+import { LoadingItem } from "../../../components/Shop/LoadingItem";
 
 export const LoadEcosystem = () => {
     const [isEcosystemLoading, toggleEcosystemLoading] = useToggle(false);
@@ -31,7 +31,7 @@ export const LoadEcosystem = () => {
                 isError={isError}
                 text={"Loading Settings"}
                 onNext={() => {
-                    navigate("/");
+                    navigate("/shop");
                 }}
                 successElement={
                     <div className="w-full flex flex-col items-start space-y-1">
