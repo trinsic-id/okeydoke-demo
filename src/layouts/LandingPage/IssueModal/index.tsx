@@ -46,8 +46,8 @@ const handleIssueCredential = async (email: IssueValues["email"], name: IssueVal
 }> => {
     let url = "https://okeydokeissuer.azurewebsites.net/api/issue";
     url += `?email=${encodeURIComponent(email)}&name=${encodeURI(name)}&grade=${grade}&foodType=${type}`;
-    const response = await fetch(url, {method: "POST", mode: "no-cors"});
-    const wnd : any = window;
+    const response = await fetch(url, {method: "POST"});
+    const wnd: any = window;
     wnd.blah = response;
     return await response.json();
 };
@@ -68,7 +68,8 @@ export const IssueModal = () => {
     const [userEmail, setUserEmail] = useState("");
 
     useEffect(() => {
-        if(isVisible) {
+        if (isVisible) {
+            setUserEmail("");
             setProduceType(Math.random() < 0.5 ? "Artichoke" : "Corn");
             setFarmerName(Math.random() < 0.5 ? "John Doe " : "Jane Doe");
 
@@ -89,23 +90,23 @@ export const IssueModal = () => {
         return farmerName.length > 0 && farmerName.length < 100;
     }, [farmerName]);
 
-    const {isLoading, error, isError, isSuccess, mutate: issueCredential} = useMutation(({
-                                                                           email,
-                                                                           name,
-                                                                           grade,
-                                                                           type
-                                                                       }: IssueValues) => handleIssueCredential(email, name, grade, type));
+    const {isLoading, error, isError, isSuccess, reset, mutate: issueCredential} = useMutation(({
+                                                                                                    email,
+                                                                                                    name,
+                                                                                                    grade,
+                                                                                                    type
+                                                                                                }: IssueValues) => handleIssueCredential(email, name, grade, type));
 
     useEffect(() => {
-        if(isSuccess && isVisible) {
+        if (isSuccess && isVisible) {
             setModalVisible(false);
+            reset();
 
             setTimeout(() => {
                 setSuccessModalVisible(true);
-            }, 2000);
+            }, 200);
         }
     }, [isSuccess, isVisible]);
-
 
 
     const buttonEnabled = useMemo(() => {
@@ -158,8 +159,10 @@ export const IssueModal = () => {
                                                 Full Name
                                             </div>
                                             <div className="w-full rounded-lg bg-gray-200 p-4 text-center text-xl">
-                                                <input type="text" autoComplete="off" aria-autoComplete="off" className="w-full text-center bg-gray-200"
-                                                       value={farmerName} onChange={(ev) => setFarmerName(ev.target.value)}/>
+                                                <input type="text" autoComplete="off" aria-autoComplete="off"
+                                                       className="w-full text-center bg-gray-200"
+                                                       value={farmerName}
+                                                       onChange={(ev) => setFarmerName(ev.target.value)}/>
                                             </div>
                                         </div>
                                         <div className="w-full">
