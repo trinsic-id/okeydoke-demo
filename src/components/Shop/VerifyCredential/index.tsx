@@ -102,27 +102,6 @@ export const VerifyCredentialModal = () => {
                                             </div>
                                         </div>
                                         <button
-                                            className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg border-2 border-blue-500 px-4 py-3 text-blue-500 hover:bg-blue-500"
-                                            onClick={() => {
-                                                window.location.href =
-                                                    "/";
-                                            }}
-                                        >
-                                            <div className="relative">
-                                                <img
-                                                    src="images/trinsic-logo-blue.png"
-                                                    className="block w-6 group-hover:hidden"
-                                                />
-                                                <img
-                                                    src="images/trinsic-logo-white.png"
-                                                    className="hidden w-6 group-hover:block"
-                                                />
-                                            </div>
-                                            <div className="flex-1 pr-12 text-lg font-medium text-blue-500 group-hover:text-white">
-                                                {"Get a credential"}
-                                            </div>
-                                        </button>
-                                        <button
                                             className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-blue-500 px-4 py-3 text-white hover:border-2 hover:border-blue-500 hover:bg-white hover:text-blue-500"
                                             onClick={() => {
                                                 authService.login();
@@ -139,7 +118,7 @@ export const VerifyCredentialModal = () => {
                                                 />
                                             </div>
                                             <div className="flex-1 pr-12 text-lg font-medium">
-                                                Verify your credential
+                                                Verify your Farmerpass
                                             </div>
                                         </button>
                                     </div>

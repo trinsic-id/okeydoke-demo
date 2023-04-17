@@ -56,9 +56,8 @@ const Header = () => {
                 )}
             </div>
         </div>
-        <Outlet/>
     </>
-    ) : <Outlet/>;
+    ) : null;
 };
 
 export default Header;
