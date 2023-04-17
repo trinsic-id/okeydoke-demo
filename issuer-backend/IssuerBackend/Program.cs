@@ -7,11 +7,19 @@ using Trinsic.Services.VerifiableCredentials.V1;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddCors();
 
 var app = builder.Build();
+app.UseCors((corsBuilder) =>
+{
+    corsBuilder.AllowAnyHeader();
+    corsBuilder.AllowAnyMethod();
+    corsBuilder.AllowAnyOrigin();
+    corsBuilder.Build();
+});
 
 app.MapGet("/", () => "👋 Hi!");
-app.MapGet("/api/issue", async (string email, string name, FoodClass foodType, FoodGrade grade) =>
+app.MapPost("/api/issue", async (string email, string name, FoodClass foodType, FoodGrade grade) =>
 {
     try
     {
@@ -49,7 +57,8 @@ app.MapGet("/api/issue", async (string email, string name, FoodClass foodType, F
             var sendResponse = await trinsic.Credential.SendAsync(new()
             {
                 Email = email,
-                DocumentJson = issueResponse.DocumentJson
+                DocumentJson = issueResponse.DocumentJson,
+                SendNotification = true
             });
         }
         catch
