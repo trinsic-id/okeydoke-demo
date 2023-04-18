@@ -13,6 +13,7 @@ export const Action = ({ text, image, onClick }: ActionProps) => {
             variants={ActionAnimations.item}
             key={"Action-1"}
             className="flex cursor-pointer flex-col items-center justify-between align-baseline text-gray-900 hover:text-gray-600"
+            onClick={onClick}
         >
             <img
                 className="h-auto w-48 rounded-lg hover:opacity-90 md:w-64"

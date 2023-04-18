@@ -144,7 +144,12 @@ export const IssueModal = () => {
                         animate="visible"
                         exit="hidden"
                     >
-                        <div className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"></div>
+                        <div
+                            className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"
+                            onClick={() => {
+                                setModalVisible(false);
+                            }}
+                        ></div>
                         <div className="z-40 flex w-full items-center justify-center p-4">
                             <motion.div
                                 className="w-full max-w-md rounded-lg bg-white shadow-lg"
