@@ -5,6 +5,7 @@
 input[type="number"] {
     -webkit-appearance: none;
 }
+
 input[type="number"] {
     -webkit-border-radius: 0;
     border-radius: 0;
@@ -24,16 +25,23 @@ input[type="number"]::-webkit-outer-spin-button {
     outline: none !important;
 }
 
+*:focus {
+    outline: none;
+}
+
 @layer utilities {
     @variants responsive {
+
         /* Chrome, Safari and Opera */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
 
         .no-scrollbar {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         .lock-bg {
@@ -114,12 +122,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/b683e3/00000000000000003b9b306c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/b683e3/00000000000000003b9b306c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/b683e3/00000000000000003b9b306c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/b683e3/00000000000000003b9b306c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("woff2"),
+        url("https://use.typekit.net/af/b683e3/00000000000000003b9b306c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("woff"),
+        url("https://use.typekit.net/af/b683e3/00000000000000003b9b306c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 900;
@@ -128,12 +133,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/d32834/00000000000000003b9b306d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/d32834/00000000000000003b9b306d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/d32834/00000000000000003b9b306d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/d32834/00000000000000003b9b306d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("woff2"),
+        url("https://use.typekit.net/af/d32834/00000000000000003b9b306d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("woff"),
+        url("https://use.typekit.net/af/d32834/00000000000000003b9b306d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 900;
@@ -142,12 +144,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/949f99/00000000000000003b9b3068/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/949f99/00000000000000003b9b3068/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/949f99/00000000000000003b9b3068/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/949f99/00000000000000003b9b3068/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),
+        url("https://use.typekit.net/af/949f99/00000000000000003b9b3068/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),
+        url("https://use.typekit.net/af/949f99/00000000000000003b9b3068/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 700;
@@ -156,12 +155,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/4c4052/00000000000000003b9b3069/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/4c4052/00000000000000003b9b3069/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/4c4052/00000000000000003b9b3069/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/4c4052/00000000000000003b9b3069/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),
+        url("https://use.typekit.net/af/4c4052/00000000000000003b9b3069/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),
+        url("https://use.typekit.net/af/4c4052/00000000000000003b9b3069/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 700;
@@ -170,12 +166,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/d82519/00000000000000003b9b306a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/d82519/00000000000000003b9b306a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/d82519/00000000000000003b9b306a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/d82519/00000000000000003b9b306a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff2"),
+        url("https://use.typekit.net/af/d82519/00000000000000003b9b306a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff"),
+        url("https://use.typekit.net/af/d82519/00000000000000003b9b306a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 800;
@@ -184,12 +177,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/3e6df8/00000000000000003b9b306b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/3e6df8/00000000000000003b9b306b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/3e6df8/00000000000000003b9b306b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/3e6df8/00000000000000003b9b306b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("woff2"),
+        url("https://use.typekit.net/af/3e6df8/00000000000000003b9b306b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("woff"),
+        url("https://use.typekit.net/af/3e6df8/00000000000000003b9b306b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 800;
@@ -198,12 +188,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3") format("woff2"),
+        url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3") format("woff"),
+        url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 100;
@@ -212,12 +199,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/c31dbb/00000000000000003b9b305f/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/c31dbb/00000000000000003b9b305f/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/c31dbb/00000000000000003b9b305f/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/c31dbb/00000000000000003b9b305f/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3") format("woff2"),
+        url("https://use.typekit.net/af/c31dbb/00000000000000003b9b305f/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3") format("woff"),
+        url("https://use.typekit.net/af/c31dbb/00000000000000003b9b305f/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 100;
@@ -226,12 +210,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/576d53/00000000000000003b9b3066/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/576d53/00000000000000003b9b3066/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/576d53/00000000000000003b9b3066/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/576d53/00000000000000003b9b3066/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),
+        url("https://use.typekit.net/af/576d53/00000000000000003b9b3066/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),
+        url("https://use.typekit.net/af/576d53/00000000000000003b9b3066/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 600;
@@ -240,12 +221,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/f7d492/00000000000000003b9b3067/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/f7d492/00000000000000003b9b3067/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/f7d492/00000000000000003b9b3067/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/f7d492/00000000000000003b9b3067/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff2"),
+        url("https://use.typekit.net/af/f7d492/00000000000000003b9b3067/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff"),
+        url("https://use.typekit.net/af/f7d492/00000000000000003b9b3067/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 600;
@@ -254,12 +232,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),
+        url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),
+        url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 400;
@@ -268,12 +243,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/5c70f2/00000000000000003b9b3063/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/5c70f2/00000000000000003b9b3063/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/5c70f2/00000000000000003b9b3063/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/5c70f2/00000000000000003b9b3063/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),
+        url("https://use.typekit.net/af/5c70f2/00000000000000003b9b3063/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),
+        url("https://use.typekit.net/af/5c70f2/00000000000000003b9b3063/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 400;
@@ -282,12 +254,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/cebe0e/00000000000000003b9b3060/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/cebe0e/00000000000000003b9b3060/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/cebe0e/00000000000000003b9b3060/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/cebe0e/00000000000000003b9b3060/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),
+        url("https://use.typekit.net/af/cebe0e/00000000000000003b9b3060/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),
+        url("https://use.typekit.net/af/cebe0e/00000000000000003b9b3060/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 300;
@@ -296,12 +265,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/40ff7f/00000000000000003b9b3061/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/40ff7f/00000000000000003b9b3061/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/40ff7f/00000000000000003b9b3061/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/40ff7f/00000000000000003b9b3061/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("woff2"),
+        url("https://use.typekit.net/af/40ff7f/00000000000000003b9b3061/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("woff"),
+        url("https://use.typekit.net/af/40ff7f/00000000000000003b9b3061/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 300;
@@ -310,12 +276,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/6e816b/00000000000000003b9b3064/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/6e816b/00000000000000003b9b3064/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/6e816b/00000000000000003b9b3064/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/6e816b/00000000000000003b9b3064/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),
+        url("https://use.typekit.net/af/6e816b/00000000000000003b9b3064/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),
+        url("https://use.typekit.net/af/6e816b/00000000000000003b9b3064/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 500;
@@ -324,12 +287,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova";
-    src: url("https://use.typekit.net/af/5b5251/00000000000000003b9b3065/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/5b5251/00000000000000003b9b3065/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/5b5251/00000000000000003b9b3065/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/5b5251/00000000000000003b9b3065/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff2"),
+        url("https://use.typekit.net/af/5b5251/00000000000000003b9b3065/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff"),
+        url("https://use.typekit.net/af/5b5251/00000000000000003b9b3065/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 500;
@@ -338,12 +298,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/a7c0e4/00000000000000003b9b307c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/a7c0e4/00000000000000003b9b307c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/a7c0e4/00000000000000003b9b307c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/a7c0e4/00000000000000003b9b307c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("woff2"),
+        url("https://use.typekit.net/af/a7c0e4/00000000000000003b9b307c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("woff"),
+        url("https://use.typekit.net/af/a7c0e4/00000000000000003b9b307c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 900;
@@ -352,12 +309,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/706204/00000000000000003b9b307d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/706204/00000000000000003b9b307d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/706204/00000000000000003b9b307d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/706204/00000000000000003b9b307d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("woff2"),
+        url("https://use.typekit.net/af/706204/00000000000000003b9b307d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("woff"),
+        url("https://use.typekit.net/af/706204/00000000000000003b9b307d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 900;
@@ -366,12 +320,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/0ff5e1/00000000000000003b9b3078/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/0ff5e1/00000000000000003b9b3078/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/0ff5e1/00000000000000003b9b3078/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/0ff5e1/00000000000000003b9b3078/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),
+        url("https://use.typekit.net/af/0ff5e1/00000000000000003b9b3078/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),
+        url("https://use.typekit.net/af/0ff5e1/00000000000000003b9b3078/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 700;
@@ -380,12 +331,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/519896/00000000000000003b9b3079/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/519896/00000000000000003b9b3079/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/519896/00000000000000003b9b3079/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/519896/00000000000000003b9b3079/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),
+        url("https://use.typekit.net/af/519896/00000000000000003b9b3079/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),
+        url("https://use.typekit.net/af/519896/00000000000000003b9b3079/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 700;
@@ -394,12 +342,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/30f4b6/00000000000000003b9b3070/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/30f4b6/00000000000000003b9b3070/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/30f4b6/00000000000000003b9b3070/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/30f4b6/00000000000000003b9b3070/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),
+        url("https://use.typekit.net/af/30f4b6/00000000000000003b9b3070/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),
+        url("https://use.typekit.net/af/30f4b6/00000000000000003b9b3070/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 300;
@@ -408,12 +353,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/32b365/00000000000000003b9b3071/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/32b365/00000000000000003b9b3071/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/32b365/00000000000000003b9b3071/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/32b365/00000000000000003b9b3071/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("woff2"),
+        url("https://use.typekit.net/af/32b365/00000000000000003b9b3071/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("woff"),
+        url("https://use.typekit.net/af/32b365/00000000000000003b9b3071/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 300;
@@ -422,12 +364,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/8e2bbd/00000000000000003b9b3072/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/8e2bbd/00000000000000003b9b3072/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/8e2bbd/00000000000000003b9b3072/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/8e2bbd/00000000000000003b9b3072/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),
+        url("https://use.typekit.net/af/8e2bbd/00000000000000003b9b3072/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),
+        url("https://use.typekit.net/af/8e2bbd/00000000000000003b9b3072/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 400;
@@ -436,12 +375,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/5364bc/00000000000000003b9b3073/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/5364bc/00000000000000003b9b3073/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/5364bc/00000000000000003b9b3073/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/5364bc/00000000000000003b9b3073/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),
+        url("https://use.typekit.net/af/5364bc/00000000000000003b9b3073/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),
+        url("https://use.typekit.net/af/5364bc/00000000000000003b9b3073/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 400;
@@ -450,12 +386,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/949eb9/00000000000000003b9b3076/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/949eb9/00000000000000003b9b3076/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/949eb9/00000000000000003b9b3076/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/949eb9/00000000000000003b9b3076/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),
+        url("https://use.typekit.net/af/949eb9/00000000000000003b9b3076/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),
+        url("https://use.typekit.net/af/949eb9/00000000000000003b9b3076/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 600;
@@ -464,12 +397,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/3a4ba8/00000000000000003b9b3077/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/3a4ba8/00000000000000003b9b3077/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/3a4ba8/00000000000000003b9b3077/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/3a4ba8/00000000000000003b9b3077/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff2"),
+        url("https://use.typekit.net/af/3a4ba8/00000000000000003b9b3077/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff"),
+        url("https://use.typekit.net/af/3a4ba8/00000000000000003b9b3077/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 600;
@@ -478,12 +408,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/642e4f/00000000000000003b9b306e/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/642e4f/00000000000000003b9b306e/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/642e4f/00000000000000003b9b306e/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/642e4f/00000000000000003b9b306e/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff2"),
+        url("https://use.typekit.net/af/642e4f/00000000000000003b9b306e/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff"),
+        url("https://use.typekit.net/af/642e4f/00000000000000003b9b306e/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 200;
@@ -492,12 +419,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/09b793/00000000000000003b9b306f/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/09b793/00000000000000003b9b306f/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/09b793/00000000000000003b9b306f/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/09b793/00000000000000003b9b306f/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3") format("woff2"),
+        url("https://use.typekit.net/af/09b793/00000000000000003b9b306f/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3") format("woff"),
+        url("https://use.typekit.net/af/09b793/00000000000000003b9b306f/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 200;
@@ -506,12 +430,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/14ae2f/00000000000000003b9b307a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/14ae2f/00000000000000003b9b307a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/14ae2f/00000000000000003b9b307a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/14ae2f/00000000000000003b9b307a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff2"),
+        url("https://use.typekit.net/af/14ae2f/00000000000000003b9b307a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff"),
+        url("https://use.typekit.net/af/14ae2f/00000000000000003b9b307a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 800;
@@ -520,12 +441,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/3fd2f1/00000000000000003b9b307b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/3fd2f1/00000000000000003b9b307b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/3fd2f1/00000000000000003b9b307b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/3fd2f1/00000000000000003b9b307b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("woff2"),
+        url("https://use.typekit.net/af/3fd2f1/00000000000000003b9b307b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("woff"),
+        url("https://use.typekit.net/af/3fd2f1/00000000000000003b9b307b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 800;
@@ -534,12 +452,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/1ca608/00000000000000003b9b3074/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/1ca608/00000000000000003b9b3074/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/1ca608/00000000000000003b9b3074/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/1ca608/00000000000000003b9b3074/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),
+        url("https://use.typekit.net/af/1ca608/00000000000000003b9b3074/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),
+        url("https://use.typekit.net/af/1ca608/00000000000000003b9b3074/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 500;
@@ -548,12 +463,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNovaCondensed";
-    src: url("https://use.typekit.net/af/a5cffa/00000000000000003b9b3075/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/a5cffa/00000000000000003b9b3075/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/a5cffa/00000000000000003b9b3075/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/a5cffa/00000000000000003b9b3075/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff2"),
+        url("https://use.typekit.net/af/a5cffa/00000000000000003b9b3075/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff"),
+        url("https://use.typekit.net/af/a5cffa/00000000000000003b9b3075/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 500;
@@ -562,12 +474,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/2132f7/00000000000000003b9b308c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/2132f7/00000000000000003b9b308c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/2132f7/00000000000000003b9b308c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/2132f7/00000000000000003b9b308c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("woff2"),
+        url("https://use.typekit.net/af/2132f7/00000000000000003b9b308c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("woff"),
+        url("https://use.typekit.net/af/2132f7/00000000000000003b9b308c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 900;
@@ -576,12 +485,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/4a329e/00000000000000003b9b3089/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/4a329e/00000000000000003b9b3089/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/4a329e/00000000000000003b9b3089/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/4a329e/00000000000000003b9b3089/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),
+        url("https://use.typekit.net/af/4a329e/00000000000000003b9b3089/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),
+        url("https://use.typekit.net/af/4a329e/00000000000000003b9b3089/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 700;
@@ -590,12 +496,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/7b18df/00000000000000003b9b3088/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/7b18df/00000000000000003b9b3088/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/7b18df/00000000000000003b9b3088/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/7b18df/00000000000000003b9b3088/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),
+        url("https://use.typekit.net/af/7b18df/00000000000000003b9b3088/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),
+        url("https://use.typekit.net/af/7b18df/00000000000000003b9b3088/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 700;
@@ -604,12 +507,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/75e545/00000000000000003b9b3081/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/75e545/00000000000000003b9b3081/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/75e545/00000000000000003b9b3081/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/75e545/00000000000000003b9b3081/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("woff2"),
+        url("https://use.typekit.net/af/75e545/00000000000000003b9b3081/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("woff"),
+        url("https://use.typekit.net/af/75e545/00000000000000003b9b3081/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 300;
@@ -618,12 +518,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/2c5b68/00000000000000003b9b3080/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/2c5b68/00000000000000003b9b3080/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/2c5b68/00000000000000003b9b3080/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/2c5b68/00000000000000003b9b3080/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),
+        url("https://use.typekit.net/af/2c5b68/00000000000000003b9b3080/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),
+        url("https://use.typekit.net/af/2c5b68/00000000000000003b9b3080/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 300;
@@ -632,12 +529,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/693bfb/00000000000000003b9b308d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/693bfb/00000000000000003b9b308d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/693bfb/00000000000000003b9b308d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/693bfb/00000000000000003b9b308d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("woff2"),
+        url("https://use.typekit.net/af/693bfb/00000000000000003b9b308d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("woff"),
+        url("https://use.typekit.net/af/693bfb/00000000000000003b9b308d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i9&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 900;
@@ -646,12 +540,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/bcf2f4/00000000000000003b9b3083/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/bcf2f4/00000000000000003b9b3083/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/bcf2f4/00000000000000003b9b3083/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/bcf2f4/00000000000000003b9b3083/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),
+        url("https://use.typekit.net/af/bcf2f4/00000000000000003b9b3083/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),
+        url("https://use.typekit.net/af/bcf2f4/00000000000000003b9b3083/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 400;
@@ -660,12 +551,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/0dfb3d/00000000000000003b9b3082/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/0dfb3d/00000000000000003b9b3082/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/0dfb3d/00000000000000003b9b3082/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/0dfb3d/00000000000000003b9b3082/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),
+        url("https://use.typekit.net/af/0dfb3d/00000000000000003b9b3082/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),
+        url("https://use.typekit.net/af/0dfb3d/00000000000000003b9b3082/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 400;
@@ -674,12 +562,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/3f8fac/00000000000000003b9b3087/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/3f8fac/00000000000000003b9b3087/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/3f8fac/00000000000000003b9b3087/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/3f8fac/00000000000000003b9b3087/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff2"),
+        url("https://use.typekit.net/af/3f8fac/00000000000000003b9b3087/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff"),
+        url("https://use.typekit.net/af/3f8fac/00000000000000003b9b3087/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 600;
@@ -688,12 +573,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/65314b/00000000000000003b9b3086/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/65314b/00000000000000003b9b3086/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/65314b/00000000000000003b9b3086/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/65314b/00000000000000003b9b3086/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),
+        url("https://use.typekit.net/af/65314b/00000000000000003b9b3086/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),
+        url("https://use.typekit.net/af/65314b/00000000000000003b9b3086/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 600;
@@ -702,12 +584,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/c57249/00000000000000003b9b307e/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/c57249/00000000000000003b9b307e/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/c57249/00000000000000003b9b307e/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/c57249/00000000000000003b9b307e/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff2"),
+        url("https://use.typekit.net/af/c57249/00000000000000003b9b307e/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff"),
+        url("https://use.typekit.net/af/c57249/00000000000000003b9b307e/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 200;
@@ -716,12 +595,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/b97210/00000000000000003b9b307f/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/b97210/00000000000000003b9b307f/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/b97210/00000000000000003b9b307f/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/b97210/00000000000000003b9b307f/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3") format("woff2"),
+        url("https://use.typekit.net/af/b97210/00000000000000003b9b307f/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3") format("woff"),
+        url("https://use.typekit.net/af/b97210/00000000000000003b9b307f/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i2&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 200;
@@ -730,12 +606,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/4c1f88/00000000000000003b9b308a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/4c1f88/00000000000000003b9b308a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/4c1f88/00000000000000003b9b308a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/4c1f88/00000000000000003b9b308a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff2"),
+        url("https://use.typekit.net/af/4c1f88/00000000000000003b9b308a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("woff"),
+        url("https://use.typekit.net/af/4c1f88/00000000000000003b9b308a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 800;
@@ -744,12 +617,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/7e7028/00000000000000003b9b308b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/7e7028/00000000000000003b9b308b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/7e7028/00000000000000003b9b308b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/7e7028/00000000000000003b9b308b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("woff2"),
+        url("https://use.typekit.net/af/7e7028/00000000000000003b9b308b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("woff"),
+        url("https://use.typekit.net/af/7e7028/00000000000000003b9b308b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 800;
@@ -758,12 +628,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/1c187b/00000000000000003b9b3084/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/1c187b/00000000000000003b9b3084/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/1c187b/00000000000000003b9b3084/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/1c187b/00000000000000003b9b3084/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),
+        url("https://use.typekit.net/af/1c187b/00000000000000003b9b3084/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),
+        url("https://use.typekit.net/af/1c187b/00000000000000003b9b3084/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");
     font-display: auto;
     font-style: normal;
     font-weight: 500;
@@ -772,12 +639,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @font-face {
     font-family: "ProximaNova-extra-condensed";
-    src: url("https://use.typekit.net/af/8023ab/00000000000000003b9b3085/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("woff2"),
-        url("https://use.typekit.net/af/8023ab/00000000000000003b9b3085/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("woff"),
-        url("https://use.typekit.net/af/8023ab/00000000000000003b9b3085/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3")
-            format("opentype");
+    src: url("https://use.typekit.net/af/8023ab/00000000000000003b9b3085/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff2"),
+        url("https://use.typekit.net/af/8023ab/00000000000000003b9b3085/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff"),
+        url("https://use.typekit.net/af/8023ab/00000000000000003b9b3085/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("opentype");
     font-display: auto;
     font-style: italic;
     font-weight: 500;
@@ -787,9 +651,11 @@ input[type="number"]::-webkit-outer-spin-button {
 .tk-ProximaNova {
     font-family: "ProximaNova", sans-serif;
 }
+
 .tk-ProximaNovaCondensed {
     font-family: "ProximaNovaCondensed", sans-serif;
 }
+
 .tk-ProximaNova-extra-condensed {
     font-family: "ProximaNova-extra-condensed", sans-serif;
 }

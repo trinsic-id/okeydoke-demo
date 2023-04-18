@@ -19,48 +19,60 @@ interface EmailInputProps {
     onChange: (value: string) => void;
     value: string;
     isValid: boolean;
+    label?: string;
+    errMsg?: string;
 }
 
 export default function EmailInput({
     onChange,
     value,
     isValid,
+    label = "Email",
+    errMsg = "Not a valid email address",
 }: EmailInputProps) {
     return (
-        <div className="w-full">
-            <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+        <div className="relative flex w-full flex-col">
+            <input
+                autoComplete="off"
+                className={`peer w-full rounded-lg border p-3 placeholder:text-[#5F7186] ${
+                    !isValid
+                        ? "border-red-500 text-red-500"
+                        : "border-[#5F7186] border-opacity-10 focus:border-blue-500 focus:text-blue-500"
+                }`}
+                placeholder={label}
+                value={value}
+                onChange={(event) => {
+                    onChange(event.target.value);
+                }}
+            />
+
+            {!isValid && (
+                <div className={`pt-1 text-xs text-red-500`}>{errMsg}</div>
+            )}
+
+            <span
+                className={`pointer-events-none absolute left-2 -top-2 bg-white px-1 text-xs ${
+                    value.length > 0 ? "opacity-100" : "opacity-0"
+                } peer-focus:opacity-100 ${
+                    !isValid
+                        ? "text-red-500"
+                        : "text-[#5F7186] peer-focus:text-blue-500"
+                }`}
             >
-                Email
-            </label>
-            <div className="relative mt-2 rounded-md shadow-sm">
-                <input
-                    type="text"
-                    autoComplete="off"
-                    className={`block w-full rounded-md border-0 py-1.5 pr-10 pl-1 ring-1 ring-inset sm:text-sm sm:leading-6
-                     ${
-                         !isValid
-                             ? "text-red-900 ring-red-400 placeholder:text-red-400"
-                             : "text-gray-900 ring-gray-400 placeholder:text-gray-400"
-                     }`}
-                    placeholder="you@example.com"
-                    onChange={(ev) => {
-                        onChange(ev.target.value);
-                    }}
-                    value={value}
-                />
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                    {!isValid && (
-                        <AlertCircle className="h-5 w-5 text-red-500" />
-                    )}
+                {label}
+            </span>
+
+            <div className="absolute  top-0 bottom-5 right-0 flex flex-row items-center gap-1 p-3">
+                <div
+                    className={`flex h-full w-full place-content-center items-center ${
+                        !isValid && value.length > 0
+                            ? "opacity-100"
+                            : "opacity-0"
+                    }`}
+                >
+                    <AlertCircle className="h-5 w-5 shrink-0 text-red-500" />
                 </div>
             </div>
-            {!isValid && (
-                <p className="mt-2 text-sm text-red-600" id="email-error">
-                    Not a valid email address.
-                </p>
-            )}
         </div>
     );
 }

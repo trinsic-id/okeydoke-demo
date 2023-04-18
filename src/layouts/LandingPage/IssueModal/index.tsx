@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { X } from "react-feather";
 import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import {
     isIssueModalVisibleState,
@@ -29,6 +30,15 @@ const Animations = {
             opacity: 1,
         },
     },
+};
+
+export const validateEmail = (email: string) => {
+    let regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    if (email.match(regexEmail)) {
+        return true;
+    } else {
+        return false;
+    }
 };
 
 interface IssueValues {
@@ -71,6 +81,8 @@ export const IssueModal = () => {
     const [farmerName, setFarmerName] = useState("John Doe");
     const [userEmail, setUserEmail] = useState("");
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (isVisible) {
             setUserEmail("");
@@ -86,7 +98,7 @@ export const IssueModal = () => {
 
     const isEmailValid = useMemo(() => {
         if (userEmail.length === 0) return true;
-        return userEmail.indexOf("@") !== -1;
+        return validateEmail(userEmail);
     }, [userEmail]);
 
     const isNameValid = useMemo(() => {
