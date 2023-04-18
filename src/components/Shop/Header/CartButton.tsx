@@ -11,16 +11,16 @@ export const CartButton = () => {
                 <div className="relative">
                     <ShoppingBag size={18} className="stroke-black" />
                     <span
-                        className={`absolute -top-2 -right-2 rounded-full bg-blue-500 flex justify-center items-center items ${
+                        className={`items absolute -top-2 -right-2 flex items-center justify-center rounded-full bg-blue-500 ${
                             totalQty === 0 && "opacity-0"
                         }`}
                     >
-                        <span className="text-white font-light text-xs px-1">
+                        <span className="px-1 text-xs font-light text-white">
                             {totalQty}
                         </span>
                     </span>
                 </div>
-                <div className="text-md text-black font-semibold">Cart</div>
+                <div className="text-md font-semibold text-black">Cart</div>
             </div>
         </Link>
     ) : (
@@ -28,16 +28,16 @@ export const CartButton = () => {
             <div className="relative">
                 <ShoppingBag size={18} className="stroke-black" />
                 <span
-                    className={`absolute -top-2 -right-2 rounded-full bg-blue-500 flex justify-center items-center items ${
+                    className={`items absolute -top-2 -right-2 flex items-center justify-center rounded-full bg-blue-500 ${
                         totalQty === 0 && "opacity-0"
                     }`}
                 >
-                    <span className="text-white font-light text-xs px-1">
+                    <span className="px-1 text-xs font-light text-white">
                         {totalQty}
                     </span>
                 </span>
             </div>
-            <div className="text-md text-black font-semibold">Cart</div>
+            <div className="text-md font-semibold text-black">Cart</div>
         </div>
     );
 };

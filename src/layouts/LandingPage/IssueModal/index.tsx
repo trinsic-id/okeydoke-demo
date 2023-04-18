@@ -1,17 +1,14 @@
-import {AnimatePresence, motion} from "framer-motion";
-import {AlertOctagon, X} from "react-feather";
-import {useRecoilState, useRecoilValue} from "recoil";
-import {authSettingsState} from "../../../atoms/authService";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { X } from "react-feather";
+import { useMutation } from "react-query";
+import { useRecoilState } from "recoil";
 import {
     isIssueModalVisibleState,
     isIssueSuccessModalVisibleState,
-    isVerifyCredentialModalVisibleState
 } from "../../../atoms/modals";
-import {useLockBg} from "../../../hooks/custom/useLockBackground";
-import {authService} from "../../../services/AuthService";
+import { useLockBg } from "../../../hooks/custom/useLockBackground";
 import EmailInput from "./EmailInput";
-import {useEffect, useMemo, useState} from "react";
-import {useMutation} from "react-query";
 
 const Animations = {
     container: {
@@ -41,12 +38,19 @@ interface IssueValues {
     type: string;
 }
 
-const handleIssueCredential = async (email: IssueValues["email"], name: IssueValues["name"], grade: IssueValues["grade"], type: IssueValues["type"]): Promise<{
-    success: boolean
+const handleIssueCredential = async (
+    email: IssueValues["email"],
+    name: IssueValues["name"],
+    grade: IssueValues["grade"],
+    type: IssueValues["type"]
+): Promise<{
+    success: boolean;
 }> => {
     let url = "https://okeydokeissuer.azurewebsites.net/api/issue";
-    url += `?email=${encodeURIComponent(email)}&name=${encodeURI(name)}&grade=${grade}&foodType=${type}`;
-    const response = await fetch(url, {method: "POST"});
+    url += `?email=${encodeURIComponent(email)}&name=${encodeURI(
+        name
+    )}&grade=${grade}&foodType=${type}`;
+    const response = await fetch(url, { method: "POST" });
     const wnd: any = window;
     wnd.blah = response;
     return await response.json();
@@ -81,8 +85,7 @@ export const IssueModal = () => {
     }, [isVisible]);
 
     const isEmailValid = useMemo(() => {
-        if (userEmail.length === 0)
-            return true;
+        if (userEmail.length === 0) return true;
         return userEmail.indexOf("@") !== -1;
     }, [userEmail]);
 
@@ -90,12 +93,16 @@ export const IssueModal = () => {
         return farmerName.length > 0 && farmerName.length < 100;
     }, [farmerName]);
 
-    const {isLoading, error, isError, isSuccess, reset, mutate: issueCredential} = useMutation(({
-                                                                                                    email,
-                                                                                                    name,
-                                                                                                    grade,
-                                                                                                    type
-                                                                                                }: IssueValues) => handleIssueCredential(email, name, grade, type));
+    const {
+        isLoading,
+        error,
+        isError,
+        isSuccess,
+        reset,
+        mutate: issueCredential,
+    } = useMutation(({ email, name, grade, type }: IssueValues) =>
+        handleIssueCredential(email, name, grade, type)
+    );
 
     useEffect(() => {
         if (isSuccess && isVisible) {
@@ -108,9 +115,10 @@ export const IssueModal = () => {
         }
     }, [isSuccess, isVisible]);
 
-
     const buttonEnabled = useMemo(() => {
-        return !isLoading && isNameValid && isEmailValid && userEmail.length > 0;
+        return (
+            !isLoading && isNameValid && isEmailValid && userEmail.length > 0
+        );
     }, [isLoading, isNameValid, isEmailValid, userEmail]);
 
     return (
@@ -124,8 +132,7 @@ export const IssueModal = () => {
                         animate="visible"
                         exit="hidden"
                     >
-                        <div
-                            className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"></div>
+                        <div className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"></div>
                         <div className="z-40 flex w-full items-center justify-center p-4">
                             <motion.div
                                 className="w-full max-w-md rounded-lg bg-white shadow-lg"
@@ -150,19 +157,28 @@ export const IssueModal = () => {
                                             />
                                         </button>
                                     </div>
-                                    <div className="flex w-full flex-col items-start space-y-4 pt-2 mt-4">
+                                    <div className="mt-4 flex w-full flex-col items-start space-y-4 pt-2">
                                         <span>
-                                        We've found your profile; please make sure your info is correct
+                                            We've found your profile; please
+                                            make sure your info is correct
                                         </span>
                                         <div className="w-full">
                                             <div className="mb-[-10]">
                                                 Full Name
                                             </div>
                                             <div className="w-full rounded-lg bg-gray-200 p-4 text-center text-xl">
-                                                <input type="text" autoComplete="off" aria-autoComplete="off"
-                                                       className="w-full text-center bg-gray-200"
-                                                       value={farmerName}
-                                                       onChange={(ev) => setFarmerName(ev.target.value)}/>
+                                                <input
+                                                    type="text"
+                                                    autoComplete="off"
+                                                    aria-autoComplete="off"
+                                                    className="w-full bg-gray-200 text-center"
+                                                    value={farmerName}
+                                                    onChange={(ev) =>
+                                                        setFarmerName(
+                                                            ev.target.value
+                                                        )
+                                                    }
+                                                />
                                             </div>
                                         </div>
                                         <div className="w-full">
@@ -181,19 +197,27 @@ export const IssueModal = () => {
                                                 Grade {grade}
                                             </div>
                                         </div>
-                                        <div className="w-full h-[1px] bg-gray-500"></div>
-                                        <hr/>
-                                        <EmailInput value={userEmail} onChange={setUserEmail} isValid={isEmailValid}/>
+                                        <div className="h-[1px] w-full bg-gray-500"></div>
+                                        <hr />
+                                        <EmailInput
+                                            value={userEmail}
+                                            onChange={setUserEmail}
+                                            isValid={isEmailValid}
+                                        />
                                         <button
                                             className={`group flex h-full w-full flex-row items-center space-x-6 rounded-lg
-                                            px-4 py-3 text-white ${buttonEnabled ? "bg-blue-500 hover:py-2.5 hover:border-2 hover:border-blue-500 hover:bg-white hover:text-blue-500" : "bg-blue-300"}`}
+                                            px-4 py-3 text-white ${
+                                                buttonEnabled
+                                                    ? "bg-blue-500 hover:border-2 hover:border-blue-500 hover:bg-white hover:py-2.5 hover:text-blue-500"
+                                                    : "bg-blue-300"
+                                            }`}
                                             onClick={() => {
                                                 if (!isLoading) {
                                                     issueCredential({
                                                         email: userEmail,
                                                         name: farmerName,
                                                         grade: "C",
-                                                        type: "Artichoke"
+                                                        type: "Artichoke",
                                                     });
                                                 }
                                             }}
@@ -202,11 +226,19 @@ export const IssueModal = () => {
                                             <div className="relative">
                                                 <img
                                                     src="images/trinsic-logo-white.png"
-                                                    className={`block w-6 ${buttonEnabled ? "group-hover:hidden" : ""}`}
+                                                    className={`block w-6 ${
+                                                        buttonEnabled
+                                                            ? "group-hover:hidden"
+                                                            : ""
+                                                    }`}
                                                 />
                                                 <img
                                                     src="images/trinsic-logo-blue.png"
-                                                    className={`hidden w-6 h-[35.22px] ${buttonEnabled ? "group-hover:block" : ""}`}
+                                                    className={`hidden h-[35.22px] w-6 ${
+                                                        buttonEnabled
+                                                            ? "group-hover:block"
+                                                            : ""
+                                                    }`}
                                                 />
                                             </div>
                                             <div className="flex-1 pr-12 text-lg font-medium">

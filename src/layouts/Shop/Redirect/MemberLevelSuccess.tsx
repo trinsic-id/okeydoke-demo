@@ -22,16 +22,16 @@ export const MemberLevelSuccess = () => {
     );
     return userCredential?.credentialSubject.certificationGrade !==
         undefined ? (
-        <div className="w-full flex flex-row items-center justify-between">
+        <div className="flex w-full flex-row items-center justify-between">
             {userCredential?.credentialSubject.certificationGrade ===
                 MemberLevel.GOLD && (
                 <>
-                    <div className="font-light text-lg leading-tight">
+                    <div className="text-lg font-light leading-tight">
                         {profileText}
                     </div>
                     <Star
                         size={28}
-                        className={"stroke-yellow-400 fill-yellow-400"}
+                        className={"fill-yellow-400 stroke-yellow-400"}
                     />
                 </>
             )}
@@ -39,12 +39,12 @@ export const MemberLevelSuccess = () => {
             {userCredential?.credentialSubject.certificationGrade ===
                 MemberLevel.SILVER && (
                 <>
-                    <div className="font-light text-lg leading-tight">
+                    <div className="text-lg font-light leading-tight">
                         {profileText}
                     </div>
                     <Star
                         size={28}
-                        className={"stroke-gray-400 fill-gray-400"}
+                        className={"fill-gray-400 stroke-gray-400"}
                     />
                 </>
             )}
@@ -52,7 +52,7 @@ export const MemberLevelSuccess = () => {
             {userCredential?.credentialSubject.certificationGrade ===
                 MemberLevel.BRONZE && (
                 <>
-                    <div className="font-light text-lg leading-tight">
+                    <div className="text-lg font-light leading-tight">
                         {profileText}
                     </div>
                     <Star size={28} className={"stroke-amber-600"} />

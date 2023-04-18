@@ -25,7 +25,7 @@ export const LoadEcosystem = () => {
     }, [location]);
 
     return (
-        <div className="w-full h-full flex flex-col items-center place-content-center space-y-5 p-3">
+        <div className="flex h-full w-full flex-col place-content-center items-center space-y-5 p-3">
             <LoadingItem
                 isLoading={isEcosystemLoading}
                 isError={isError}
@@ -34,20 +34,20 @@ export const LoadEcosystem = () => {
                     navigate("/shop");
                 }}
                 successElement={
-                    <div className="w-full flex flex-col items-start space-y-1">
-                        <div className="flex flex-row w-full items-center justify-between">
-                            <div className="font-light leading-tight text-lg">
+                    <div className="flex w-full flex-col items-start space-y-1">
+                        <div className="flex w-full flex-row items-center justify-between">
+                            <div className="text-lg font-light leading-tight">
                                 Ecosystem
                             </div>
-                            <div className="leading-tight text-lg">
+                            <div className="text-lg leading-tight">
                                 {authSettings?.ecosystem}
                             </div>
                         </div>
-                        <div className="flex flex-row w-full items-center justify-between">
-                            <div className="font-light leading-tight text-lg">
+                        <div className="flex w-full flex-row items-center justify-between">
+                            <div className="text-lg font-light leading-tight">
                                 Schema
                             </div>
-                            <div className="leading-tight text-lg">
+                            <div className="text-lg leading-tight">
                                 {authSettings?.schema &&
                                     authSettings.schema.replace(
                                         "https://schema.trinsic.cloud/",

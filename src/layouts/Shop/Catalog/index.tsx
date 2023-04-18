@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Trello } from "react-feather";
 
 import { useRecoilValue } from "recoil";
@@ -43,8 +43,8 @@ const Catalog = () => {
     const filteredProducts = useRecoilValue(filteredProductsState);
 
     return (
-        <div className="w-full bg-catalog-bg flex flex-col items-start max-h-screen-95">
-            <div className="flex flex-row w-full justify-between p-4 shadow-2xl mix-blend-darken">
+        <div className="flex max-h-screen-95 w-full flex-col items-start bg-catalog-bg">
+            <div className="flex w-full flex-row justify-between p-4 mix-blend-darken shadow-2xl">
                 <div className="flex flex-row items-start space-x-2">
                     <Trello size={28} className="stroke-green-600" />
                     <div className="text-2xl text-black">Products</div>
@@ -53,7 +53,7 @@ const Catalog = () => {
             </div>
 
             <motion.div
-                className="flex flex-col h-full overflow-y-scroll space-y-4 md:space-y-0 md:flex-row md:flex-wrap md:gap-4 items-start p-4 pb-12"
+                className="flex h-full flex-col items-start space-y-4 overflow-y-scroll p-4 pb-12 md:flex-row md:flex-wrap md:gap-4 md:space-y-0"
                 key="container"
                 variants={Animations.container}
                 initial="hidden"
@@ -64,7 +64,7 @@ const Catalog = () => {
                     <motion.div
                         variants={Animations.item}
                         key={product.id}
-                        className="flex flex-col items-center rounded-lg w-full md:max-w-md  hover:shadow-xl"
+                        className="flex w-full flex-col items-center rounded-lg hover:shadow-xl  md:max-w-md"
                     >
                         <Card
                             product={product}

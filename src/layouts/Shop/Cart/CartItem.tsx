@@ -35,20 +35,20 @@ export const CartItem = ({ product }: CartItemProps) => {
     );
 
     return (
-        <div className="flex flex-row w-full py-3 h-32 space-x-4">
+        <div className="flex h-32 w-full flex-row space-x-4 py-3">
             <img
-                className="h-full rounded-lg w-1/4 object-cover"
+                className="h-full w-1/4 rounded-lg object-cover"
                 src={product.image}
             />
-            <div className="flex flex-row flex-1 justify-between">
-                <div className="flex flex-col items-start place-content-center w-full justify-between">
+            <div className="flex flex-1 flex-row justify-between">
+                <div className="flex w-full flex-col place-content-center items-start justify-between">
                     <div className="text-xl text-black">{product.name}</div>
 
-                    <div className="flex flex-row items-center divide-x-2 space-x-2">
+                    <div className="flex flex-row items-center space-x-2 divide-x-2">
                         {!isMember && (
                             <div className="flex flex-row items-center space-x-4">
                                 <div
-                                    className={`text-base sm:text-lg font-medium ${
+                                    className={`text-base font-medium sm:text-lg ${
                                         product.header === ProductHeader.Sale
                                             ? "text-red-600"
                                             : "text-black"
@@ -61,7 +61,7 @@ export const CartItem = ({ product }: CartItemProps) => {
                                 </div>
                                 {product.header === ProductHeader.Sale &&
                                     product.prevPrice && (
-                                        <div className="text-sm sm:text-md font-light text-gray-500 line-through">
+                                        <div className="sm:text-md text-sm font-light text-gray-500 line-through">
                                             {product.prevPrice.toLocaleString(
                                                 "en-US",
                                                 {
@@ -76,7 +76,7 @@ export const CartItem = ({ product }: CartItemProps) => {
 
                         {isGoldMember && memberAdjustment && (
                             <div className="flex flex-row items-center space-x-4">
-                                <div className="text-base sm:text-lg font-medium text-yellow-600 ">
+                                <div className="text-base font-medium text-yellow-600 sm:text-lg ">
                                     {memberAdjustment.newPrice.toLocaleString(
                                         "en-US",
                                         {
@@ -85,7 +85,7 @@ export const CartItem = ({ product }: CartItemProps) => {
                                         }
                                     )}
                                 </div>
-                                <div className="text-sm sm:text-md font-light text-gray-500 line-through">
+                                <div className="sm:text-md text-sm font-light text-gray-500 line-through">
                                     {memberAdjustment.prevPrice.toLocaleString(
                                         "en-US",
                                         {
@@ -98,7 +98,7 @@ export const CartItem = ({ product }: CartItemProps) => {
                         )}
                         {isSilverMember && memberAdjustment && (
                             <div className="flex flex-row items-center space-x-4">
-                                <div className="text-base sm:text-lg font-medium text-gray-600 ">
+                                <div className="text-base font-medium text-gray-600 sm:text-lg ">
                                     {memberAdjustment.newPrice.toLocaleString(
                                         "en-US",
                                         {
@@ -107,7 +107,7 @@ export const CartItem = ({ product }: CartItemProps) => {
                                         }
                                     )}
                                 </div>
-                                <div className="text-sm sm:text-md font-light text-gray-400 line-through">
+                                <div className="sm:text-md text-sm font-light text-gray-400 line-through">
                                     {memberAdjustment.prevPrice.toLocaleString(
                                         "en-US",
                                         {
@@ -120,7 +120,7 @@ export const CartItem = ({ product }: CartItemProps) => {
                         )}
                         {isBronzeMember && memberAdjustment && (
                             <div className="flex flex-row items-center space-x-4">
-                                <div className="text-base sm:text-lg font-medium text-amber-600 ">
+                                <div className="text-base font-medium text-amber-600 sm:text-lg ">
                                     {memberAdjustment.newPrice.toLocaleString(
                                         "en-US",
                                         {
@@ -129,7 +129,7 @@ export const CartItem = ({ product }: CartItemProps) => {
                                         }
                                     )}
                                 </div>
-                                <div className="text-sm sm:text-md font-light text-gray-500 line-through">
+                                <div className="sm:text-md text-sm font-light text-gray-500 line-through">
                                     {memberAdjustment.prevPrice.toLocaleString(
                                         "en-US",
                                         {
@@ -140,11 +140,11 @@ export const CartItem = ({ product }: CartItemProps) => {
                                 </div>
                             </div>
                         )}
-                        <div className="text-green-500 pl-2">In stock</div>
+                        <div className="pl-2 text-green-500">In stock</div>
                     </div>
-                    <div className="flex flex-row space-x-4 w-full justify-between">
+                    <div className="flex w-full flex-row justify-between space-x-4">
                         <CartQuantity product={product} />
-                        <div className="text-black text-lg">
+                        <div className="text-lg text-black">
                             {price.toLocaleString("en-US", {
                                 style: "currency",
                                 currency: "USD",

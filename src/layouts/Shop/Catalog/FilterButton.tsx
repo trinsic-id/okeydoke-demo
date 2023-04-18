@@ -7,7 +7,7 @@ export const FilterButton = () => {
     return (
         <Switch.Group>
             <div className="flex flex-row items-center gap-2">
-                <Switch.Label className={`text-black text-lg`}>
+                <Switch.Label className={`text-lg text-black`}>
                     Filter
                 </Switch.Label>
 
@@ -16,12 +16,12 @@ export const FilterButton = () => {
                     onChange={() => {
                         toggleFilter((val) => !val);
                     }}
-                    className={`focus:outline-none bg-transparent border-2 border-black ${
+                    className={`border-2 border-black bg-transparent focus:outline-none ${
                         !isFiltered && "border-opacity-30"
-                    } relative inline-flex items-center h-4 rounded-full w-8 transition ease-in-out duration-500`}
+                    } relative inline-flex h-4 w-8 items-center rounded-full transition duration-500 ease-in-out`}
                 >
                     <span
-                        className={`w-2 h-2 transform transition ease-in-out duration-300 bg-black rounded-full ${
+                        className={`h-2 w-2 transform rounded-full bg-black transition duration-300 ease-in-out ${
                             isFiltered ? "translate-x-1" : "translate-x-4"
                         }`}
                     />

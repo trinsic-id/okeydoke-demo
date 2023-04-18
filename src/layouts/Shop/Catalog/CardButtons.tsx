@@ -12,10 +12,10 @@ export const CardButtons = ({ product }: CardButtonProps) => {
     const [quantity, setQuantity] = useState(1);
     const addItem = useAddItem();
     return (
-        <div className="flex flex-row items-center w-full gap-4 h-12 md:h-18">
+        <div className="md:h-18 flex h-12 w-full flex-row items-center gap-4">
             <Quantity quantity={quantity} setQuantity={setQuantity} />
             <button
-                className="w-1/2 h-full group bg-white hover:bg-blue-500 border-2 border-blue-500 hover:border-opacity-0 rounded-lg text-blue-500 hover:text-white px-2 py-3 flex flex-row items-center space-x-3 place-content-center"
+                className="group flex h-full w-1/2 flex-row place-content-center items-center space-x-3 rounded-lg border-2 border-blue-500 bg-white px-2 py-3 text-blue-500 hover:border-opacity-0 hover:bg-blue-500 hover:text-white"
                 onClick={() => {
                     addItem(product, quantity);
                     setQuantity(1);

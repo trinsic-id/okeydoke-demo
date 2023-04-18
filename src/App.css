@@ -1,4 +1,4 @@
-@media(max-width: 767px) or (max-height:673px) {
+@media (max-width: 767px) or (max-height: 673px) {
     #footer {
         position: relative !important;
         margin-top: 2rem;
@@ -10,4 +10,3 @@
     position: absolute;
     bottom: 10px;
 }
-

@@ -1,4 +1,3 @@
-import { CheckSquare } from "react-feather";
 import { useRecoilValue } from "recoil";
 import { memberProduceState } from "../../../atoms/member";
 import { ProduceType } from "../../../data/products";
@@ -8,8 +7,8 @@ export const CredentialIssued = () => {
 
     return (
         <div className="flex flex-col items-start space-y-4">
-            <div className="w-full flex flex-row items-center">
-                <div className="font-light leading-tight text-base sm:text-lg w-full">
+            <div className="flex w-full flex-row items-center">
+                <div className="w-full text-base font-light leading-tight sm:text-lg">
                     {`Credential issued by the`}
                     <br />
                     {memberProduceType === ProduceType.CORN
@@ -28,27 +27,27 @@ export const CredentialIssued = () => {
                     />
                 )}
             </div>
-            <div className="w-full flex flex-row items-center justify-between">
-                <div className="font-light leading-tight text-base sm:text-lg w-full">
+            <div className="flex w-full flex-row items-center justify-between">
+                <div className="w-full text-base font-light leading-tight sm:text-lg">
                     Revocation Status:
                 </div>
-                <div className="leading-tight text-base sm:text-lg font-medium text-green-600 h-8 w-28 rounded-lg py-4 px-12 flex items-center place-content-center bg-green-200 border-green-600 border-2">
+                <div className="flex h-8 w-28 place-content-center items-center rounded-lg border-2 border-green-600 bg-green-200 py-4 px-12 text-base font-medium leading-tight text-green-600 sm:text-lg">
                     Valid
                 </div>
             </div>
-            <div className="w-full flex flex-row items-center justify-between">
-                <div className="font-light leading-tight text-base sm:text-lg w-full">
+            <div className="flex w-full flex-row items-center justify-between">
+                <div className="w-full text-base font-light leading-tight sm:text-lg">
                     Trust registry:
                 </div>
-                <div className="leading-tight text-base sm:text-lg font-medium text-green-600 h-8 w-28 rounded-lg py-4 px-12 flex items-center place-content-center bg-green-200 border-green-600 border-2">
+                <div className="flex h-8 w-28 place-content-center items-center rounded-lg border-2 border-green-600 bg-green-200 py-4 px-12 text-base font-medium leading-tight text-green-600 sm:text-lg">
                     Valid
                 </div>
             </div>
-            <div className="w-full flex flex-row items-center justify-between">
-                <div className="font-light leading-tight text-base sm:text-lg w-full">
+            <div className="flex w-full flex-row items-center justify-between">
+                <div className="w-full text-base font-light leading-tight sm:text-lg">
                     Schema validation:
                 </div>
-                <div className="leading-tight text-base sm:text-lg font-medium text-green-600 h-8 w-28 rounded-lg py-4 px-12 flex items-center place-content-center bg-green-200 border-green-600 border-2">
+                <div className="flex h-8 w-28 place-content-center items-center rounded-lg border-2 border-green-600 bg-green-200 py-4 px-12 text-base font-medium leading-tight text-green-600 sm:text-lg">
                     Valid
                 </div>
             </div>

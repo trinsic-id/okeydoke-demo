@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useMemo } from "react";
 import { AlertOctagon, X } from "react-feather";
 import { useRecoilState } from "recoil";
@@ -36,7 +36,7 @@ export const RateProduct = () => {
     );
     useLockBg(isVisible);
     return (
-        <div className="max-w-x2s md:max-w-xs overflow-hidden">
+        <div className="max-w-x2s overflow-hidden md:max-w-xs">
             <AnimatePresence>
                 {isVisible ? (
                     <motion.div
@@ -46,21 +46,21 @@ export const RateProduct = () => {
                         animate="visible"
                         exit="hidden"
                     >
-                        <div className="absolute top-0 bottom-0 left-0 right-0 bg-opacity-50 bg-black z-30 cursor-pointer"></div>
-                        <div className="w-full z-40 p-4 flex items-center justify-center">
+                        <div className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"></div>
+                        <div className="z-40 flex w-full items-center justify-center p-4">
                             <motion.div
-                                className="bg-white w-full max-w-md rounded-lg shadow-lg"
+                                className="w-full max-w-md rounded-lg bg-white shadow-lg"
                                 variants={Animations.inputContainer}
                             >
                                 <div className="p-4 md:p-6">
                                     <div className="flex items-start justify-between">
                                         <div className="flex flex-row items-center">
-                                            <h6 className="text-black font-semibold text-xl">
+                                            <h6 className="text-xl font-semibold text-black">
                                                 {`Rate ${selectedProduct?.name}`}
                                             </h6>
                                         </div>
                                         <button
-                                            className="focus:outline-none text-gray-50 ml-6"
+                                            className="ml-6 text-gray-50 focus:outline-none"
                                             onClick={() =>
                                                 setSelectedProduct(undefined)
                                             }
@@ -71,10 +71,10 @@ export const RateProduct = () => {
                                             />
                                         </button>
                                     </div>
-                                    <div className="w-full flex flex-col items-start space-y-4 pt-2">
-                                        <div className="flex flex-row bg-red-100 rounded-lg w-full p-4">
-                                            <div className="flex-1 flex flex-col space-y-2 items-start">
-                                                <div className="text-black text-lg">
+                                    <div className="flex w-full flex-col items-start space-y-4 pt-2">
+                                        <div className="flex w-full flex-row rounded-lg bg-red-100 p-4">
+                                            <div className="flex flex-1 flex-col items-start space-y-2">
+                                                <div className="text-lg text-black">
                                                     Requirements to rate
                                                     product:
                                                 </div>
@@ -83,7 +83,7 @@ export const RateProduct = () => {
                                                         size={18}
                                                         className="stroke-black"
                                                     />
-                                                    <div className="text-black text-base">
+                                                    <div className="text-base text-black">
                                                         Certification Grade Gold
                                                     </div>
                                                 </div>
@@ -92,7 +92,7 @@ export const RateProduct = () => {
                                                         size={18}
                                                         className="stroke-black"
                                                     />
-                                                    <div className="text-black text-base">
+                                                    <div className="text-base text-black">
                                                         {`Have a farm that produces ${selectedProduct?.produceType.toLowerCase()}`}
                                                     </div>
                                                 </div>
@@ -101,7 +101,7 @@ export const RateProduct = () => {
                                                         size={18}
                                                         className="stroke-black"
                                                     />
-                                                    <div className="text-black text-base">
+                                                    <div className="text-base text-black">
                                                         Have purchased this
                                                         product
                                                     </div>
@@ -110,14 +110,14 @@ export const RateProduct = () => {
                                         </div>
 
                                         <button
-                                            className="w-full h-full bg-blue-500 rounded-lg text-white px-4 py-3 flex flex-row items-center space-x-6"
+                                            className="flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-blue-500 px-4 py-3 text-white"
                                             onClick={() => {}}
                                         >
                                             <img
                                                 src="images/trinsic-logo-white.png"
                                                 className="w-6"
                                             />
-                                            <div className="text-white font-medium text-lg flex-1 pr-12">
+                                            <div className="flex-1 pr-12 text-lg font-medium text-white">
                                                 Verify your purchase
                                             </div>
                                         </button>

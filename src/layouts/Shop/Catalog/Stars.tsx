@@ -1,6 +1,6 @@
-import { Star } from "react-feather";
-import { range } from "lodash";
 import "lodash";
+import { range } from "lodash";
+import { Star } from "react-feather";
 interface StarsProps {
     score: number;
     className?: string;
@@ -16,7 +16,7 @@ export const Stars = ({
 }: StarsProps) => {
     return (
         <div
-            className={`flex flex-row items-center space-x-3 cursor-pointer ${
+            className={`flex cursor-pointer flex-row items-center space-x-3 ${
                 className ? className : ""
             }`}
         >
@@ -29,10 +29,10 @@ export const Stars = ({
                         hoverPos !== undefined
                             ? hoverPos < val
                                 ? "stroke-gray-200"
-                                : "stroke-gold-star fill-gold-star"
+                                : "fill-gold-star stroke-gold-star"
                             : score < val
                             ? "stroke-gray-200"
-                            : "stroke-gold-star fill-gold-star"
+                            : "fill-gold-star stroke-gold-star"
                     }
                 />
             ))}

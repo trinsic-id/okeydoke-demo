@@ -1,6 +1,6 @@
 import { atom } from "recoil";
-import { CredentialDerivedProof } from "../models/credential";
 import { recoilPersist } from "recoil-persist";
+import { CredentialDerivedProof } from "../models/credential";
 
 const { persistAtom } = recoilPersist();
 export enum AuthState {

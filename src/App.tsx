@@ -1,20 +1,19 @@
-import React from "react";
 import "./App.css";
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Shop from "./layouts/Shop";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./layouts/LandingPage";
+import Shop from "./layouts/Shop";
 const queryClient = new QueryClient();
 
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <Router>
-                <div className="w-screen h-screen flex flex-col">
+                <div className="flex h-screen w-screen flex-col">
                     <Routes>
-                        <Route path="/shop/*" element={<Shop/>} />
-                        <Route path="/" element={<LandingPage/>} />
+                        <Route path="/shop/*" element={<Shop />} />
+                        <Route path="/" element={<LandingPage />} />
                     </Routes>
                 </div>
             </Router>

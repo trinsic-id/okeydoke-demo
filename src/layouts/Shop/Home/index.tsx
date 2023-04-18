@@ -1,3 +1,3 @@
 export const Home = () => {
-  return <div className="w-full h-full "></div>;
+    return <div className="h-full w-full "></div>;
 };

@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
-import { CheckSquare, Square, XSquare } from "react-feather";
-import Spinner from "react-spinkit";
+import { CheckSquare } from "react-feather";
 import { useToggle } from "react-use";
 
 const Animations = {
@@ -64,7 +63,7 @@ export const LoadingItem = ({
     //md:w-2/3 lg:w-1/2 max-w-xl
     return (
         <motion.div
-            className={`flex flex-row items-start space-x-4 w-full h-full bg-loading-bg-light rounded-lg p-4 transition duration-700 ${
+            className={`flex h-full w-full flex-row items-start space-x-4 rounded-lg bg-loading-bg-light p-4 transition duration-700 ${
                 !isLoading && !isComplete && !isError && "opacity-40"
             }`}
         >
@@ -87,7 +86,7 @@ export const LoadingItem = ({
                     )}
                 </AnimatePresence>
             </div>
-            <div className="flex flex-1 flex-col h-full">
+            <div className="flex h-full flex-1 flex-col">
                 <div
                     className={`text-md font-bold ${
                         isError ? "text-red-600" : "text-loading-text"
@@ -103,7 +102,7 @@ export const LoadingItem = ({
                             initial={"fadeOut"}
                             animate={"fadeIn"}
                             exit={"fadeOut"}
-                            className="text-loading-text text-md font-bold overflow-clip pt-3"
+                            className="text-md overflow-clip pt-3 font-bold text-loading-text"
                         >
                             {successElement}
                         </motion.div>

@@ -1,10 +1,8 @@
-import {AnimatePresence, motion} from "framer-motion";
-import {X} from "react-feather";
-import {useRecoilState} from "recoil";
-import {
-    isIssueSuccessModalVisibleState,
-} from "../../../atoms/modals";
-import {useLockBg} from "../../../hooks/custom/useLockBackground";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "react-feather";
+import { useRecoilState } from "recoil";
+import { isIssueSuccessModalVisibleState } from "../../../atoms/modals";
+import { useLockBg } from "../../../hooks/custom/useLockBackground";
 
 const Animations = {
     container: {
@@ -44,8 +42,7 @@ export const SuccessModal = () => {
                         animate="visible"
                         exit="hidden"
                     >
-                        <div
-                            className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"></div>
+                        <div className="absolute top-0 bottom-0 left-0 right-0 z-30 cursor-pointer bg-black bg-opacity-50"></div>
                         <div className="z-40 flex w-full items-center justify-center p-4">
                             <motion.div
                                 className="w-full max-w-md rounded-lg bg-white shadow-lg"
@@ -70,9 +67,10 @@ export const SuccessModal = () => {
                                             />
                                         </button>
                                     </div>
-                                    <div className="flex w-full flex-col items-start space-y-4 pt-2 mt-4">
+                                    <div className="mt-4 flex w-full flex-col items-start space-y-4 pt-2">
                                         <span>
-                                        Your farm has been audited and you've been issued a credential!
+                                            Your farm has been audited and
+                                            you've been issued a credential!
                                         </span>
                                     </div>
                                 </div>

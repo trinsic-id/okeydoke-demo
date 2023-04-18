@@ -28,10 +28,10 @@ export const isVerifiedCredentialModalVisibleState = atom<boolean>({
 
 export const isIssueModalVisibleState = atom<boolean>({
     key: "issue-credential-modal-visible",
-    default: false
+    default: false,
 });
 
 export const isIssueSuccessModalVisibleState = atom<boolean>({
     key: "issue-credential-success-modal-visible",
-    default: false
+    default: false,
 });

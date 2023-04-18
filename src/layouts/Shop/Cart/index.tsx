@@ -41,18 +41,18 @@ export const Cart = () => {
     }, [cartItems.length]);
 
     return (
-        <div className="w-full h-full bg-catalog-bg p-4">
+        <div className="h-full w-full bg-catalog-bg p-4">
             {cartItems.length ? (
-                <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                     <motion.div
-                        className="flex flex-col h-min w-full items-start rounded-lg bg-white py-3 px-4 divide-y-2"
+                        className="flex h-min w-full flex-col items-start divide-y-2 rounded-lg bg-white py-3 px-4"
                         key="container"
                         variants={Animations.container}
                         initial="hidden"
                         animate="visible"
                         exit="hidden"
                     >
-                        <div className="w-full text-xl font-medium pb-1">
+                        <div className="w-full pb-1 text-xl font-medium">
                             Cart
                         </div>
 

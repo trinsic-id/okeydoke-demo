@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { selectedRateProductState } from "../../../atoms/modals";
@@ -35,8 +34,8 @@ export const Card = ({
     const [hoverPos, setHoverPos] = useState<number | undefined>(undefined);
     const setSelectedProduct = useSetRecoilState(selectedRateProductState);
     return (
-        <div className="flex flex-col items-start w-full gap-3 p-4 rounded-lg bg-white">
-            <div className="flex flex-row w-full items-center justify-between h-12">
+        <div className="flex w-full flex-col items-start gap-3 rounded-lg bg-white p-4">
+            <div className="flex h-12 w-full flex-row items-center justify-between">
                 {product.header === ProductHeader.Sale &&
                     product.discount &&
                     !isMember && <Sale discount={product.discount} />}
@@ -54,10 +53,10 @@ export const Card = ({
                 {!isMember && <VerifyCredential />}
             </div>
 
-            <div className="flex flex-col items-center w-full pt-3 space-y-3 pb-3">
-                <div className="flex relative h-48">
+            <div className="flex w-full flex-col items-center space-y-3 pt-3 pb-3">
+                <div className="relative flex h-48">
                     <img
-                        className="rounded-lg object-cover w-full"
+                        className="w-full rounded-lg object-cover"
                         src={product.image}
                     />
                     <div
@@ -66,7 +65,7 @@ export const Card = ({
                         onClick={() => setSelectedProduct(product)}
                         title="Click to rate!"
                     >
-                        <div className="bg-gray-600 hover:bg-gray-500 bg-opacity-80 text-xs rounded-lg p-2">
+                        <div className="rounded-lg bg-gray-600 bg-opacity-80 p-2 text-xs hover:bg-gray-500">
                             <Stars
                                 score={product.score}
                                 hoverPos={hoverPos}
