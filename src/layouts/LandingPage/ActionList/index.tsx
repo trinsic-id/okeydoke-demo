@@ -40,7 +40,7 @@ export default function ActionList() {
     const navigate = useNavigate();
     return (
         <motion.div
-            className="mt-24 flex w-full flex-col items-center justify-center gap-14 align-middle md:mt-48 md:flex-row md:gap-24"
+            className="mt-6 flex w-full flex-col items-center justify-center gap-14 align-middle md:mt-48 md:flex-row md:gap-24"
             key="container"
             variants={ActionAnimations.container}
             initial="hidden"

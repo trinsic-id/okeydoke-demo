@@ -12,14 +12,18 @@ export const Action = ({ text, image, onClick }: ActionProps) => {
         <motion.div
             variants={ActionAnimations.item}
             key={"Action-1"}
-            className="flex cursor-pointer flex-col items-center justify-between align-baseline text-gray-900 hover:text-gray-600"
+            className=""
             onClick={onClick}
         >
-            <img
-                className="h-auto w-48 rounded-lg hover:opacity-90 md:w-64"
-                src={image}
-            />
-            <div className="mt-4 text-center text-xl font-semibold">{text}</div>
+            <div className="group flex cursor-pointer flex-col items-center justify-between gap-12 rounded-lg border-2 bg-gray-50 p-5 align-baseline text-gray-900 transition-all duration-300 hover:border-blue-400 hover:p-8 hover:text-gray-600 hover:shadow-2xl">
+                <img
+                    className="h-auto w-full max-w-md rounded-lg md:max-w-sm"
+                    src={image}
+                />
+                <div className="text-xl transition-all duration-300 group-hover:text-blue-500">
+                    {text}
+                </div>
+            </div>
         </motion.div>
     );
 };
