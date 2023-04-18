@@ -34,7 +34,7 @@ export default function EmailInput({
         <div className="relative flex w-full flex-col">
             <input
                 autoComplete="off"
-                className={`peer w-full rounded-lg border p-3 placeholder:text-[#5F7186] ${
+                className={`peer w-full rounded-lg border p-3 transition-all placeholder:text-[#5F7186] ${
                     !isValid
                         ? "border-red-500 text-red-500"
                         : "border-[#5F7186] border-opacity-10 focus:border-blue-500 focus:text-blue-500"
@@ -46,9 +46,13 @@ export default function EmailInput({
                 }}
             />
 
-            {!isValid && (
-                <div className={`pt-1 text-xs text-red-500`}>{errMsg}</div>
-            )}
+            <div
+                className={`pt-1 text-xs text-red-500 ${
+                    !isValid ? "opacity-100" : "opacity-0"
+                }`}
+            >
+                {errMsg}
+            </div>
 
             <span
                 className={`pointer-events-none absolute left-2 -top-2 bg-white px-1 text-xs ${
