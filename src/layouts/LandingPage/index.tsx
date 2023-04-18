@@ -14,7 +14,7 @@ const LandingPage = () => {
                         OkeyDoke is a network of verified farmers who get access
                         to exclusive discounts and opportunities.
                     </div>
-                    <ActionList></ActionList>
+                    <ActionList />
                 </div>
                 <div id="footer" className="">
                     OkeyDoke is a demo IDtech ecosystem for Trinsic.{" "}
