@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { X } from "react-feather";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
+import Spinner from "react-spinkit";
 import { useRecoilState } from "recoil";
 import {
     isIssueModalVisibleState,
@@ -240,23 +241,35 @@ export const IssueModal = () => {
                                             }}
                                             disabled={!buttonEnabled}
                                         >
-                                            <div className="relative">
-                                                <img
-                                                    src="images/trinsic-logo-white.png"
-                                                    className={`block w-6 ${
-                                                        buttonEnabled
-                                                            ? "group-hover:hidden"
-                                                            : ""
-                                                    }`}
-                                                />
-                                                <img
-                                                    src="images/trinsic-logo-blue.png"
-                                                    className={`hidden h-[35.22px] w-6 ${
-                                                        buttonEnabled
-                                                            ? "group-hover:block"
-                                                            : ""
-                                                    }`}
-                                                />
+                                            <div className="h-full w-6">
+                                                {isLoading && (
+                                                    <Spinner
+                                                        color="white"
+                                                        fadeIn="none"
+                                                        name="ball-spin-fade-loader"
+                                                        className="ml-4 mt-2 scale-[45%] whitespace-nowrap"
+                                                    />
+                                                )}
+                                                {!isLoading && (
+                                                    <img
+                                                        src="images/trinsic-logo-white.png"
+                                                        className={`block w-6 ${
+                                                            buttonEnabled
+                                                                ? "group-hover:hidden"
+                                                                : ""
+                                                        }`}
+                                                    />
+                                                )}
+                                                {!isLoading && (
+                                                    <img
+                                                        src="images/trinsic-logo-blue.png"
+                                                        className={`hidden h-[35.22px] w-6 ${
+                                                            buttonEnabled
+                                                                ? "group-hover:block"
+                                                                : ""
+                                                        }`}
+                                                    />
+                                                )}
                                             </div>
                                             <div className="flex-1 pr-12 text-lg font-medium">
                                                 Receive your credential
