@@ -65,7 +65,16 @@ const handleIssueCredential = async (
     const response = await fetch(url, { method: "POST" });
     const wnd: any = window;
     wnd.blah = response;
-    return await response.json();
+
+    // We expect a response in the form of { success: boolean, error?: string }
+    // If there was an error here, throw it so that the React mutation can handle it
+    let json = await response.json();
+    if (!json.success) {
+        throw new Error(json.error)
+    }
+    else {
+        return json;
+    }
 };
 
 export const IssueModal = () => {
@@ -276,6 +285,14 @@ export const IssueModal = () => {
                                                 Receive your credential
                                             </div>
                                         </button>
+                                        {isError && (
+                                            <div className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg
+                                            px-4 py-3 bg-red-100">
+                                                <span className="text-red-500">
+                                                    {error instanceof Error ? error.message : "Error"}
+                                                </span>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </motion.div>

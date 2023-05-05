@@ -61,9 +61,10 @@ app.MapPost("/api/issue", async (string email, string name, FoodClass foodType, 
                 SendNotification = true
             });
         }
-        catch
+        catch (Exception ex)
         {
-            throw new Exception("Error issuing credential");
+            Console.WriteLine("Error: " + ex.Message);
+            throw new Exception("Error issuing credential: " + ex.Message);
         }
 
         return new IssueResponse()
