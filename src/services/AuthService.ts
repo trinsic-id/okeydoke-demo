@@ -1,8 +1,7 @@
-import { IdTokenClaims, Log, User, UserManager } from "oidc-client-ts";
-import { CredentialDerivedProof } from "../models/credential";
+import { Log, User, UserManager } from "oidc-client-ts";
 import { generateSettings } from "../utils/generateSettings";
 
-const clientRoot: string = `${window.location.origin}/`;
+const clientRoot: string = window.location.origin;
 
 export const defaultEcosystem = "okeydoke";
 export const defaultSchema =
@@ -11,9 +10,9 @@ export const defaultSchema =
 export const defaultAuthSettings = {
     authority: "https://connect.trinsic.cloud",
     client_id: "okeydoke",
-    redirect_uri: `${clientRoot}redirect`,
-    silent_redirect_uri: `${clientRoot}silent-renew`,
-    post_logout_redirect_uri: `${clientRoot}`,
+    redirect_uri: `${clientRoot}/shop/redirect`,
+    silent_redirect_uri: `${clientRoot}/shop/silent-renew`,
+    post_logout_redirect_uri: `${clientRoot}/shop`,
     response_type: "code",
     scope: "openid",
     extraQueryParams: {
@@ -29,6 +28,7 @@ export class AuthService {
         this.settings = settings;
         this.userManager = new UserManager(this.settings);
         Log.setLogger(console);
+        this.userManager.metadataService.getMetadata();
     }
 
     public getUser(): Promise<User | null> {

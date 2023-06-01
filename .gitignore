@@ -139,3 +139,9 @@ browser/react-wallet/.idea/
 node/kubernetes/.idea/
 browser/basic-webpack/.idea/
 issuer-service/bot/appsettings.Production.json
+issuer-backend/IssuerBackend/appsettings.Production.json
+issuer-backend/IssuerBackend/bin/
+issuer-backend/IssuerBackend/obj/
+issuer-backend/IssuerBackend/deploy.ps1
+issuer-backend/IssuerBackend/publish.zip
+issuer-backend/IssuerBackend/publish

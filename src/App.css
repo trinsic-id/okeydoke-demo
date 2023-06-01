@@ -1,0 +1,12 @@
+@media (max-width: 767px) or (max-height: 673px) {
+    #footer {
+        position: relative !important;
+        margin-top: 2rem;
+        bottom: unset;
+    }
+}
+
+#footer {
+    position: absolute;
+    bottom: 10px;
+}

@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
-import { Product } from "../data/products";
 import { recoilPersist } from "recoil-persist";
+import { Product } from "../data/products";
 const { persistAtom } = recoilPersist();
 export const cartState = atom<Product[]>({
     key: "cart",
