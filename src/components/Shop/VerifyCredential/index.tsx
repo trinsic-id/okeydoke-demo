@@ -102,18 +102,18 @@ export const VerifyCredentialModal = () => {
                                             </div>
                                         </div>
                                         <button
-                                            className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-blue-500 px-4 py-3 text-white hover:border-2 hover:border-blue-500 hover:bg-white hover:text-blue-500"
+                                            className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-blue-500 px-4 py-3 text-white border-2 border-blue-500 hover:bg-white hover:text-blue-500"
                                             onClick={() => {
                                                 authService.login();
                                             }}
                                         >
                                             <div className="relative">
                                                 <img
-                                                    src="images/trinsic-logo-white.png"
+                                                    src="/images/trinsic-logo-white.png"
                                                     className="block w-6 group-hover:hidden"
                                                 />
                                                 <img
-                                                    src="images/trinsic-logo-blue.png"
+                                                    src="/images/trinsic-logo-blue.png"
                                                     className="hidden w-6 group-hover:block"
                                                 />
                                             </div>
