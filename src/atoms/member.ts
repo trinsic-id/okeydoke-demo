@@ -84,6 +84,16 @@ export const userAddressState = selector<MemberAddress | undefined>({
         if (!subject) return undefined;
 
         return {
+            address: "123 Fakesville, IN 00000",
+            city: "Fakesville",
+            state: "IN",
+            incomplete: false
+        };
+
+        // Address verification prompt bypassed due to issuance flow no longer supporting address
+        // -JC 6/1/2023
+        /*
+        return {
             address: subject.address,
             city: subject.city,
             state: subject.state,
@@ -91,7 +101,7 @@ export const userAddressState = selector<MemberAddress | undefined>({
                 subject.address === undefined ||
                 subject.city === undefined ||
                 subject.state === undefined,
-        };
+        };*/
     },
 });
 
