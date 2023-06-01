@@ -63,8 +63,6 @@ const handleIssueCredential = async (
         name
     )}&grade=${grade}&foodType=${type}`;
     const response = await fetch(url, { method: "POST" });
-    const wnd: any = window;
-    wnd.blah = response;
 
     // We expect a response in the form of { success: boolean, error?: string }
     // If there was an error here, throw it so that the React mutation can handle it
