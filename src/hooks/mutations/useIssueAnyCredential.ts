@@ -15,8 +15,7 @@ const handleIssueAny = async ({
     jsonValues,
     returnUrl,
 }: IssueAnySearchVars) => {
-    // let url = "https://okeydokeissuer.azurewebsites.net/api/issue";
-    let url = "https://localhost:7133/api/issue-any";
+    let url = "https://okeydokeissuer.azurewebsites.net/api/issue";
     url += `?email=${encodeURIComponent(email)}&authToken=${encodeURI(
         authToken
     )}&schemaUri=${encodeURIComponent(
