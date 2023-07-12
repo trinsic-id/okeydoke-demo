@@ -105,7 +105,7 @@ export const ErrorModal = () => {
                                             }}
                                         >
                                             <img
-                                                src="images/trinsic-logo-white.png"
+                                                src="/images/trinsic-logo-white.png"
                                                 className="w-6"
                                             />
                                             <div className="flex-1 pr-12 text-lg font-medium text-white">
@@ -121,7 +121,7 @@ export const ErrorModal = () => {
                                             }}
                                         >
                                             <img
-                                                src="images/trinsic-logo-white.png"
+                                                src="/images/trinsic-logo-white.png"
                                                 className="w-6 opacity-0"
                                             />
                                             <div className="flex-1 pr-12 text-lg font-medium text-white">

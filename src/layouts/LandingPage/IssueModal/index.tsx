@@ -260,7 +260,7 @@ export const IssueModal = () => {
                                                 )}
                                                 {!isLoading && (
                                                     <img
-                                                        src="images/trinsic-logo-white.png"
+                                                        src="/images/trinsic-logo-white.png"
                                                         className={`block w-6 ${
                                                             buttonEnabled
                                                                 ? "group-hover:hidden"

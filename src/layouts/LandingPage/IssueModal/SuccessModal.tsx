@@ -90,7 +90,7 @@ export const SuccessModal = () => {
                                     >
                                         <div className="relative">
                                             <img
-                                                src="images/trinsic-logo-white.png"
+                                                src="/images/trinsic-logo-white.png"
                                                 className={`block w-6 group-hover:hidden`}
                                             />
                                             <img
