@@ -54,7 +54,7 @@ const Catalog = () => {
 
             <motion.div
                 className="flex h-full flex-col items-start space-y-4 overflow-y-scroll p-4 pb-12 md:flex-row md:flex-wrap md:gap-4 md:space-y-0"
-                key="container"
+                key="container2"
                 variants={Animations.container}
                 initial="hidden"
                 animate="visible"

@@ -1,4 +1,4 @@
-import { Log, User, UserManager } from "oidc-client-ts";
+import { Log, User, UserManager } from "trinsic-oidc-client-ts";
 import { generateSettings } from "../utils/generateSettings";
 
 const clientRoot: string = window.location.origin;
@@ -18,21 +18,32 @@ export const defaultAuthSettings = {
     extraQueryParams: {
         "trinsic:ecosystem": defaultEcosystem,
         "trinsic:schema": defaultSchema,
+        "trinsic:mode": "popup",
     },
 };
+type OIDCSettingsType = typeof defaultAuthSettings
+declare global {
+    interface Window { OIDCSettings: OIDCSettingsType; }
+}
+window.OIDCSettings = defaultAuthSettings
+
 
 export class AuthService {
     public userManager: UserManager;
     public settings: typeof defaultAuthSettings | undefined;
-    constructor(settings: typeof defaultAuthSettings) {
-        this.settings = settings;
-        this.userManager = new UserManager(this.settings);
+    constructor() {
+        this.settings = defaultAuthSettings;
+        this.userManager = new UserManager();
         Log.setLogger(console);
         this.userManager.metadataService.getMetadata();
     }
 
     public getUser(): Promise<User | null> {
         return this.userManager.getUser();
+    }
+
+    public async loginPopup() {
+        return await this.userManager.signinPopup();
     }
 
     public login(): Promise<void> {
@@ -53,4 +64,4 @@ export class AuthService {
     }
 }
 
-export const authService = new AuthService(generateSettings());
+export const authService = new AuthService();

@@ -1,13 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertOctagon, X } from "react-feather";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { authSettingsState } from "../../../atoms/authService";
-import { isVerifyCredentialModalVisibleState } from "../../../atoms/modals";
+import { isRedirectVerifyCredentialErrorState, isVerifiedCredentialModalVisibleState, isVerifyCredentialModalVisibleState } from "../../../atoms/modals";
 import { useLockBg } from "../../../hooks/custom/useLockBackground";
 import { authService } from "../../../services/AuthService";
 import { BronzeMember } from "./BronzeMember";
 import { GoldMember } from "./GoldMember";
 import { SilverMember } from "./SilverMember";
+import { AuthState, authStateState, userCredentialState } from "../../../atoms/user";
+import { useVerifyCredential } from "../../../hooks/queries/useVerifyCredential";
+import { CredentialDerivedProof } from "../../../models/credential";
 
 const Animations = {
     container: {
@@ -34,8 +37,18 @@ export const VerifyCredentialModal = () => {
     const [isVisible, setModalVisible] = useRecoilState(
         isVerifyCredentialModalVisibleState
     );
+    const setVerifiedModalVisible = useSetRecoilState(
+        isVerifiedCredentialModalVisibleState
+    );
     useLockBg(isVisible);
-    const authSettings = useRecoilValue(authSettingsState);
+
+    const [userCredential, setUserCredential] =
+        useRecoilState(userCredentialState);
+    const [authState, setAuthState] = useRecoilState(authStateState);
+    const setIsVerifyCredentialError = useSetRecoilState(
+        isRedirectVerifyCredentialErrorState
+    );
+    const { mutateAsync: verifyCredentialAsync } = useVerifyCredential();
     return (
         <div className="max-w-x2s overflow-hidden md:max-w-xs">
             <AnimatePresence>
@@ -103,8 +116,33 @@ export const VerifyCredentialModal = () => {
                                         </div>
                                         <button
                                             className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-blue-500 px-4 py-3 text-white border-2 border-blue-500 hover:bg-white hover:text-blue-500"
-                                            onClick={() => {
-                                                authService.login();
+                                            onClick={async () => {
+                                                const user = await authService.loginPopup();
+                                                if (user && user.profile._vp_token) {
+                                                    setModalVisible(false);
+                                                    const credential = user.profile
+                                                        ._vp_token as CredentialDerivedProof;
+                                                    const verifyResp = await verifyCredentialAsync({
+                                                        derivedProof: credential,
+                                                    });
+                                                    if (
+                                                        // verifyResp.isValid &&
+                                                        verifyResp.validationResults["CredentialStatus"]
+                                                            .isValid &&
+                                                        verifyResp.validationResults["IssuerIsSigner"]
+                                                            .isValid &&
+                                                        verifyResp.validationResults["SignatureVerification"]
+                                                            .isValid
+                                                    ) {
+                                                        setUserCredential(credential);
+                                                        setAuthState(AuthState.VERIFIED);
+                                                        return setVerifiedModalVisible(true);
+                                                    } else {
+                                                        return setIsVerifyCredentialError(true);
+
+                                                    }
+
+                                                }
                                             }}
                                         >
                                             <div className="relative">
