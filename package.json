@@ -12,6 +12,7 @@
         "@types/node": "^16.11.56",
         "@types/react": "^18.0.17",
         "@types/react-dom": "^18.0.6",
+        "credential-handler-polyfill": "^3.2.0",
         "dayjs": "^1.11.6",
         "framer-motion": "^7.6.5",
         "lodash": "^4.17.21",
@@ -28,6 +29,7 @@
         "recoil-persist": "^4.2.0",
         "trinsic-oidc-client-ts": "^0.1.6-a",
         "typescript": "^4.8.2",
+        "web-credential-handler": "^2.0.2",
         "web-vitals": "^2.1.4"
     },
     "scripts": {
