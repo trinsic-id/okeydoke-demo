@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using Trinsic;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +22,7 @@ app.UseCors((corsBuilder) =>
 });
 
 app.MapGet("/", () => "👋 Hi!");
-app.MapPost("/api/issue", async (string email, string name, FoodClass foodType, FoodGrade grade) =>
+app.MapPost("/api/issue", async (string email, string name, FoodClass foodType, FoodGrade grade, bool? send) =>
 {
     try
     {
@@ -40,12 +42,18 @@ app.MapPost("/api/issue", async (string email, string name, FoodClass foodType, 
             throw new ArgumentException("Invalid name");
         }
 
+        if (!send.HasValue)
+        {
+            send = true;
+        }
 
+
+        string signedDocument;
         try
         {
-            var trinsic = new TrinsicService().SetAuthToken(authToken);
+            var trinsic = new TrinsicService(new TrinsicOptions() { AuthToken = authToken });
 
-            var issueResponse = await trinsic.Credential.IssueFromTemplateAsync(new()
+            var issueResponse = await trinsic.Credential.IssueFromTemplateAsync(new ()
             {
                 TemplateId = "https://schema.trinsic.cloud/okeydoke/foodsalvagerlicense",
                 ValuesJson = JsonSerializer.Serialize(new
@@ -56,12 +64,17 @@ app.MapPost("/api/issue", async (string email, string name, FoodClass foodType, 
                 })
             });
 
-            var sendResponse = await trinsic.Credential.SendAsync(new()
+            signedDocument = issueResponse.DocumentJson;
+
+            if (send.Value)
             {
-                Email = email,
-                DocumentJson = issueResponse.DocumentJson,
-                SendNotification = true
-            });
+                var sendResponse = await trinsic.Credential.SendAsync(new()
+                {
+                    Email = email,
+                    DocumentJson = signedDocument,
+                    SendNotification = true
+                });
+            }
         }
         catch (Exception ex)
         {
@@ -71,7 +84,8 @@ app.MapPost("/api/issue", async (string email, string name, FoodClass foodType, 
 
         return new IssueResponse()
         {
-            Success = true
+            Success = true,
+            Credential = signedDocument
         };
     }
     catch (Exception e)
@@ -117,7 +131,7 @@ app.MapPost("/api/issue-any", async (string email, string authToken, string sche
 
         try
         {
-            var trinsic = new TrinsicService().SetAuthToken(authToken);
+            var trinsic = new TrinsicService(new TrinsicOptions() { AuthToken = authToken });
 
             var issueResponse = await trinsic.Credential.IssueFromTemplateAsync(new()
             {
@@ -177,4 +191,8 @@ public class IssueResponse
     [JsonPropertyName("error")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Error { get; set; }
+    
+    [JsonPropertyName("credential")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Credential { get; set; }
 }
