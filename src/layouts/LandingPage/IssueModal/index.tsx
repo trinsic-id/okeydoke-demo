@@ -11,6 +11,8 @@ import {
 } from "../../../atoms/modals";
 import { useLockBg } from "../../../hooks/custom/useLockBackground";
 import EmailInput from "./EmailInput";
+import {useChapiPolyfill} from "../../../hooks/custom/useChapiPolyfill";
+import {CredentialHandlerPolyfill, WebCredential, WebCredentialOptions} from "credential-handler-polyfill";
 
 const Animations = {
     container: {
@@ -48,31 +50,63 @@ interface IssueValues {
     name: string;
     grade: string;
     type: string;
+    useChapi: boolean;
 }
 
 const handleIssueCredential = async (
     email: IssueValues["email"],
     name: IssueValues["name"],
     grade: IssueValues["grade"],
-    type: IssueValues["type"]
+    type: IssueValues["type"],
+    useChapi: IssueValues["useChapi"],
+    chapi: CredentialHandlerPolyfill
 ): Promise<{
     success: boolean;
 }> => {
     let url = "https://okeydokeissuer.azurewebsites.net/api/issue";
     url += `?email=${encodeURIComponent(email)}&name=${encodeURI(
         name
-    )}&grade=${grade}&foodType=${type}`;
+    )}&grade=${grade}&foodType=${type}&send=${!useChapi}`;
     const response = await fetch(url, { method: "POST" });
 
     // We expect a response in the form of { success: boolean, error?: string }
     // If there was an error here, throw it so that the React mutation can handle it
     let json = await response.json();
+    console.log(json);
     if (!json.success) {
         throw new Error(json.error)
     }
-    else {
-        return json;
+
+    if(!useChapi) {
+        return {success: true};
     }
+
+    const credential = json.credential;
+    const presentation = {
+        "@context": ["https://www.w3.org/2018/credentials/v1"],
+        "type": "VerifiablePresentation",
+        verifiableCredential: [
+            JSON.parse(credential)
+        ]
+    };
+
+    const webCredOptions : WebCredentialOptions = {
+        recommendedHandlerOrigins: ["https://okeydoke.localhost:7266/"],
+        protocols: undefined
+    };
+
+    // Hack to execute the JavaScript constructor for WebCredential via TypeScript
+    const wnd : any = window;
+    const WC : any = wnd.WebCredential;
+    const webCredential = new WC("VerifiablePresentation", presentation, webCredOptions);
+
+    const ret = await chapi.credentials.store(webCredential);
+    const success = !!ret;
+    if(!success) {
+        throw new Error("Credential offer declined");
+    }
+
+    return {success};
 };
 
 export const IssueModal = () => {
@@ -91,6 +125,7 @@ export const IssueModal = () => {
     const [userEmail, setUserEmail] = useState("");
 
     const navigate = useNavigate();
+    const chapi = useChapiPolyfill();
 
     useEffect(() => {
         if (isVisible) {
@@ -121,8 +156,8 @@ export const IssueModal = () => {
         isSuccess,
         reset,
         mutate: issueCredential,
-    } = useMutation(({ email, name, grade, type }: IssueValues) =>
-        handleIssueCredential(email, name, grade, type)
+    } = useMutation(({ email, name, grade, type, useChapi }: IssueValues) =>
+        handleIssueCredential(email, name, grade, type, useChapi, chapi!)
     );
 
     useEffect(() => {
@@ -242,8 +277,9 @@ export const IssueModal = () => {
                                                     issueCredential({
                                                         email: userEmail,
                                                         name: farmerName,
-                                                        grade: "C",
-                                                        type: "Artichoke",
+                                                        grade: grade,
+                                                        type: produceType,
+                                                        useChapi: false
                                                     });
                                                 }
                                             }}
@@ -281,6 +317,60 @@ export const IssueModal = () => {
                                             </div>
                                             <div className="flex-1 pr-12 text-lg font-medium">
                                                 Receive your credential
+                                            </div>
+                                        </button>
+                                        <button
+                                            className={`group flex h-full w-full flex-row items-center space-x-6 rounded-lg
+                                            px-4 py-3 text-white ${
+                                                buttonEnabled
+                                                    ? "bg-blue-500 hover:border-2 hover:border-blue-500 hover:bg-white hover:py-2.5 hover:text-blue-500"
+                                                    : "bg-blue-300"
+                                            }`}
+                                            onClick={() => {
+                                                if (!isLoading) {
+                                                    issueCredential({
+                                                        email: userEmail,
+                                                        name: farmerName,
+                                                        grade: grade,
+                                                        type: produceType,
+                                                        useChapi: true
+                                                    });
+                                                }
+                                            }}
+                                            disabled={!buttonEnabled}
+                                        >
+                                            <div className="h-full w-6">
+                                                {isLoading && (
+                                                    <Spinner
+                                                        color="white"
+                                                        fadeIn="none"
+                                                        name="ball-spin-fade-loader"
+                                                        className="ml-4 mt-2 scale-[45%] whitespace-nowrap"
+                                                    />
+                                                )}
+                                                {!isLoading && (
+                                                    <img
+                                                        src="/images/trinsic-logo-white.png"
+                                                        className={`block w-6 ${
+                                                            buttonEnabled
+                                                                ? "group-hover:hidden"
+                                                                : ""
+                                                        }`}
+                                                    />
+                                                )}
+                                                {!isLoading && (
+                                                    <img
+                                                        src="images/trinsic-logo-blue.png"
+                                                        className={`hidden h-[35.22px] w-6 ${
+                                                            buttonEnabled
+                                                                ? "group-hover:block"
+                                                                : ""
+                                                        }`}
+                                                    />
+                                                )}
+                                            </div>
+                                            <div className="flex-1 pr-12 text-lg font-medium">
+                                                Receive via CHAPI
                                             </div>
                                         </button>
                                         {isError && (

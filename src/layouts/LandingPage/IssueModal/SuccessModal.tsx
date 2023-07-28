@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { isIssueSuccessModalVisibleState } from "../../../atoms/modals";
 import { useLockBg } from "../../../hooks/custom/useLockBackground";
+import {useChapiPolyfill} from "../../../hooks/custom/useChapiPolyfill";
 
 const Animations = {
     container: {
