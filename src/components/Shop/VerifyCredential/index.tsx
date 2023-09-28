@@ -118,10 +118,9 @@ export const VerifyCredentialModal = () => {
                                             className="group flex h-full w-full flex-row items-center space-x-6 rounded-lg bg-blue-500 px-4 py-3 text-white border-2 border-blue-500 hover:bg-white hover:text-blue-500"
                                             onClick={async () => {
                                                 const user = await authService.loginPopup();
-                                                if (user && user.profile._vp_token) {
+                                                if (user && user.vp_token) {
                                                     setModalVisible(false);
-                                                    const credential = user.profile
-                                                        ._vp_token as CredentialDerivedProof;
+                                                    const credential = user.vp_token as CredentialDerivedProof;
                                                     const verifyResp = await verifyCredentialAsync({
                                                         derivedProof: credential,
                                                     });

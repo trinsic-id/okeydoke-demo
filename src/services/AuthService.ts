@@ -1,66 +1,43 @@
-import { Log, User, UserManager } from "trinsic-oidc-client-ts";
-import { generateSettings } from "../utils/generateSettings";
-
-const clientRoot: string = window.location.origin;
+import { ConnectClient } from "@trinsic/trinsic";
 
 export const defaultEcosystem = "okeydoke";
-export const defaultSchema =
-    "https://schema.trinsic.cloud/okeydoke/foodsalvagerlicense";
-
-export const defaultAuthSettings = {
-    authority: "https://connect.trinsic.cloud",
-    client_id: "okeydoke",
-    redirect_uri: `${clientRoot}/shop/redirect`,
-    silent_redirect_uri: `${clientRoot}/shop/silent-renew`,
-    post_logout_redirect_uri: `${clientRoot}/shop`,
-    response_type: "code",
-    scope: "openid",
-    extraQueryParams: {
-        "trinsic:ecosystem": defaultEcosystem,
-        "trinsic:schema": defaultSchema,
-        "trinsic:mode": "popup",
-    },
-};
-type OIDCSettingsType = typeof defaultAuthSettings
-declare global {
-    interface Window { OIDCSettings: OIDCSettingsType; }
-}
-window.OIDCSettings = defaultAuthSettings
+export const defaultSchema = "https://schema.trinsic.cloud/okeydoke/foodsalvagerlicense";
 
 
 export class AuthService {
-    public userManager: UserManager;
-    public settings: typeof defaultAuthSettings | undefined;
+    public connectClient: ConnectClient;
+    public user: any | null = null;
     constructor() {
-        this.settings = defaultAuthSettings;
-        this.userManager = new UserManager();
-        Log.setLogger(console);
-        this.userManager.metadataService.getMetadata();
+        this.connectClient = new ConnectClient();
     }
 
-    public getUser(): Promise<User | null> {
-        return this.userManager.getUser();
+    public getUser(): Promise<any | null> {
+        return this.user;
     }
 
     public async loginPopup() {
-        return await this.userManager.signinPopup();
+        this.user = await this.connectClient.requestVerifiableCredential({
+            ecosystem: defaultEcosystem,
+            schema: defaultSchema,
+        });
+        return this.user;
     }
 
     public login(): Promise<void> {
-        return this.userManager.signinRedirect();
+        return this.loginPopup();
     }
 
-    public renewToken(): Promise<User | null> {
-        return this.userManager.signinSilent();
+    public renewToken(): Promise<void> {
+        return Promise.resolve();
     }
 
     public logout(): Promise<void> {
-        return this.userManager.signoutRedirect();
+        this.user = null;
+        return Promise.resolve();
     }
 
     public async signinRedirect() {
-        const user = await this.userManager.signinRedirectCallback();
-        console.log("Logged in user", user);
+        return this.loginPopup();
     }
 }
 
