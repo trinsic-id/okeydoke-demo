@@ -1,4 +1,5 @@
-import { ConnectClient } from "@trinsic/trinsic";
+import { ConnectClient } from "./ConnectClient";
+
 
 export const defaultEcosystem = "okeydoke";
 export const defaultSchema = "https://schema.trinsic.cloud/okeydoke/foodsalvagerlicense";

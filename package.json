@@ -60,6 +60,7 @@
         "@azure/static-web-apps-cli": "1.0.4",
         "@craco/craco": "^7.0.0",
         "@types/lodash": "^4.14.188",
+        "@types/micromodal": "^0.3.3",
         "@types/react-spinkit": "^3.0.7",
         "autoprefixer": "^10.4.8",
         "postcss": "^8.4.16",
