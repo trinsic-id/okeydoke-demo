@@ -12,9 +12,12 @@
         "@types/node": "^16.11.56",
         "@types/react": "^18.0.17",
         "@types/react-dom": "^18.0.6",
+        "cbor-x": "^1.5.4",
         "dayjs": "^1.11.6",
         "framer-motion": "^7.6.5",
+        "jose": "^5.0.1",
         "lodash": "^4.17.21",
+        "qrcode-decoder": "^0.3.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-feather": "^2.0.10",
@@ -30,7 +33,7 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "craco start",
+        "start": "HTTPS=true craco start",
         "build": "craco build",
         "serve": "PORT=8080 serve -s ./build",
         "test": "craco test",
