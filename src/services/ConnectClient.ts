@@ -251,7 +251,7 @@ export class ConnectClient {
         this.oidcConfig = {
             authority: this.baseUrl,
             client_id: "http://localhost:8080/",
-            redirect_uri: "http://localhost:8080/",
+            redirect_uri: `${clientRoot}/shop/redirect`,
 
             response_type: "code",
             scope: "openid",
